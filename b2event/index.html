@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2EVENT - Event Experience Agency</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="bg-wrapper">
+        <div class="gradient-sphere orange"></div>
+        <div class="gradient-sphere blue"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="imgs/logo.png" alt="B2EVENT">
+            </div>
+            <nav>
+                <a href="#" class="active">ABOUT</a>
+                <a href="#">SERVICES</a>
+                <a href="#">CAREERS</a>
+                <a href="#">PODCAST</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="glass-card">
+                    <h1>WE ARE <br> AN EVENT EXPERIENCE</h1>
+                    <div>
+                        <h2 class="serif-title">AGENCY</h2>
+                        <div class="hero-desc">
+                            <p>WE PARTNER WITH GLOBAL AND LOCAL BRANDS<br> AND TRUSTED TALENTS FOR TRULY CREATIVE
+                                CONTENT SOLUTIONS.</p>
+                            <p class="services-list">BRANDING — CONTENT — DESIGN — VISUALS — MARKETING — EVENTS</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="scroll-container">
+                <aside class="ruler-sidebar">
+                    <div class="ruler-track" id="ruler-track">
+                        <div class="indicator" id="indicator"></div>
+                    </div>
+                </aside>
+
+               <div class="content-scroll-box" id="main-scroll">
+                 <section class="content-section">
+
+
+                    <div class="content-body">
+                        <h3 class="section-title">WHAT WE DO</h3>
+                        <div class="video-container">
+                            <p class="video-subtext">We don't just organize events;<br>we ignite emotions, command the
+                                spotlight,<br>and leave audiences wide-eyed.</p>
+                            <video class="video-placeholder">
+                                <source src="imgs/SHOWREEL.mp4" type="video/mp4">
+                                <div class="play-btn">▶</div>
+                            </video>
+                            <button class="show-more">SHOW MORE</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+
+
+                    <div class="content-body">
+                        <h3 class="section-title">CLIENTS</h3>
+                        <p class="client-desc">Being alongside our esteemed clients is the greatest pride of B2EVENT.
+                            Every milestone our clients achieve becomes a source of inspiration for us to continuously
+                            innovate, create, and push beyond limits.</p>
+                        <div class="clients-grid">
+                            <script>for (let i = 0; i < 45; i++) document.write('<div class="client-item"></div>');</script>
+                        </div>
+                    </div>
+                </section>
+               </div>
+            </div>
+              <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById('ruler-track');
+    const indicator = document.getElementById('indicator');
+    const scroller = document.getElementById('main-scroll');
+    const sections = document.querySelectorAll('.content-section');
+    
+    const TOTAL_TICKS = 40; // Số lượng vạch chấm trên thước
+
+    // 1. Tạo các vạch chấm tự động
+    for (let i = 0; i < TOTAL_TICKS; i++) {
+        const tick = document.createElement('div');
+        tick.className = 'tick';
+        track.appendChild(tick);
+    }
+
+    // 2. Lắng nghe sự kiện cuộn
+    scroller.addEventListener('scroll', () => {
+        const scrollTop = scroller.scrollTop;
+        const scrollHeight = scroller.scrollHeight - scroller.clientHeight;
+        const percent = scrollTop / (scrollHeight || 1);
+
+        // Cập nhật vị trí mũi tên
+        const trackHeight = track.offsetHeight;
+        indicator.style.top = (percent * (trackHeight - 7)) + 'px';
+
+        // Kích hoạt vạch cam dựa trên phần trăm cuộn
+        const activeTickIndex = Math.round(percent * (TOTAL_TICKS - 1));
+        const allTicks = document.querySelectorAll('.tick');
+        
+        allTicks.forEach((t, i) => {
+            if (i === activeTickIndex) t.classList.add('active');
+            else t.classList.remove('active');
+        });
+
+        // Hiệu ứng Fade In cho các Section
+        sections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top >= -window.innerHeight/2 && rect.top <= window.innerHeight/2) {
+                sec.classList.add('visible');
+            } else {
+                sec.classList.remove('visible');
+            }
+        });
+    });
+});
+    </script>
+        </main>
+
+        <footer>
+            <div class="footer-main">
+                <div class="footer-cta">
+                    <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
+                    <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
+                </div>
+
+                <div class="footer-info">
+                    <h4>OUR ADDRESS</h4>
+                    <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
+                        75 Hoang Van Thu Street, Ward 15, <br>
+                        Phu Nhuan District, Ho Chi Minh City</p>
+                    <p>(028) 38 225 34781/782/783</p>
+
+                    <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
+                    <p>Email: contact@b2event.vn</p>
+                    <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
+                    <p>Working Hours: 9:00 AM - 6:00 PM</p>
+                </div>
+
+                <div class="footer-nav-col">
+                    <ul class="footer-nav">
+                        <li><a href="#">▶ HOME</a></li>
+                        <li><a href="#">SERVICES</a></li>
+                        <li><a href="#">CAREERS</a></li>
+                        <li><a href="#">PODCAST</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Keo dán sàn gỗ</title>
+<style>
+/* ===== RESET ===== */
+*{box-sizing:border-box;font-family:Arial, sans-serif}
+body{margin:0;background:#f6f7f5;color:#24352b}
+
+/* ===== HEADER ===== */
+.header{
+  background:radial-gradient(circle,#1f3a2e,#0f1f1a);
+  padding:40px;color:#fff
+}
+.header h1{margin:0}
+
+/* ===== CATEGORY TOP ===== */
+.cat-top{
+  display:flex;gap:12px;padding:16px;background:#e2ebe6
+}
+.cat-item{
+  flex:1;text-align:center;padding:10px;
+  background:#cfdcd4;cursor:pointer;border-radius:4px;
+  font-size:13px
+}
+.cat-item.active{background:#1f3a2e;color:#fff}
+
+/* ===== LAYOUT ===== */
+.main{display:flex;gap:20px;padding:20px}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:260px}
+.box{border:1px solid #d3dbd5;margin-bottom:15px}
+.box-title{
+  background:#cfdcd4;padding:10px;
+  font-weight:bold;cursor:pointer
+}
+.box-content{padding:10px}
+
+/* category list */
+.cat-list div{
+  padding:6px 0;cursor:pointer;font-size:14px
+}
+.cat-list .active{font-weight:bold}
+
+/* size */
+.size label{
+  display:flex;justify-content:space-between;
+  font-size:14px;margin-bottom:6px;cursor:pointer
+}
+
+/* ===== CONTENT ===== */
+.content{flex:1}
+
+/* toolbar */
+.toolbar{
+  display:flex;justify-content:flex-end;
+  gap:6px;margin-bottom:10px
+}
+.toolbar button{
+  border:none;padding:6px 10px;
+  background:#dfe7e2;cursor:pointer
+}
+.toolbar button.active{background:#1f3a2e;color:#fff}
+
+/* products */
+.products{
+  display:grid;gap:12px
+}
+.products.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.products.list{grid-template-columns:1fr}
+
+.product{
+  background:#fff;padding:12px;
+  display:flex;align-items:center;gap:12px
+}
+.product img{width:80px}
+.product button{
+  margin-left:auto;background:#b8d28a;
+  border:none;padding:6px 10px;cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Keo dán sàn gỗ</h1>
+</div>
+
+<!-- CATEGORY TOP -->
+<div class="cat-top" id="catTop"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="box">
+      <div class="box-title">Keo dán sàn gỗ</div>
+      <div class="box-content cat-list" id="catSide"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Size</div>
+      <div class="box-content size" id="sizeFilter"></div>
+    </div>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="toolbar">
+      <button id="gridBtn" class="active">🔲</button>
+      <button id="listBtn">☰</button>
+    </div>
+
+    <div class="products grid" id="products"></div>
+
+  </div>
+
+</div>
+
+<script>
+/* ===== DATA ===== */
+const categories = [
+ {id:'reactive',name:'Reactive silane'},
+ {id:'primers',name:'Primers'},
+ {id:'moisture',name:'Moisture barrier'},
+ {id:'levelling',name:'Levelling compounds'},
+ {id:'pu',name:'Reactive PU'},
+ {id:'dispersion',name:'Dispersion'}
+];
+
+const productsData = [
+ {id:1,name:'Keo dán sàn gỗ 1',cat:'reactive',size:'8kg'},
+ {id:2,name:'Keo dán sàn gỗ 2',cat:'reactive',size:'3kg'},
+ {id:3,name:'Keo dán sàn gỗ 3',cat:'primers',size:'5kg'},
+ {id:4,name:'Keo dán sàn gỗ 4',cat:'pu',size:'8kg'}
+];
+
+let currentCat = 'reactive';
+let selectedSizes = [];
+let view = 'grid';
+
+/* ===== RENDER CATEGORY ===== */
+const catTop = document.getElementById('catTop');
+const catSide = document.getElementById('catSide');
+
+categories.forEach(c=>{
+  catTop.innerHTML += `<div class="cat-item" data-id="${c.id}">${c.name}</div>`;
+  catSide.innerHTML += `<div data-id="${c.id}">${c.name}</div>`;
+});
+
+/* ===== SIZE FILTER ===== */
+const sizes = ['8kg','5kg','3kg','0.5kg'];
+const sizeFilter = document.getElementById('sizeFilter');
+sizes.forEach(s=>{
+  const count = productsData.filter(p=>p.size===s).length;
+  sizeFilter.innerHTML += `
+    <label>
+      <input type="checkbox" value="${s}"> ${s}
+      <span>${count}</span>
+    </label>`;
+});
+
+/* ===== EVENTS ===== */
+function syncCategory(){
+  document.querySelectorAll('[data-id]').forEach(el=>{
+    el.classList.toggle('active',el.dataset.id===currentCat)
+  });
+  renderProducts();
+}
+
+document.addEventListener('click',e=>{
+  if(e.target.dataset.id){
+    currentCat = e.target.dataset.id;
+    syncCategory();
+  }
+});
+
+document.addEventListener('change',e=>{
+  if(e.target.type==='checkbox'){
+    selectedSizes=[...document.querySelectorAll('#sizeFilter input:checked')]
+      .map(i=>i.value);
+    renderProducts();
+  }
+});
+
+/* view */
+gridBtn.onclick=()=>{
+  view='grid';
+  products.className='products grid';
+  gridBtn.classList.add('active');
+  listBtn.classList.remove('active');
+};
+listBtn.onclick=()=>{
+  view='list';
+  products.className='products list';
+  listBtn.classList.add('active');
+  gridBtn.classList.remove('active');
+};
+
+/* ===== RENDER PRODUCTS ===== */
+function renderProducts(){
+  products.innerHTML='';
+  productsData
+    .filter(p=>
+      p.cat===currentCat &&
+      (selectedSizes.length===0 || selectedSizes.includes(p.size))
+    )
+    .forEach(p=>{
+      products.innerHTML+=`
+        <div class="product">
+          <img src="https://via.placeholder.com/80">
+          <div>
+            <strong>${p.name}</strong><br>
+            <small>${p.size}</small>
+          </div>
+          <button>CHI TIẾT</button>
+        </div>`;
+    });
+}
+
+/* init */
+syncCategory();
+</script>
+
+</body>
+</html>

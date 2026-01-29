@@ -1,0 +1,43 @@
+
+
+button {
+    width: fit-content;
+    height: fit-content;
+    /* border-radius: 0 3rem 0 0; */
+    border-color: transparent;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    font-size: clamp(0.5rem, 1.2vw, 3rem);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--green80);
+    cursor: pointer;
+}
+
+button:after {
+    content: " →";
+}
+
+
+.content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    width: 50%;
+    z-index: 3;
+}
+.title {
+    font-size: clamp(1rem, 3vw, 5rem);
+    font-family: 'Lora', sans-serif;
+    font-weight: 500;
+    width: fit-content;
+
+}
+
+.text {
+    font-size: clamp(0.8rem, 2vw, 4rem);
+    line-height: clamp(1rem, 3vw, 2.3rem);
+    text-align: left;
+    font-weight: 300;
+
+}

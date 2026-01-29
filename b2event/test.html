@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2EVENT - Event Experience Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. GLOBAL STYLES & VARIABLES --- */
+        :root {
+            --primary-orange: #ff5f00;
+            --bg-dark: #000;
+            --text-main: #fff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. BACKGROUND MESH & NOISE --- */
+        .bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            background: radial-gradient(circle at 10% 10%, #442200 0%, #000 50%);
+        }
+
+        /* Tạo các đốm màu loang */
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+        .blob-1 { width: 800px; height: 800px; background: #ff5f00; top: -200px; right: -200px; opacity: 0.4; }
+        .blob-2 { width: 600px; height: 600px; background: #0044ff; bottom: 10%; left: -100px; opacity: 0.3; }
+        .blob-3 { width: 400px; height: 400px; background: #fff; top: 40%; left: 30%; opacity: 0.1; }
+
+        /* Hiệu ứng hạt (Noise) giúp nền trông nghệ thuật hơn */
+        .bg-wrapper::before {
+            content: "";
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+        /* --- 3. SECTION: HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+        }
+        .logo { font-size: 26px; font-weight: 900; letter-spacing: -1px; }
+        .logo span { color: var(--primary-orange); }
+        
+        nav ul { display: flex; list-style: none; gap: 40px; }
+        nav a { 
+            color: #fff; text-decoration: none; font-size: 14px; font-weight: 700;
+            letter-spacing: 1px; transition: 0.3s; padding-bottom: 5px;
+        }
+        nav a:hover, nav a.active { border-bottom: 2px solid #fff; }
+
+        /* --- 4. SECTION: HERO --- */
+        .hero { padding: 20px 0 100px; }
+        .hero-glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 100px 80px;
+            max-width: 1000px;
+        }
+        .hero h1 { font-size: 70px; line-height: 0.95; font-weight: 900; text-transform: uppercase; }
+        .hero h1 span { 
+            font-family: 'Playfair Display', serif; font-style: italic; 
+            font-weight: 400; text-transform: none; display: block; font-size: 85px;
+        }
+        .hero p { 
+            margin-top: 30px; font-size: 12px; letter-spacing: 1.5px; 
+            max-width: 400px; line-height: 1.5; color: var(--text-dim);
+        }
+
+        /* --- 5. SECTION: WHAT WE DO --- */
+        .what-we-do { padding: 100px 0; }
+        .section-tag { font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+        .section-tag::before { content: "▶"; font-size: 12px; color: #fff; }
+
+        .video-container { text-align: center; }
+        .video-description { max-width: 500px; margin: 0 auto 40px; font-size: 14px; color: var(--text-dim); }
+        .video-box {
+            width: 100%; max-width: 700px; aspect-ratio: 16/9; margin: 0 auto;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .play-btn {
+            width: 70px; height: 70px; border: 2px solid #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+            cursor: pointer; background: rgba(0,0,0,0.2);
+        }
+        .show-more {
+            margin-top: 40px; background: transparent; border: 1px solid #fff;
+            color: #fff; padding: 10px 40px; border-radius: 30px; cursor: pointer;
+            text-transform: uppercase; font-weight: 700; font-size: 12px;
+        }
+
+        /* --- 6. SECTION: CLIENTS --- */
+        .clients { padding: 100px 0; }
+        .clients-grid {
+            display: grid; grid-template-columns: repeat(9, 1fr);
+            gap: 25px; margin-top: 60px; opacity: 0.7;
+        }
+        .client-logo { width: 100%; aspect-ratio: 2/1; background: rgba(255,255,255,0.05); border-radius: 5px; }
+
+        /* --- 7. SECTION: FOOTER --- */
+        footer { padding: 100px 0 60px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 0.5fr; gap: 40px; }
+        .footer-cta h2 { font-size: 36px; line-height: 1.2; margin-bottom: 20px; }
+        .email-link { font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; border-bottom: 2px solid #fff; }
+        
+        .footer-info h4 { font-size: 14px; margin-bottom: 20px; }
+        .footer-info p { font-size: 13px; color: var(--text-dim); margin-bottom: 10px; }
+        
+        .footer-nav { list-style: none; text-align: right; }
+        .footer-nav li { margin-bottom: 15px; }
+        .footer-nav a { text-decoration: none; color: #fff; font-weight: 800; font-size: 18px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .footer-main { grid-template-columns: 1fr; }
+            .clients-grid { grid-template-columns: repeat(4, 1fr); }
+            .hero h1 { font-size: 40px; }
+            .hero h1 span { font-size: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-wrapper">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">B2<span>EVENT</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">ABOUT</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">CAREERS</a></li>
+                    <li><a href="#">PODCAST</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-glass-card">
+                <h1>WE ARE <br> AN EVENT EXPERIENCE <br> <span>Agency</span></h1>
+                <p>WE PARTNER WITH GLOBAL AND LOCAL BRANDS AND TRUSTED TALENTS FOR TRULY CREATIVE CONTENT SOLUTIONS. <br> 
+                   <strong>BRANDING - CONTENT - DESIGN - VISUALS - MARKETING - EVENTS</strong>
+                </p>
+            </div>
+        </section>
+
+        <section class="what-we-do">
+            <div class="section-tag">WHAT WE DO</div>
+            <div class="video-container">
+                <p class="video-description">
+                    We don't just organize events; we ignite emotions, command the spotlight, and leave audiences wide-eyed.
+                </p>
+                <div class="video-box">
+                    <div class="play-btn">▶</div>
+                </div>
+                <button class="show-more">Show more</button>
+            </div>
+        </section>
+
+        <section class="clients">
+            <div class="section-tag">CLIENTS</div>
+            <p style="font-size: 13px; color: var(--text-dim); max-width: 600px;">
+                Being alongside our esteemed clients is the greatest pride of B2EVENT. Every milestone our clients achieve becomes a source of inspiration for us to continuously innovate, create, and push beyond limits.
+            </p>
+            <div class="clients-grid">
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+                <div class="client-logo"></div><div class="client-logo"></div><div class="client-logo"></div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-main">
+                <div class="footer-cta">
+                    <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
+                    <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
+                </div>
+
+                <div class="footer-info">
+                    <h4>OUR ADDRESS</h4>
+                    <p><strong>HO CHI MINH HEAD OFFICE</strong><br> 
+                       75 Hoang Van Thu Street, Ward 15, <br> 
+                       Phu Nhuan District, Ho Chi Minh City</p>
+                    <p>(028) 38 225 34781/782/783</p>
+                    
+                    <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
+                    <p>Email: contact@b2event.vn</p>
+                    <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
+                    <p>Working Hours: 9:00 AM - 6:00 PM</p>
+                </div>
+
+                <div class="footer-nav-col">
+                    <ul class="footer-nav">
+                        <li><a href="#">▶ HOME</a></li>
+                        <li><a href="#">SERVICES</a></li>
+                        <li><a href="#">CAREERS</a></li>
+                        <li><a href="#">PODCAST</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

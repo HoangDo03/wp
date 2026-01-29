@@ -1,0 +1,14 @@
+/* css/style.css */
+
+/* 1. Base – luôn lên đầu */
+@import "./base.css";
+
+/* 2. Layout */
+@import "./layout.css";
+
+/* 3. Components */
+@import "./components.css";
+
+/* 4. Page-specific */
+@import "./pages/home.css";
+@import "./pages/about.css";

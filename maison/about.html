@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="home_header_wrapper">
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
+
+            <div class="home_header_menu">
+                <ul class="home_header_menu_items" id="menuNavItemsDesktop">
+                    <li class="menu_item active"><a href="about.html">Giới thiệu</a></li>
+                    <li class="menu_item"><a href="">Sản phẩm</a></li>
+                    <li class="menu_item"><a href="">Dịch vụ</a></li>
+                    <li class="menu_item"><a href="">Dự án</a></li>
+                    <li class="menu_item"><a href="">Tin tức</a></li>
+                    <li class="menu_item"><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="home_header_menu_btn" id="btnMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="menu_mobile_nav" id="menu">
+
+            <ul id="menuNavItems" class="menu_nav_items">
+                <li class="menu_item active"><a href="index.html">Giới thiệu</a></li>
+                <li class="menu_item"><a href="">Sản phẩm</a></li>
+                <li class="menu_item"><a href="">Dịch vụ</a></li>
+                <li class="menu_item"><a href="">Dự án</a></li>
+                <li class="menu_item"><a href="">Tin tức</a></li>
+                <li class="menu_item"><a href="">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+        const toggle = document.getElementById("btnMenu");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+    </script>
+    <main>
+        <div id="main">
+            <section class="about-bona banner">
+                <div class="container">
+                    <div class="content-left">
+                        <h1 class="title">Về Bona</h1>
+                        <p class="description">
+                            Since our founding in 1919, a constant thread has woven Bona’s foundation. Our
+                            values—passion, performance, and pioneering—shape everything we do, from our products to our
+                            company culture to our responsible business practices. It’s how we operate our business and
+                            engage with the world.
+                        </p>
+                    </div>
+
+                    <div class="content-right">
+                        <img src="assets/imgs/4f601b1ac607f32b3c8a5919bd3c372fe92d9f1d.png" alt="Bona Building">
+                    </div>
+                </div>
+            </section>
+            <section class="our-story">
+                <div class="container">
+                    <div class="our-story__grid">
+
+                        <!-- LEFT: CONTENT -->
+                        <div class="our-story__content">
+                            <h2>Our story</h2>
+
+                            <p class="subtitle">
+                                Bona’s founder, Wilhelm Edner, originally owned a small grocery
+                                shop in Malmö, Sweden where coffee was his favourite product.
+                            </p>
+
+                            <p>
+                                In his shop, he also sold Bonvax, an agent which, when applied to
+                                a wood floor, created a polished and protective surface. Edner
+                                realised the potential of Bonvax, and founded Bona AB in 1919.
+                                Now, over 100 years later, Bona is the foremost leader in the
+                                hardwood floor industry, with a wealth of innovation experience
+                                and knowledge – all focused on bringing out the beauty in floors.
+                            </p>
+
+                            <p class="highlight">
+                                A global company headquartered in Sweden
+                            </p>
+
+                            <p>
+                                With our head office in Malmö, Sweden, Bona is led by third and
+                                fourth generations of the Edner, Forsberg, and Brask family.
+                                Having started from humble beginnings, we are now a global
+                                organisation spanning more than 90 countries and represented by
+                                17 subsidiaries, 70 distributors, 4 production sites, and more
+                                than 700 employees.
+                            </p>
+
+                            <a href="#" class="story-link">Đọc thêm →</a>
+                        </div>
+
+                        <!-- RIGHT: IMAGES -->
+                        <div class="our-story__images">
+                            <img src="assets/imgs/180c9f8c313947ad20b389317d40a99dacfc1cf9.png" alt=""
+                                class="img img-1">
+                            <img src="assets/imgs/0800195e16b897849560b902f000d7c0010d21e0.png" alt=""
+                                class="img img-2">
+                            <img src="assets/imgs/ffaa8afcb1213432e0e6cc4ac9eeaddf1b518553.png" alt=""
+                                class="img img-3">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="values-section">
+                <div class="container">
+                    <h2 class="section-title">Our values</h2>
+
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <h3>Passion</h3>
+                            <p class="value-sub">Inspiration. Devotion. Pride.</p>
+                            <p>
+                                Passion is our foundation for doing business. We are passionate
+                                about what we do and how we do it.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <h3>Performance</h3>
+                            <p class="value-sub">Quality. Safety. Reliability.</p>
+                            <p>
+                                At Bona, performance means premium quality. We focus on safety and
+                                satisfaction.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <h3>Pioneering</h3>
+                            <p class="value-sub">Innovation. Creativity. Curiosity.</p>
+                            <p>
+                                To pioneer is to push boundaries. We constantly reimagine what’s
+                                possible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="values-bottom">
+                    <div class="container bottom-grid">
+                        <div class="bottom-img">
+                            <img src="assets/imgs/beae8e1056373c5de7622611d20932ed8af2cda8.jpg" alt="">
+                        </div>
+
+                        <div class="bottom-img">
+                            <img src="assets/imgs/1321651b10cc9500418e7c129d85588c138348c3.png" alt="">
+                        </div>
+
+                        <div class="bottom-text">
+                            <h3>Our promise</h3>
+                            <p>
+                                Every day, with every product and every interaction, we promise to
+                                offer products and experiences that bring out the beauty in floors.
+                            </p>
+                            <a href="#" class="link-arrow">Đọc thêm →</a>
+                        </div>
+
+                        <div class="bottom-text">
+                            <h3>Sustainability</h3>
+                            <p>
+                                We believe that it’s our responsibility to do better and be better in
+                                everything we do.
+                            </p>
+                            <a href="#" class="link-arrow">Đọc thêm →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section class="cta-discover">
+  <div class="cta-inner">
+    <h2>Khám phá Maison Source Vietnam</h2>
+
+    <p>
+      Discover Maison Source Vietnam, the official distribution partner of
+      Bona in Vietnam. We specialize in offering premium flooring care
+      products that elevate your space. Explore how our expertise can
+      transform your flooring experience!
+    </p>
+
+    <a href="#" class="cta-btn">
+      TÌM HIỂU VỀ MAISON SOURCE VIETNAM
+      <span>→</span>
+    </a>
+  </div>
+</section>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="footer-content">
+                <img src="assets/icons/bona.svg" alt="">
+                <p>Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</p>
+
+            </div>
+            <div class="footer-contact">
+                <h4>Liên hệ với chúng tôi</h4>
+                <ul>
+                    <li>Phone: 0933.363.888</li>
+                    <li>Email: info@aurawood.vn</li>
+                    <li>41/12 Đường 39, Phường Bình Trưng, TP.HCM, Việt Nam</li>
+                </ul>
+
+            </div>
+        </div>
+        <hr>
+        <div class="footer-brand">
+            <h5>© Maison Source Vietnam</h5>
+            <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
+                <img src="assets/icons/Frame 14468.svg" alt="">
+            </div>
+        </div>
+        <div class="overlay-footer"></div>
+    </footer>
+
+
+</body>

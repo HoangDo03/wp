@@ -1,0 +1,84 @@
+:root {
+    --dark: #09120E;
+    --green40: #284D3D;
+    --green60: #1F3A2E;
+    --lightgreen: #C2D0CA;
+    --lightestgreen: #ECF1EF;
+    --maisongreen: #33614D;
+    --color2: #3D755D;
+    --color3: #91ADA1;
+    --color4: #FFE74C;
+    --color5: #C0D6DF;
+    --green80: #14261F;
+    --lightgrey: #F2F2F2;
+    --white: #FFFFFF;
+
+    --color-btn: #A5C084;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-Light.otf') format("opentype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-Medium.otf') format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-SemiBold.otf') format("opentype");
+    font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid red; */
+}
+
+body {
+  position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+img,
+video {
+  width: 100%;
+}
+#main {
+    background: white;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
