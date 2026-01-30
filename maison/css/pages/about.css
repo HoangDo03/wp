@@ -2,22 +2,26 @@
     height: 80vh;
     background-color: var(--green80);
     background-image:
-        linear-gradient(to bottom,
-            var(--green80) 0%,
+        linear-gradient(to top,
+            #0f815600 0%,
             #0f815600),
+          
         url("../../assets/imgs/pattern-hero.svg");
 
 
     background-repeat:
         no-repeat,
+     
         no-repeat;
 
     background-size:
         cover,
-        73% 130%;
+     
+        74% 110%;
 
     background-position:
         center,
+      
         right top;
 
     color: white;
@@ -32,8 +36,8 @@
     flex-direction: row;
     position: absolute;
     inset: 0;
-    padding-top: 3rem;
-    /* gap: 20px; */
+    padding-top: 2.5rem;
+    gap: 20px;
     /* padding: 3rem; */
 }
 .about-bona .container>div{
@@ -47,20 +51,16 @@
 }
 .about-bona .content-left {
    color: var(--lightgrey);
-    padding: 3rem;
+    text-align: left;
+    padding-top: 5rem;
+    /* padding-right: 2rem; */
 
 }
-.about-bona .content-left h1.title {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    font-family: 'Lora', serif;
+.about-bona .content-left h1 {
+    padding-bottom: 20px;
 }
-.about-bona .content-left p.description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
+.about-bona .content-left p.description { 
+  padding-right: 2rem;
 }
 
 .our-story {
@@ -77,31 +77,29 @@
 
 /* LEFT */
 .our-story__content{
-    padding: 0 0 0 3rem;
+  padding-left: 1rem;
 }
-.our-story__content h2 {
-    font-size: 2rem;
-    line-height: 1.6;
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
-    margin-bottom: 1.25rem;
+.our-story__content h2{
+  padding-bottom: 1rem;
+  font-weight: 500;
 }
-
-.our-story__content p {
-    font-size: 1rem;
-    line-height: 1.6;
+/* .our-story__content p {
     margin-bottom: 1rem;
     color: #333;
     font-weight: 300;
-}
+} */
 .our-story__content .subtitle {
     font-size: 1.5rem;
+    font-weight: 200;
 }
 .our-story__content .highlight {
     font-weight: 600;
     margin-top: 1.25rem;
 }
 
+.our-story__content .read-more{
+  color: #0f5132;
+}
 .story-link {
     display: inline-block;
     margin-top: 1.5rem;
@@ -118,7 +116,7 @@
     gap: 0rem;
     min-height: 480px;
     height: 100%;
-    padding-right: 2rem;
+    /* padding-right: 2rem; */
 }
 
 .our-story__images img {
@@ -148,14 +146,12 @@
 
 
 .values-section {
-  background: #f4f6f4;
   padding: 80px 0 0;
 }
-
-.container {
-  width: min(1200px, 90%);
-  margin: auto;
+.values-section .container{
+  padding-bottom: 5rem;
 }
+
 
 .section-title {
   font-size: 32px;
@@ -166,62 +162,69 @@
 .values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  column-gap: 10px;
+  row-gap: 0;
 }
 
 .value-card {
   background: #eef1ee;
   padding: 24px;
   border-radius: 4px;
+  color: var(--green80);
 }
 
 .value-card h3 {
-  font-size: 20px;
+  /* font-size: 20px; */
+  color: var(--dark);
   margin-bottom: 8px;
 }
 
 .value-sub {
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 12px;
 }
 
-.value-card p {
-  font-size: 14px;
-  line-height: 1.6;
-}
 
 
 .values-bottom {
   background: #0f2a23;
   margin-top: 80px;
-  padding: 60px 0;
+  padding: 60px 0 0 0;
 }
+
 
 .bottom-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 2rem;
+    transform: translateY(-20%);
 }
+
 
 .bottom-img img {
   width: 100%;
-  height: 100%;
+  height: 150%;
+
   object-fit: cover;
   display: block;
 }
 
 .bottom-text {
   color: #fff;
+  padding-top: 6rem;
 }
-
+.bottom-text .read-more{
+  color: var(--color-btn);
+  padding-top: 2rem;
+}
 .bottom-text h3 {
-  font-size: 22px;
+  /* font-size: 22px; */
   margin-bottom: 12px;
 }
 
 .bottom-text p {
-  font-size: 14px;
-  line-height: 1.6;
+  /* font-size: 14px;
+  line-height: 1.6; */
   opacity: 0.9;
 }
 
@@ -236,7 +239,7 @@
 
 .cta-discover {
   background: #eef3ef;
-  padding: 80px 20px;
+  padding: 80px 0;
   text-align: center;
 }
 

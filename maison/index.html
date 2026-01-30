@@ -6,21 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maison</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header class="header">
         <div class="home_header_wrapper">
-           <div class="home_header_logo">
-            <a href="index.html" aria-label="Trang chủ">
-                <img src="assets/imgs/logo.jpg" alt="Trang chủ">
-            </a>
-        </div>
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
 
             <div class="home_header_menu">
                 <ul class="home_header_menu_items" id="menuNavItemsDesktop">
-                    <li class="menu_item active"><a href="about.html">Giới thiệu</a></li>
-                    <li class="menu_item"><a href="">Sản phẩm</a></li>
+                    <li class="menu_item has-submenu active">
+                        <a href="a">Giới thiệu</a>
+                        <ul class="submenu">
+                            <li><a href="">Về Maison Source Vietnam</a></li>
+                            <li><a href="about.html">Về Bona</a></li>
+                            <li><a href="">Chứng nhận quốc tế</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a>SẢN PHẨM</a>
+                        <ul class="submenu">
+                            <li><a>KEO DÁN SÀN GỖ</a></li>
+                            <li><a>DẦU LAU CHO SÀN GỖ & NỘI THẤT</a></li>
+                            <li><a>LỚP PHỦ BẢO VỆ</a></li>
+                            <li><a>MÁY MÓC THIẾT BỊ</a></li>
+                            <li><a>DUNG DỊCH VỆ SINH SÀN GỖ</a></li>
+                            <li><a>SÀN GỖ TỰ NHIÊN</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="about.html">DỊCH VỤ</a>
+                        <ul class="submenu">
+                            <li><a href="">REVIVE</a></li>
+                            <li><a href="">RECOAT</a></li>
+                            <li><a href="">REFINISH</a></li>
+                        </ul>
+                    </li>
+
                     <li class="menu_item"><a href="">Dịch vụ</a></li>
                     <li class="menu_item"><a href="">Dự án</a></li>
                     <li class="menu_item"><a href="">Tin tức</a></li>
@@ -64,7 +101,9 @@
                 <video id="myVideo" autoplay playsinline preload="auto">
                     <source src="assets/video/wooden-floor-baby-foot.mp4" type="video/mp4">
                 </video>
-                <p class="hero-caption">Khơi dậy vẻ đẹp nguyên bản của sàn gỗ</p>
+                <div class="container">
+                    <p class="hero-caption">Khơi dậy vẻ đẹp nguyên bản của sàn gỗ</p>
+                </div>
             </section>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -91,82 +130,98 @@
             </script>
             <section class="about-us">
                 <div class="bg_about-us">
-                    <div class="content">
-                        <h2 class="title">Về chúng tôi</h2>
-                        <p class="text">
-                            Since our founding in 1919, a constant thread has woven Bona’s foundation. Our values—passion, performance, and pioneering—shape everything we do, from our products to our company culture to our responsible business practices. It’s how we operate our business and engage with the world.
-                        </p>
-                        <div class="btn-about">
-                        <button>về Masion Source Vietnam</button>
-                        <button>Về Bona</button>
+                    <div class="container">
+                        <div class="content">
+                            <h2 class="">Về chúng tôi</h2>
+                            <p class="text">
+                                Since our founding in 1919, a constant thread has woven Bona’s foundation. Our
+                                values—passion, performance, and pioneering—shape everything we do, from our products to
+                                our
+                                company culture to our responsible business practices. It’s how we operate our business
+                                and
+                                engage with the world.
+                            </p>
+                            <div class="btn-about">
+                                <button><span>về Masion Source Vietnam</span></button>
+                                <button><span>Về Bona</span></button>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    
+
                 </div>
             </section>
             <section class="our-products">
-                <div class="content">
-                    <h2 class="title">Sản phẩm của chúng tôi</h2>
-                    <p class="text">
-                        Beautiful floors, every time. For 100 years Bona has innovated, engineered, pioneered and perfected an entire system to create floors that last a lifetime.
-                    </p>
-                </div>
-              
-                <div class="op-categories">
+                <div class="container">
+                    <div class="content">
+                        <h2 class="title">Sản phẩm của chúng tôi</h2>
+                        <p class="text">
+                            Beautiful floors, every time. For 100 years Bona has innovated, engineered, pioneered and
+                            perfected an entire system to create floors that last a lifetime.
+                        </p>
+                    </div>
 
-                    <ul>
-                        <li>
-                            <img src="assets/imgs/keodansango.png" alt="">
-                           <div>Keo dán sàn gỗ </div> 
-                        </li>
-                        <li>
-                            <img src="assets/imgs/daulauchosan.png" alt="">
-                            <div>Dầu lau cho sàn gỗ & nội thất </div>
-                        </li>
-                        <li>
-                            <img src="assets/imgs/lopphubaove.png" alt="">
-                            <div>Lớp phủ bảo vệ </div></li>
-                        <li>
-                            <img src="assets/imgs/maymocthietbi.png" alt="">
-                            <div>Máy móc thiết bị</div>
-                        </li>
-                        <li>
-                            <img src="assets/imgs/ddvesinh.jpg" alt="">
-                            <div>Dung dịch vệ sinh sàn gỗ </div>
-                        </li>
-                        <li>
-                            <img src="assets/imgs/sangotunhien.png" alt="">
-                            <div>Sàn gỗ tự nhiên</div>
-                        </li>
-                    </ul>
+                    <div class="op-categories">
 
+                        <ul>
+                            <li>
+                                <img src="assets/imgs/keodansango.png" alt="">
+                                <div>Keo dán sàn gỗ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/daulauchosan.png" alt="">
+                                <div>Dầu lau cho sàn gỗ & nội thất </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/lopphubaove.png" alt="">
+                                <div>Lớp phủ bảo vệ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/maymocthietbi.png" alt="">
+                                <div>Máy móc thiết bị</div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/ddvesinh.jpg" alt="">
+                                <div>Dung dịch vệ sinh sàn gỗ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/sangotunhien.png" alt="">
+                                <div>Sàn gỗ tự nhiên</div>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
-                
+
             </section>
             <section class="our-projects">
-                <div class="our-projects-wrapper">
-                    <div>
-                        <div class="op-label">Ứng dụng trong dự án</div>
+                <div class="our-projects-wrapper ">
+                    <div class="container">
+                        <h6 class="op-label">Ứng dụng trong dự án</h6>
                         <div class="op-control">
                             <span class="btn-prev">←</span>
+                            <span>|</span>
                             <span class="btn-next">→</span>
                         </div>
 
                     </div>
                     <div class="slider">
-                        
+
                         <div class="slides">
-                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg" alt="">
+                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg"
+                                    alt="">
                             </div>
-                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg" alt="">
+                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg"
+                                    alt="">
                             </div>
-                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg" alt="">
+                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg"
+                                    alt="">
                             </div>
-                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg" alt="">
+                            <div class="slide"><img src="assets/imgs/ed999110f2bc9f3bf942cea044b1ddf025f91508.jpg"
+                                    alt="">
                             </div>
 
                         </div>
-                
+
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
@@ -190,76 +245,97 @@
                     </script>
 
 
-                    <div class="content">
-                        <div><h2 class="title">HERITAGE VILLA NHÀ BÈ</h2><button>Xem dự án</button></div>
-                        <div class="use-lists"><span>Sản phẩm sử dụng</span>
-                            <ul>
-                                <li>Bona Titan</li>
-                                <li>Bona Traffic HD Anti-slip</li>
-                                <li>See more</li>
-                            </ul>
+                    <div class="container">
+                        <div class="content">
+                            <div>
+                                <h2 class="title">HERITAGE VILLA NHÀ BÈ</h2><button><span>Xem dự án </span></button>
+                            </div>
+                            <div class="use-lists"><span>Sản phẩm sử dụng</span>
+                                <ul>
+                                    <li>Bona Titan</li>
+                                    <li>Bona Traffic HD Anti-slip</li>
+                                    <li>See more</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
 
             </section>
             <section class="lastest-news">
-                <div class="content">
-                    <h2 class="title">
-                        Tin tức mới nhất
-                    </h2>
-                    <div>
-                        <p class="text">Stay up-to-date with the latest news from Maison Source VN. Read about our
-                        partnerships,
-                        projects, and innovative solutions for wood flooring.</p>
-                        <a class="read-all">Xem tất cả tin tức ></a>
+                <div class="container">
+                    <div class="content">
+                        <h2 class="title">
+                            Tin tức mới nhất
+                        </h2>
+                        <div>
+                            <p class="text">Stay up-to-date with the latest news from Maison Source VN. Read about our
+                                partnerships,
+                                projects, and innovative solutions for wood flooring.</p>
+                            <a class="read-all">Xem tất cả tin tức ></a>
+                        </div>
+
                     </div>
 
-                </div>
-                <div class="newslist">
-                    <div class="news">
-                        <div class="news-img"><img src="assets/imgs/c8eab8b466857c118b055589b44e44ece134262e.jpg" alt=""></div>
-                        <div class="news-content">
-                            <h4 class="news-title">Aurawood Design – Technology</h4>
-                            <p class="news-text">Aura Wood áp dụng công nghệ laser tiên tiến trong việc khảm sàn, kết hợp
-                                với các máy móc phức tạp và hiện đại được nhập khẩu trực tiếp từ Châu Âu, nhằm tạo ra
-                                những tấm sàn gỗ tinh xảo không giới hạn về độ phức tạp.</p>
-                            <a class="read-more" href="#">Đọc thêm</a>
+                    <div class="newslist">
+                        <div class="news">
+                            <div class="news-img"><img src="assets/imgs/c8eab8b466857c118b055589b44e44ece134262e.jpg"
+                                    alt=""></div>
+                            <div class="news-content">
+                                <h5 class="news-title">Aurawood Design – Technology</h5>
+                                <p class="news-text body-text">Aura Wood áp dụng công nghệ laser tiên tiến trong việc
+                                    khảm sàn, kết
+                                    hợp
+                                    với các máy móc phức tạp và hiện đại được nhập khẩu trực tiếp từ Châu Âu, nhằm tạo
+                                    ra
+                                    những tấm sàn gỗ tinh xảo không giới hạn về độ phức tạp.</p>
+                                <a class="read-more" href="#">Đọc thêm</a>
+                            </div>
+                        </div>
+
+                        <div class="news">
+                            <div class="news-img"><img src="assets/imgs/7683a843ec2371fbdd707b3452f9a2121c2f6dca.jpg"
+                                    alt=""></div>
+                            <div class="news-content">
+                                <h5 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!
+                                </h5>
+                                <p class="news-text body-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho
+                                    bác Lê Bảo một
+                                    bất ngờ thật lớn khi biến hoá </p>
+                                <a class="read-more" href="#">Đọc thêm</a>
+                            </div>
+                        </div>
+                        <div class="news">
+                            <div class="news-img"><img src="assets/imgs/9dc6266a62fcd420f20a15babb0f6e043b52d580.jpg"
+                                    alt=""></div>
+                            <div class="news-content">
+                                <h5 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!
+                                </h5>
+                                <p class="news-text body-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho
+                                    bác Lê Bảo một
+                                    bất ngờ thật lớn khi biến hoá </p>
+                                <a class="read-more" href="#">Đọc thêm</a>
+                            </div>
+                        </div>
+                        <div class="news">
+                            <div class="news-img"><img src="assets/imgs/2154d851c6ce03cfc559c84c88d6e557b61029f5.jpg"
+                                    alt=""></div>
+                            <div class="news-content">
+                                <h5 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!
+                                </h5>
+                                <p class="news-text body-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho
+                                    bác Lê Bảo một
+                                    bất ngờ thật lớn khi biến hoá </p>
+                                <a class="read-more" href="#">Đọc thêm</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="news">
-                        <div class="news-img"><img src="assets/imgs/7683a843ec2371fbdd707b3452f9a2121c2f6dca.jpg" alt=""></div>
-                        <div class="news-content">
-                            <h4 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!</h4>
-                            <p class="news-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho bác Lê Bảo một
-                                bất ngờ thật lớn khi biến hoá </p>
-                            <a class="read-more" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
-                    <div class="news">
-                        <div class="news-img"><img src="assets/imgs/7683a843ec2371fbdd707b3452f9a2121c2f6dca.jpg" alt=""></div>
-                        <div class="news-content">
-                            <h4 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!</h4>
-                            <p class="news-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho bác Lê Bảo một
-                                bất ngờ thật lớn khi biến hoá </p>
-                            <a class="read-more" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
-                    <div class="news">
-                        <div class="news-img"><img src="assets/imgs/7683a843ec2371fbdd707b3452f9a2121c2f6dca.jpg" alt=""></div>
-                        <div class="news-content">
-                            <h4 class="news-title">Chủ nhà ngỡ ngàng trước màn cú hóa thành công của căn chung cũ!</h4>
-                            <p class="news-text">Giấu bố sửa nhà, mẹ con bác Trúc Lâm quyết định dành cho bác Lê Bảo một
-                                bất ngờ thật lớn khi biến hoá </p>
-                            <a class="read-more" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
+
                 </div>
-               
-<!-- <script>
+                <!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".read-more").forEach(btn => {
     btn.addEventListener("click", function (e) {
@@ -283,28 +359,33 @@ document.addEventListener("DOMContentLoaded", function () {
     </main>
     <script src="script.js"></script>
     <footer id="footer">
-        
-        <div class="footer-top">
+
+        <div class="footer-top container">
             <div class="footer-content">
                 <img src="assets/icons/bona.svg" alt="">
-                <p>Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam for Bona, offering a range of high-quality products that enhance flooring solutions. With a commitment to excellence, they ensure customers receive the best in flooring care and maintenance.</p>
-                
+                <p class="body-text">Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam
+                    for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</p>
+
             </div>
             <div class="footer-contact">
-                <h4>Liên hệ với chúng tôi</h4>
+                <h5>Liên hệ với chúng tôi</h5>
                 <ul>
-                    <li>Phone: 0933.363.888</li>
-                    <li>Email: info@aurawood.vn</li>
-                    <li>41/12 Đường 39, Phường Bình Trưng, TP.HCM, Việt Nam</li>
+                    <li><img src="assets/icons/phone.svg" alt=""><span> Phone: 0933.363.888</span> </li>
+                    <li><img src="assets/icons/envelope.svg" alt=""><span> Email: info@aurawood.vn</span></li>
+                    <li><img src="assets/icons/location-dot.svg" alt=""><span> 41/12 Đường 39, Phường Bình Trưng,
+                            TP.HCM, Việt Nam</span></li>
                 </ul>
-                
-        </div>
+
+            </div>
         </div>
         <hr>
-        <div class="footer-brand">
-            <h5>© Maison Source Vietnam</h5>
+        <div class="footer-brand container">
+            <p>© Maison Source Vietnam</p>
             <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
-            <img src="assets/icons/Frame 14468.svg" alt=""></div>
+                <img src="assets/icons/Frame 14468.svg" alt="">
+            </div>
         </div>
         <div class="overlay-footer"></div>
     </footer>

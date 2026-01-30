@@ -25,10 +25,10 @@
                 <img src="imgs/logo.png" alt="B2EVENT">
             </div>
             <nav>
-                <a href="#" class="active">ABOUT</a>
-                <a href="#">SERVICES</a>
-                <a href="#">CAREERS</a>
-                <a href="#">PODCAST</a>
+                <a href="index.html" class="active">ABOUT</a>
+                <a href="services.html" >SERVICES</a>
+                <a href="career.html">CAREERS</a>
+                 <a href="podcast.html">PODCAST</a>
             </nav>
         </header>
 
@@ -54,86 +54,89 @@
                     </div>
                 </aside>
 
-               <div class="content-scroll-box" id="main-scroll">
-                 <section class="content-section">
+                <div class="content-scroll-box" id="main-scroll">
+                    <section class="content-section">
 
 
-                    <div class="content-body">
-                        <h3 class="section-title">WHAT WE DO</h3>
-                        <div class="video-container">
-                            <p class="video-subtext">We don't just organize events;<br>we ignite emotions, command the
-                                spotlight,<br>and leave audiences wide-eyed.</p>
-                            <video class="video-placeholder">
-                                <source src="imgs/SHOWREEL.mp4" type="video/mp4">
-                                <div class="play-btn">▶</div>
-                            </video>
-                            <button class="show-more">SHOW MORE</button>
+                        <div class="content-body">
+                            <h3 class="section-title">WHAT WE DO</h3>
+                            <div class="video-container">
+                                <p class="video-subtext">We don't just organize events;<br>we ignite emotions, command
+                                    the
+                                    spotlight,<br>and leave audiences wide-eyed.</p>
+                                <video class="video-placeholder" autoplay muted loop playsinline>
+                                    <source src="imgs/SHOWREEL.mp4" type="video/mp4">
+                                </video>
+
+                                <button class="show-more">SHOW MORE</button>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section class="content-section">
+                    <section class="content-section">
 
 
-                    <div class="content-body">
-                        <h3 class="section-title">CLIENTS</h3>
-                        <p class="client-desc">Being alongside our esteemed clients is the greatest pride of B2EVENT.
-                            Every milestone our clients achieve becomes a source of inspiration for us to continuously
-                            innovate, create, and push beyond limits.</p>
-                        <div class="clients-grid">
-                            <script>for (let i = 0; i < 45; i++) document.write('<div class="client-item"></div>');</script>
+                        <div class="content-body">
+                            <h3 class="section-title">CLIENTS</h3>
+                            <p class="client-desc">Being alongside our esteemed clients is the greatest pride of
+                                B2EVENT.
+                                Every milestone our clients achieve becomes a source of inspiration for us to
+                                continuously
+                                innovate, create, and push beyond limits.</p>
+                            <div class="clients-grid">
+                                <script>for (let i = 0; i < 45; i++) document.write('<div class="client-item"></div>');</script>
+                            </div>
                         </div>
-                    </div>
-                </section>
-               </div>
+                    </section>
+                </div>
             </div>
-              <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById('ruler-track');
-    const indicator = document.getElementById('indicator');
-    const scroller = document.getElementById('main-scroll');
-    const sections = document.querySelectorAll('.content-section');
-    
-    const TOTAL_TICKS = 40; // Số lượng vạch chấm trên thước
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const track = document.getElementById('ruler-track');
+                    const indicator = document.getElementById('indicator');
+                    const scroller = document.getElementById('main-scroll');
+                    const sections = document.querySelectorAll('.content-section');
 
-    // 1. Tạo các vạch chấm tự động
-    for (let i = 0; i < TOTAL_TICKS; i++) {
-        const tick = document.createElement('div');
-        tick.className = 'tick';
-        track.appendChild(tick);
-    }
+                    const TOTAL_TICKS = 40; 
 
-    // 2. Lắng nghe sự kiện cuộn
-    scroller.addEventListener('scroll', () => {
-        const scrollTop = scroller.scrollTop;
-        const scrollHeight = scroller.scrollHeight - scroller.clientHeight;
-        const percent = scrollTop / (scrollHeight || 1);
 
-        // Cập nhật vị trí mũi tên
-        const trackHeight = track.offsetHeight;
-        indicator.style.top = (percent * (trackHeight - 7)) + 'px';
+                    for (let i = 0; i < TOTAL_TICKS; i++) {
+                        const tick = document.createElement('div');
+                        tick.className = 'tick';
+                        track.appendChild(tick);
+                    }
 
-        // Kích hoạt vạch cam dựa trên phần trăm cuộn
-        const activeTickIndex = Math.round(percent * (TOTAL_TICKS - 1));
-        const allTicks = document.querySelectorAll('.tick');
-        
-        allTicks.forEach((t, i) => {
-            if (i === activeTickIndex) t.classList.add('active');
-            else t.classList.remove('active');
-        });
+                    
+                    scroller.addEventListener('scroll', () => {
+                        const scrollTop = scroller.scrollTop;
+                        const scrollHeight = scroller.scrollHeight - scroller.clientHeight;
+                        const percent = scrollTop / (scrollHeight || 1);
 
-        // Hiệu ứng Fade In cho các Section
-        sections.forEach(sec => {
-            const rect = sec.getBoundingClientRect();
-            if (rect.top >= -window.innerHeight/2 && rect.top <= window.innerHeight/2) {
-                sec.classList.add('visible');
-            } else {
-                sec.classList.remove('visible');
-            }
-        });
-    });
-});
-    </script>
+                     
+                        const trackHeight = track.offsetHeight;
+                        indicator.style.top = (percent * (trackHeight - 7)) + 'px';
+
+                       
+                        const activeTickIndex = Math.round(percent * (TOTAL_TICKS - 1));
+                        const allTicks = document.querySelectorAll('.tick');
+
+                        allTicks.forEach((t, i) => {
+                            if (i === activeTickIndex) t.classList.add('active');
+                            else t.classList.remove('active');
+                        });
+
+                      
+                        sections.forEach(sec => {
+                            const rect = sec.getBoundingClientRect();
+                            if (rect.top >= -window.innerHeight / 2 && rect.top <= window.innerHeight / 2) {
+                                sec.classList.add('visible');
+                            } else {
+                                sec.classList.remove('visible');
+                            }
+                        });
+                    });
+                });
+            </script>
         </main>
 
         <footer>
