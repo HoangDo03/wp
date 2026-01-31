@@ -158,6 +158,7 @@ button::after {
 
 button:hover::after {
     transform: translateX(4px);
+    background-color: var(--green80);
 }
 
 
