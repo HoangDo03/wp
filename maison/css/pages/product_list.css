@@ -28,7 +28,7 @@
 }
 
 .subcategory-item img {
-    background: #cfdad4;
+    background: var(--lightgreen);
     max-width: 100%;
     height: 140px;
     object-fit: contain;
@@ -64,7 +64,7 @@
 }
 .product-list-content .container .list-container{
     display: flex;
-    gap: 20px;
+    gap:3rem;
 }
 .sidebar {
     width: 260px
@@ -76,13 +76,15 @@
 }
 
 .box-title {
-    background: #cfdcd4;
+    background: var(--green60);
     padding: 10px;
     font-weight: bold;
-    cursor: pointer
+    cursor: pointer;
+    color: var(--white);
 }
 
 .box-content {
+    background: var(--white);
     padding: 10px
 }
 
@@ -128,7 +130,7 @@
     gap: 0.5rem;
 }
 .toolbar > div >div {
-    padding: 6px 10px;
+    padding: 10px 13px;
     background: var(--white);
     cursor: pointer;
     color: var(--dark);
@@ -159,13 +161,14 @@
 
 .toolbar div div.active {
     background: var(--dark);
-    color: var(--white); /* 🔥 icon đổi theo */
+    color: var(--white);
 }
 
 
 .products {
     display: grid;
-    gap: 12px
+    gap: 12px;
+    padding: 0 2rem;
 }
 
 .products.grid {
@@ -178,20 +181,123 @@
 
 .product {
     background: #fff;
-    padding: 12px;
-    display: flex;
+    padding: 12px 7px;
     align-items: center;
-    gap: 12px
+    gap: 12px;
+}
+.product h5{
+    color: color(--green60);
+    padding-bottom: 0.5rem;
 }
 
 .product img {
-    width: 80px
+    background: var(--lightgrey);
+}
+.products.grid .product img {
+    width: 100%;
+}
+.products.list .product img{
+    width: 80px;
+}
+.products.list .product{
+    display: flex;
+    flex-direction: row;
 }
 
 .product button {
     margin-left: auto;
-    background: #b8d28a;
+    background: var(--color-btn);
+    color: var(--dark);
     border: none;
     padding: 6px 10px;
-    cursor: pointer
+    cursor: pointer;
+    justify-content: center;
+    
+}
+.products.grid .product button{
+    width: 100%;
+}
+.products.list .product button{
+    width: fit-content;
+}
+
+.product button:hover{
+    border: 1px solid var(--color-btn);
+}
+
+.dropdown-item {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+
+    padding: 12px 0 7px 0;
+    border-bottom: 1px solid #e5e7eb;
+
+    font-weight: 600;
+    font-size: clamp(12px, 0.9vw, 13px);
+    line-height: 1.6;
+    letter-spacing: -0.02em;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown-item::after {
+    content: '';
+    position: absolute;      
+    right: 0;               
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 12px;
+    height: 12px;
+
+    background-color: var(--dark);
+    mask: url("../../assets/icons/chevron-down.svg") no-repeat center / contain;
+    -webkit-mask: url("../../assets/icons/chevron-down.svg") no-repeat center / contain;
+
+    transition: transform .25s ease;
+}
+
+
+/* body */
+.dropdown-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+}
+
+/* mở dropdown */
+.dropdown.open .dropdown-body {
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.dropdown.open .dropdown-item::after {
+    transform: rotate(180deg);
+}
+
+/* option */
+.dropdown-body label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dropdown-body label:last-child {
+    border-bottom: none;
+}
+
+.dropdown-body input {
+    accent-color: #9ca3af;
+}
+
+.dropdown-item .value {
+    padding-left: 0.2rem;
 }

@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maison</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -141,39 +151,39 @@
 
                 <div class="container">
                     <div class="toolbar">
-                            <div class="read-all">⟵ Tất cả danh mục sản phẩm</div>
-                            <div>
-                                <div id="gridBtn" class="active">
+                        <div class="read-all">⟵ Tất cả danh mục sản phẩm</div>
+                        <div>
+                            <div id="gridBtn" class="active">
                                 <span></span>
-                                </div>
-                                <div id="listBtn">
+                            </div>
+                            <div id="listBtn">
                                 <span></span>
-                                </div>
                             </div>
                         </div>
+                    </div>
                     <div class="list-container">
                         <div class="sidebar">
 
-                        <div class="box">
-                            <div class="box-title">Keo dán sàn gỗ</div>
-                            <div class="box-content cat-list" id="catSide"></div>
+                            <div class="box">
+                                <div class="box-title">Keo dán sàn gỗ</div>
+                                <div class="box-content cat-list" id="catSide"></div>
+                            </div>
+
+                            <div class="box">
+                                <div class="box-title">Size</div>
+                                <div class="box-content size" id="sizeFilter"></div>
+                            </div>
+
                         </div>
 
-                        <div class="box">
-                            <div class="box-title">Size</div>
-                            <div class="box-content size" id="sizeFilter"></div>
+
+                        <div class="list-content">
+
+
+
+                            <div class="products grid" id="products"></div>
+
                         </div>
-
-                    </div>
-
-
-                    <div class="list-content">
-
-                        
-
-                        <div class="products grid" id="products"></div>
-
-                    </div>
                     </div>
                 </div>
 
@@ -190,10 +200,11 @@
                 ];
 
                 const productsData = [
-                    { id: 1, name: 'Keo dán sàn gỗ 1', cat: 'reactive', size: '8kg' },
-                    { id: 2, name: 'Keo dán sàn gỗ 2', cat: 'reactive', size: '3kg' },
-                    { id: 3, name: 'Keo dán sàn gỗ 3', cat: 'primers', size: '5kg' },
-                    { id: 4, name: 'Keo dán sàn gỗ 4', cat: 'pu', size: '8kg' }
+                    { id: 'keodansango1', name: 'Keo dán sàn gỗ 1', cat: 'reactive', dimension: 'Ø 97.5 mm', size: '8kg' },
+                    { id: 'keodansango1', name: 'Keo dán sàn gỗ 1', cat: 'reactive', dimension: 'Ø 97.5 mm', size: '5kg' },
+                    { id: 'keodansango1', name: 'Keo dán sàn gỗ 2', cat: 'reactive', dimension: 'Ø 97.5 mm', size: '3kg' },
+                    { id: 'keodansango1', name: 'Keo dán sàn gỗ 3', cat: 'primers', dimension: 'Ø 97.5 mm', size: '5kg' },
+                    { id: 'keodansango1', name: 'Keo dán sàn gỗ 4', cat: 'pu', dimension: 'Ø 97.5 mm', size: '8kg' }
                 ];
 
                 let currentCat = 'reactive';
@@ -204,15 +215,15 @@
                 const catTop = document.getElementById('catTop');
                 const catSide = document.getElementById('catSide');
 
-              
-                    categories.forEach(c => {
+
+                categories.forEach(c => {
                     catTop.innerHTML += `
                         <li class="subcategory-item" data-id="${c.id}">
                             <img src="assets/imgs/${c.id}.png" alt="">
                             <span>${c.name.toUpperCase()}</span>
                         </li>
                     `;
-                
+
 
                     catSide.innerHTML += `<div data-id="${c.id}">${c.name}</div>`;
                 });
@@ -276,19 +287,78 @@
                         )
                         .forEach(p => {
                             products.innerHTML += `
-        <div class="product">
-          <img src="https://via.placeholder.com/80">
-          <div>
-            <strong>${p.name}</strong><br>
-            <small>${p.size}</small>
-          </div>
-          <button>CHI TIẾT</button>
-        </div>`;
+                            <div class="product">
+                                <div>
+                                    <h5>${p.name}</h5>
+                                    <img src="assets/imgs/${p.id}.png" alt="">
+                                    <div class="text-product">
+
+    <div class="dropdown">
+        <div class="dropdown-item">
+            <span>Dimension: </span>
+            <span class="value">${p.dimension}</span>
+        </div>
+
+        <div class="dropdown-body">
+            <label>
+                <input type="radio" name="dimension" checked>
+                <span>Ø 49.8 mm</span>
+            </label>
+            <label>
+                <input type="radio" name="dimension">
+                <span>Ø 62.5 mm</span>
+            </label>
+            <label>
+                <input type="radio" name="dimension">
+                <span>Ø 97.5 mm</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown-item">
+            <span>Size: </span>
+            <span class="value">${p.size}</span>
+        </div>
+
+        <div class="dropdown-body">
+            <label>
+                <input type="radio" name="size" checked>
+                <span>6 kg</span>
+            </label>
+            <label>
+                <input type="radio" name="size">
+                <span>8 kg</span>
+            </label>
+        </div>
+    </div>
+
+</div>
+
+                                </div>
+                                <button class="text-btn"><span>CHI TIẾT</span></button>
+                            </div>`;
                         });
                 }
 
-             
+
                 syncCategory();
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+    const header = dropdown.querySelector('.dropdown-item');
+    const value = header.querySelector('.value');
+
+    header.addEventListener('click', () => {
+        dropdown.classList.toggle('open');
+    });
+
+    dropdown.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', () => {
+            value.textContent = input.nextElementSibling.textContent;
+            dropdown.classList.remove('open');
+        });
+    });
+});
+
             </script>
 
 

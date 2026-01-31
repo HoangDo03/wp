@@ -85,6 +85,16 @@ p,
   line-height: 1.6;
   letter-spacing: -0.02em;
 }
+.text-product {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1.6;          
+    letter-spacing: -0.02em; 
+    margin-bottom: 16px;      
+    color: var(--maisongreen);
+}
+
 
 /* p {
   margin-bottom: 16px;
@@ -137,8 +147,8 @@ button span {
 /* icon */
 button::after {
     content: "";
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
     background-color: currentColor;
     mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
     -webkit-mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
@@ -179,6 +189,14 @@ button:hover::after {
     line-height: 1.6;
     letter-spacing: -0.02em;
 
+}
+.text-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 0.9; /* 90% */
+    letter-spacing: 0;
+    text-transform: uppercase;
 }
 /* @font-face {
     font-family: 'Lora';
