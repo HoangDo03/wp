@@ -36,8 +36,8 @@
 
 .home_header_logo img {
     /* width: 30%; */
-    width: 230px;
-    height: 70px;
+    width: 200px;
+    height: 55px;
     display: flex;
     justify-content: center;
 }
@@ -54,6 +54,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 1rem 0;
 }
 
 .home_header_menu_items > li a {
@@ -162,7 +163,7 @@ background-color: currentColor;
 /* submenu box */
 .submenu {
   position: absolute;
-  top: 173%;
+  top: 100%;
   left: -10%;
   background: #ffffff;
   color: var(--green80);
@@ -172,7 +173,7 @@ background-color: currentColor;
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
+  /* transform: translateY(20px); */
   transition: all 0.25s ease;
   z-index: 1000;
 }
