@@ -116,9 +116,6 @@
     background-color: var(--maisongreen);
     color: var(--color7);
 }
-.btn-about button:last-child::before{
-    color: var(--color7);
-}
 
 .our-products {
     padding: 3rem 0;
@@ -450,7 +447,7 @@
   background-color: currentColor;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 

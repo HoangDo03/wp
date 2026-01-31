@@ -12,3 +12,5 @@
 /* 4. Page-specific */
 @import "./pages/home.css";
 @import "./pages/about.css";
+@import "./pages/catalog.css";
+@import "./pages/product_list.css";

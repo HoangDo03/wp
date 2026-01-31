@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="home_header_wrapper">
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
+
+            <div class="home_header_menu">
+                <ul class="home_header_menu_items" id="menuNavItemsDesktop">
+                    <li class="menu_item has-submenu active">
+                        <a href="">Giới thiệu</a>
+                        <ul class="submenu">
+                            <li><a href="">Về Maison Source Vietnam</a></li>
+                            <li><a href="aboutBona.html">Về Bona</a></li>
+                            <li><a href="">Chứng nhận quốc tế</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="catalog.html">SẢN PHẨM</a>
+                        <ul class="submenu">
+                            <li><a href="product_list.html">KEO DÁN SÀN GỖ</a></li>
+                            <li><a>DẦU LAU CHO SÀN GỖ & NỘI THẤT</a></li>
+                            <li><a>LỚP PHỦ BẢO VỆ</a></li>
+                            <li><a>MÁY MÓC THIẾT BỊ</a></li>
+                            <li><a>DUNG DỊCH VỆ SINH SÀN GỖ</a></li>
+                            <li><a>SÀN GỖ TỰ NHIÊN</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="">DỊCH VỤ</a>
+                        <ul class="submenu">
+                            <li><a href="">REVIVE</a></li>
+                            <li><a href="">RECOAT</a></li>
+                            <li><a href="">REFINISH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu_item"><a href="">Dịch vụ</a></li>
+                    <li class="menu_item"><a href="">Dự án</a></li>
+                    <li class="menu_item"><a href="">Tin tức</a></li>
+                    <li class="menu_item"><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="home_header_menu_btn" id="btnMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="menu_mobile_nav" id="menu">
+
+            <ul id="menuNavItems" class="menu_nav_items">
+                <li class="menu_item active"><a href="index.html">Giới thiệu</a></li>
+                <li class="menu_item"><a href="">Sản phẩm</a></li>
+                <li class="menu_item"><a href="">Dịch vụ</a></li>
+                <li class="menu_item"><a href="">Dự án</a></li>
+                <li class="menu_item"><a href="">Tin tức</a></li>
+                <li class="menu_item"><a href="">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+        const toggle = document.getElementById("btnMenu");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+    </script>
+    <main>
+        <div id="main">
+            <section class="products-section banner">
+                <div class="container">
+                    <div class="content-left">
+                        <h1 class="">Sản phẩm</h1>
+
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section class="our-products calalog">
+                <div class="container">
+                    <div class="content">
+                        <div class="intro">Hãy chọn một trong các danh mục của chúng tôi bên dưới:</div>
+                    </div>
+
+                    <div class="op-categories">
+
+                        <ul>
+                            <li>
+                                <img src="assets/imgs/keodansango.png" alt="">
+                                <div>Keo dán sàn gỗ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/daulauchosan.png" alt="">
+                                <div>Dầu lau cho sàn gỗ & nội thất </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/lopphubaove.png" alt="">
+                                <div>Lớp phủ bảo vệ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/maymocthietbi.png" alt="">
+                                <div>Máy móc thiết bị</div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/ddvesinh.jpg" alt="">
+                                <div>Dung dịch vệ sinh sàn gỗ </div>
+                            </li>
+                            <li>
+                                <img src="assets/imgs/sangotunhien.png" alt="">
+                                <div>Sàn gỗ tự nhiên</div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </section>
+            <section class="cta-discover">
+                <div class="cta-inner">
+                    <h2>Bạn có thắc mắc? Hãy hỏi chúng tôi</h2>
+
+                    <div class="text-intro">
+                        Cho dù bạn có câu hỏi về sản phẩm hoặc dịch vụ của chúng tôi, cần hỗ trợ về đơn hàng hoặc chỉ
+                        muốn cung cấp phản hồi, chúng tôi rất mong nhận được hồi âm từ bạn.
+                    </div>
+
+                    <button href="#" class="cta-btn">
+                        <span>liên hệ với chúng tôi</span>
+
+                    </button>
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+        <div class="footer-top container">
+            <div class="footer-content">
+                <img src="assets/icons/bona.svg" alt="">
+                <div class="body-text">Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam
+                    for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</div>
+
+            </div>
+            <div class="footer-contact">
+                <h5>Liên hệ với chúng tôi</h5>
+                <ul>
+                    <li><img src="assets/icons/phone.svg" alt=""><span> Phone: 0933.363.888</span> </li>
+                    <li><img src="assets/icons/envelope.svg" alt=""><span> Email: info@aurawood.vn</span></li>
+                    <li><img src="assets/icons/location-dot.svg" alt=""><span> 41/12 Đường 39, Phường Bình Trưng,
+                            TP.HCM, Việt Nam</span></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- <hr> -->
+        <div class="container">
+            <div class="footer-brand">
+                <div class="body-text">© Maison Source Vietnam</div>
+                <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
+                    <img src="assets/icons/Frame 14468.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="overlay-footer"></div>
+    </footer>
+
+
+
+</body>

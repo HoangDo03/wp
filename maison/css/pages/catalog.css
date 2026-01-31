@@ -1,0 +1,23 @@
+.products-section{
+    height: 45vh;
+}
+.products-section .container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    inset: 0;
+    transform: translateY(10%);
+    align-items: center;
+    /* padding: 3rem; */
+}
+.calalog .content{
+    position: relative;
+    display: flex;
+    width: 100%;
+    /* left: 2%; */
+    /* float: left; */
+    color: var(--green80);
+    padding: 0 0 3rem 0;
+    text-align: top;
+    justify-content: center;
+}

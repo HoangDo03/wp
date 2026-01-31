@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="home_header_wrapper">
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
+
+            <div class="home_header_menu">
+                <ul class="home_header_menu_items" id="menuNavItemsDesktop">
+                    <li class="menu_item has-submenu active">
+                        <a href="">Giới thiệu</a>
+                        <ul class="submenu">
+                            <li><a href="">Về Maison Source Vietnam</a></li>
+                            <li><a href="aboutBona.html">Về Bona</a></li>
+                            <li><a href="">Chứng nhận quốc tế</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="catalog.html">SẢN PHẨM</a>
+                        <ul class="submenu">
+                            <li><a href="product_list.html">KEO DÁN SÀN GỖ</a></li>
+                            <li><a>DẦU LAU CHO SÀN GỖ & NỘI THẤT</a></li>
+                            <li><a>LỚP PHỦ BẢO VỆ</a></li>
+                            <li><a>MÁY MÓC THIẾT BỊ</a></li>
+                            <li><a>DUNG DỊCH VỆ SINH SÀN GỖ</a></li>
+                            <li><a>SÀN GỖ TỰ NHIÊN</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="">DỊCH VỤ</a>
+                        <ul class="submenu">
+                            <li><a href="">REVIVE</a></li>
+                            <li><a href="">RECOAT</a></li>
+                            <li><a href="">REFINISH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu_item"><a href="">Dịch vụ</a></li>
+                    <li class="menu_item"><a href="">Dự án</a></li>
+                    <li class="menu_item"><a href="">Tin tức</a></li>
+                    <li class="menu_item"><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="home_header_menu_btn" id="btnMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="menu_mobile_nav" id="menu">
+
+            <ul id="menuNavItems" class="menu_nav_items">
+                <li class="menu_item active"><a href="index.html">Giới thiệu</a></li>
+                <li class="menu_item"><a href="">Sản phẩm</a></li>
+                <li class="menu_item"><a href="">Dịch vụ</a></li>
+                <li class="menu_item"><a href="">Dự án</a></li>
+                <li class="menu_item"><a href="">Tin tức</a></li>
+                <li class="menu_item"><a href="">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+        const toggle = document.getElementById("btnMenu");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+    </script>
+    <main>
+        <div id="main">
+            <section class="products-section banner">
+                <div class="container">
+                    <div class="content-left">
+                        <h1 class="">Keo dán sàn gỗ</h1>
+
+                    </div>
+
+
+                </div>
+            </section>
+            <section class="subcategory">
+                <div class="container">
+                    <h3>Chọn danh mục con:</h3>
+
+                    <div class="cat-top">
+                        <ul class="subcategory-list" id="catTop"></ul>
+                        <!-- <ul class="subcategory-list">
+                        <li class="subcategory-item">
+                            <img src="images/reactive-silane.png" alt="">
+                            <span>REACTIVE SILANE ADHESIVES</span>
+                        </li>
+
+                        <li class="subcategory-item">
+                            <img src="images/primers.png" alt="">
+                            <span>PRIMERS</span>
+                        </li>
+
+                        <li class="subcategory-item">
+                            <img src="images/moisture-barrier.png" alt="">
+                            <span>MOISTURE BARRIER</span>
+                        </li>
+
+                        <li class="subcategory-item">
+                            <img src="images/levelling.png" alt="">
+                            <span>LEVELLING COMPOUNDS</span>
+                        </li>
+
+                        <li class="subcategory-item">
+                            <img src="images/reactive-pu.png" alt="">
+                            <span>REACTIVE PU ADHESIVES</span>
+                        </li>
+
+                        <li class="subcategory-item">
+                            <img src="images/dispersion.png" alt="">
+                            <span>DISPERSION ADHESIVES</span>
+                        </li>
+                    </ul> -->
+                    </div>
+                </div>
+            </section>
+            <section class="product-list-content">
+
+                <div class="container">
+                    <div class="toolbar">
+                            <div class="read-all">⟵ Tất cả danh mục sản phẩm</div>
+                            <div>
+                                <div id="gridBtn" class="active">
+                                <span></span>
+                                </div>
+                                <div id="listBtn">
+                                <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="list-container">
+                        <div class="sidebar">
+
+                        <div class="box">
+                            <div class="box-title">Keo dán sàn gỗ</div>
+                            <div class="box-content cat-list" id="catSide"></div>
+                        </div>
+
+                        <div class="box">
+                            <div class="box-title">Size</div>
+                            <div class="box-content size" id="sizeFilter"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="list-content">
+
+                        
+
+                        <div class="products grid" id="products"></div>
+
+                    </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <script>
+                const categories = [
+                    { id: 'reactive', name: 'Reactive silane' },
+                    { id: 'primers', name: 'Primers' },
+                    { id: 'moisture', name: 'Moisture barrier' },
+                    { id: 'levelling', name: 'Levelling compounds' },
+                    { id: 'pu', name: 'Reactive PU' },
+                    { id: 'dispersion', name: 'Dispersion' }
+                ];
+
+                const productsData = [
+                    { id: 1, name: 'Keo dán sàn gỗ 1', cat: 'reactive', size: '8kg' },
+                    { id: 2, name: 'Keo dán sàn gỗ 2', cat: 'reactive', size: '3kg' },
+                    { id: 3, name: 'Keo dán sàn gỗ 3', cat: 'primers', size: '5kg' },
+                    { id: 4, name: 'Keo dán sàn gỗ 4', cat: 'pu', size: '8kg' }
+                ];
+
+                let currentCat = 'reactive';
+                let selectedSizes = [];
+                let view = 'grid';
+
+
+                const catTop = document.getElementById('catTop');
+                const catSide = document.getElementById('catSide');
+
+              
+                    categories.forEach(c => {
+                    catTop.innerHTML += `
+                        <li class="subcategory-item" data-id="${c.id}">
+                            <img src="assets/imgs/${c.id}.png" alt="">
+                            <span>${c.name.toUpperCase()}</span>
+                        </li>
+                    `;
+                
+
+                    catSide.innerHTML += `<div data-id="${c.id}">${c.name}</div>`;
+                });
+
+
+                const sizes = ['8kg', '5kg', '3kg', '0.5kg'];
+                const sizeFilter = document.getElementById('sizeFilter');
+                sizes.forEach(s => {
+                    const count = productsData.filter(p => p.size === s).length;
+                    sizeFilter.innerHTML += `
+                        <label>
+                        <input type="checkbox" value="${s}"> ${s}
+                        <span>${count}</span>
+                        </label>`;
+                });
+
+
+                function syncCategory() {
+                    document.querySelectorAll('[data-id]').forEach(el => {
+                        el.classList.toggle('active', el.dataset.id === currentCat)
+                    });
+                    renderProducts();
+                }
+
+                document.addEventListener('click', e => {
+                    if (e.target.dataset.id) {
+                        currentCat = e.target.dataset.id;
+                        syncCategory();
+                    }
+                });
+
+                document.addEventListener('change', e => {
+                    if (e.target.type === 'checkbox') {
+                        selectedSizes = [...document.querySelectorAll('#sizeFilter input:checked')]
+                            .map(i => i.value);
+                        renderProducts();
+                    }
+                });
+
+
+                gridBtn.onclick = () => {
+                    view = 'grid';
+                    products.className = 'products grid';
+                    gridBtn.classList.add('active');
+                    listBtn.classList.remove('active');
+                };
+                listBtn.onclick = () => {
+                    view = 'list';
+                    products.className = 'products list';
+                    listBtn.classList.add('active');
+                    gridBtn.classList.remove('active');
+                };
+
+
+                function renderProducts() {
+                    products.innerHTML = '';
+                    productsData
+                        .filter(p =>
+                            p.cat === currentCat &&
+                            (selectedSizes.length === 0 || selectedSizes.includes(p.size))
+                        )
+                        .forEach(p => {
+                            products.innerHTML += `
+        <div class="product">
+          <img src="https://via.placeholder.com/80">
+          <div>
+            <strong>${p.name}</strong><br>
+            <small>${p.size}</small>
+          </div>
+          <button>CHI TIẾT</button>
+        </div>`;
+                        });
+                }
+
+             
+                syncCategory();
+            </script>
+
+
+
+
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+        <div class="footer-top container">
+            <div class="footer-content">
+                <img src="assets/icons/bona.svg" alt="">
+                <div class="body-text">Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam
+                    for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</div>
+
+            </div>
+            <div class="footer-contact">
+                <h5>Liên hệ với chúng tôi</h5>
+                <ul>
+                    <li><img src="assets/icons/phone.svg" alt=""><span> Phone: 0933.363.888</span> </li>
+                    <li><img src="assets/icons/envelope.svg" alt=""><span> Email: info@aurawood.vn</span></li>
+                    <li><img src="assets/icons/location-dot.svg" alt=""><span> 41/12 Đường 39, Phường Bình Trưng,
+                            TP.HCM, Việt Nam</span></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- <hr> -->
+        <div class="container">
+            <div class="footer-brand">
+                <div class="body-text">© Maison Source Vietnam</div>
+                <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
+                    <img src="assets/icons/Frame 14468.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="overlay-footer"></div>
+    </footer>
+
+
+
+</body>
