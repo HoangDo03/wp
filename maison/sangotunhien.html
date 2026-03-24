@@ -1,0 +1,181 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="home_header_wrapper">
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
+
+            <div class="home_header_menu">
+                <ul class="home_header_menu_items" id="menuNavItemsDesktop">
+                    <li class="menu_item has-submenu active">
+                        <a href="">Giới thiệu</a>
+                        <ul class="submenu">
+                            <li><a href="about.html">Về Maison Source Vietnam</a></li>
+                            <li><a href="aboutBona.html">Về Bona</a></li>
+                            <li><a href="about.html">Chứng nhận quốc tế</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="catalog.html">SẢN PHẨM</a>
+                        <ul class="submenu">
+                            <li><a href="product_list.html">KEO DÁN SÀN GỖ</a></li>
+                            <li><a>DẦU LAU CHO SÀN GỖ & NỘI THẤT</a></li>
+                            <li><a>LỚP PHỦ BẢO VỆ</a></li>
+                            <li><a>MÁY MÓC THIẾT BỊ</a></li>
+                            <li><a>DUNG DỊCH VỆ SINH SÀN GỖ</a></li>
+                            <li><a>SÀN GỖ TỰ NHIÊN</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="">Sàn gỗ tự nhiên</a></li>
+                    <li class="menu_item has-submenu">
+                        <a href="">DỊCH VỤ</a>
+                        <ul class="submenu">
+                            <li><a href="">REVIVE</a></li>
+                            <li><a href="">RECOAT</a></li>
+                            <li><a href="">REFINISH</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu_item"><a href="">Dự án</a></li>
+                    <li class="menu_item"><a href="">Tin tức</a></li>
+                    <li class="menu_item"><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="home_header_menu_btn" id="btnMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="menu_mobile_nav" id="menu">
+
+            <ul id="menuNavItems" class="menu_nav_items">
+                <li class="menu_item active"><a href="index.html">Giới thiệu</a></li>
+                <li class="menu_item"><a href="">Sản phẩm</a></li>
+                <li class="menu_item"><a href="">Dịch vụ</a></li>
+                <li class="menu_item"><a href="">Dự án</a></li>
+                <li class="menu_item"><a href="">Tin tức</a></li>
+                <li class="menu_item"><a href="">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+        const toggle = document.getElementById("btnMenu");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+    </script>
+    <main>
+        <div class="main">
+            <section class="products-section banner">
+                <div class="container">
+                    
+                        <h1 class="">Sàn gỗ tự nhiên</h1>
+
+                    </div>
+
+
+                </div>
+            </section>
+            <section class="wood-section">
+  <div class="container">
+    <p class="wood-intro">
+      Our luxurious wood flooring graces the interiors of some of the world's most prestigious buildings, 
+      high-end residentials, hospitality locations, retail spaces, and yachts. Get inspired!
+    </p>
+
+    <div class="wood-grid">
+      <div class="wood-item">
+        <div class="wood-img">
+          <img src="assets/imgs/glaze.jpg" alt="Glaze">
+        </div>
+        <h3 class="wood-title">Glaze</h3>
+      </div>
+
+      <div class="wood-item">
+        <div class="wood-img">
+          <img src="assets/imgs/vedetta.jpg" alt="Vedetta">
+        </div>
+        <h3 class="wood-title">Vedetta</h3>
+      </div>
+
+      <div class="wood-item">
+        <div class="wood-img">
+          <img src="assets/imgs/velino.jpg" alt="Velino">
+        </div>
+        <h3 class="wood-title">Velino</h3>
+      </div>
+    </div>
+  </div>
+</section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+        <div class="footer-top container">
+            <div class="footer-content">
+                <img src="assets/icons/bona.svg" alt="">
+                <div class="body-text">Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam
+                    for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</div>
+
+            </div>
+            <div class="footer-contact">
+                <h5>Liên hệ với chúng tôi</h5>
+                <ul>
+                    <li><img src="assets/icons/phone.svg" alt=""><span> Phone: 0933.363.888</span> </li>
+                    <li><img src="assets/icons/envelope.svg" alt=""><span> Email: info@aurawood.vn</span></li>
+                    <li><img src="assets/icons/location-dot.svg" alt=""><span> 41/12 Đường 39, Phường Bình Trưng,
+                            TP.HCM, Việt Nam</span></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- <hr> -->
+        <div class="container">
+            <div class="footer-brand">
+                <div class="body-text">© Maison Source Vietnam</div>
+                <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
+                    <img src="assets/icons/Frame 14468.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="overlay-footer"></div>
+    </footer>
+
+
+
+</body>

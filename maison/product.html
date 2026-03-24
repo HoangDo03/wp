@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital@1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="home_header_wrapper">
+            <div class="home_header_logo">
+                <a href="index.html" aria-label="Trang chủ">
+                    <img src="assets/imgs/logo.jpg" alt="Trang chủ">
+                </a>
+            </div>
+
+            <div class="home_header_menu">
+                <ul class="home_header_menu_items" id="menuNavItemsDesktop">
+                    <li class="menu_item has-submenu active">
+                        <a href="">Giới thiệu</a>
+                        <ul class="submenu">
+                            <li><a href="about.html">Về Maison Source Vietnam</a></li>
+                            <li><a href="aboutBona.html">Về Bona</a></li>
+                            <li><a href="about.html">Chứng nhận quốc tế</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-submenu">
+                        <a href="catalog.html">SẢN PHẨM</a>
+                        <ul class="submenu">
+                            <li><a href="product_list.html">KEO DÁN SÀN GỖ</a></li>
+                            <li><a>DẦU LAU CHO SÀN GỖ & NỘI THẤT</a></li>
+                            <li><a>LỚP PHỦ BẢO VỆ</a></li>
+                            <li><a>MÁY MÓC THIẾT BỊ</a></li>
+                            <li><a>DUNG DỊCH VỆ SINH SÀN GỖ</a></li>
+                            <li><a>SÀN GỖ TỰ NHIÊN</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="">Sàn gỗ tự nhiên</a></li>
+                    <li class="menu_item has-submenu">
+                        <a href="">DỊCH VỤ</a>
+                        <ul class="submenu">
+                            <li><a href="">REVIVE</a></li>
+                            <li><a href="">RECOAT</a></li>
+                            <li><a href="">REFINISH</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu_item"><a href="">Dự án</a></li>
+                    <li class="menu_item"><a href="">Tin tức</a></li>
+                    <li class="menu_item"><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="home_header_menu_btn" id="btnMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="menu_mobile_nav" id="menu">
+
+            <ul id="menuNavItems" class="menu_nav_items">
+                <li class="menu_item active"><a href="index.html">Giới thiệu</a></li>
+                <li class="menu_item"><a href="">Sản phẩm</a></li>
+                <li class="menu_item"><a href="">Dịch vụ</a></li>
+                <li class="menu_item"><a href="">Dự án</a></li>
+                <li class="menu_item"><a href="">Tin tức</a></li>
+                <li class="menu_item"><a href="">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+        const toggle = document.getElementById("btnMenu");
+        const menu = document.getElementById("menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+    </script>
+    <main>
+        <div id="main">
+            <section class="product-detail-section banner">
+                <div class="container">
+                    <nav class="breadcrumb" id="breadcrumb"></nav>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const breadcrumb = document.getElementById("breadcrumb");
+                            const path = window.location.pathname.split("/").pop();
+
+                            let html = `<a href="index.html">Home</a> <span>›</span>`;
+
+                            if (path === "catalog.html") {
+                                html += `<span>SẢN PHẨM</span>`;
+                            }
+
+                            if (path === "product_list.html") {
+                                html += `
+                                <a href="catalog.html">SẢN PHẨM</a>
+                                <span>›</span>
+                                <span>KEO DÁN SÀN GỖ</span>
+                            `;
+                            }
+
+                            if (path === "product.html") {
+                                html += `
+                            <a href="catalog.html">SẢN PHẨM</a>
+                            <span>›</span>
+                            <a href="product_list.html">KEO DÁN SÀN GỖ</a>
+                            <span>›</span>
+                            <span>CHI TIẾT SẢN PHẨM</span>
+                        `;
+                            }
+
+                            breadcrumb.innerHTML = html;
+                        });
+                    </script>
+
+                </div>
+            </section>
+
+<section class="product-detail">
+    <div class="container product-detail-wrapper">
+
+        <div class="product-image">
+            <img src="assets/imgs/product.png" alt="Bona Quantum T">
+        </div>
+
+  
+        <div class="product-info">
+            <div class="product-code">BRQUAT2800M1BO</div>
+
+            <h1 class="product-title">Bona Quantum T</h1>
+
+            <div class="product-meta">
+                <div class="meta-row">
+                    <span class="label">Dimension:</span>
+                    <span class="value">Ø 49.8 mm</span>
+                </div>
+
+                <div class="meta-row">
+                    <span class="label">Size:</span>
+                    <span class="value">15 kg</span>
+                </div>
+            </div>
+
+            <button class="text-btn"><span>LIÊN HỆ VỚI CHÚNG TÔI</span></button>
+        </div>
+
+    </div>
+</section>
+<section class="product-tabs">
+
+    <div class="container">
+        <div class="tab-header">
+        <button class="tab-btn active" data-tab="info">INFORMATION</button>
+        <button class="tab-btn" data-tab="docs">DOCUMENTS</button>
+    </div>
+
+    <div class="tab-content">
+
+
+        <div class="tab-panel active" id="info">
+            <div class="info-grid">
+
+                <div class="info-left">
+                    <h3>Key benefits</h3>
+
+                    <ul class="benefits">
+                        <li>Titanium cross-linking technology</li>
+                        <li>High viscosity</li>
+                        <li>Built-in moisture barrier</li>
+                        <li>All-round usage</li>
+                    </ul>
+
+                    <div class="info-images">
+                        <div class="img-box">Image 1</div>
+                        <div class="img-box">Image 2</div>
+                        <div class="img-box">Image 3</div>
+                    </div>
+                </div>
+
+                <div class="info-right">
+                    <h3>Information</h3>
+                    <p>
+                        All-round adhesive with thicker viscosity, for installing of most flooring types.
+                    </p>
+                    <p>
+                        Bona Quantum T represents the new generation of silane-based adhesives,
+                        featuring our revolutionary Titanium Technology. It delivers outstanding
+                        strength that evolves over time.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="tab-panel" id="docs">
+            <div class="documents">
+                <a href="#" class="doc-item">📄 TDS - Bona Quantum T</a>
+                <a href="#" class="doc-item">📄 Document 2</a>
+                <a href="#" class="doc-item">📄 Document 3</a>
+                <a href="#" class="doc-item">📄 Document 4</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>
+<section class="related-products">
+
+    <div class="container">
+
+        <h2 class="section-title">Sản phẩm liên quan:</h2>
+
+        <div class="products-wrapper">
+
+            <a class="nav prev">&#8592;</a>
+
+            <div class="products-grid">
+
+          
+                <div class="product-card">
+                    <h3 class="product-title">Keo dán sàn gỗ 1</h3>
+
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x150" alt="">
+                    </div>
+
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <span>Dimension: Ø 97.5 mm</span>
+                            <span>⌄</span>
+                        </div>
+
+                        <div class="meta-item">
+                            <span>Size 6 kg</span>
+                            <span>⌄</span>
+                        </div>
+                    </div>
+
+                     <button class="text-btn"><span>CHI TIẾT</span></button>
+                </div>
+
+          
+                <div class="product-card">...</div>
+                <div class="product-card">...</div>
+                <div class="product-card">...</div>
+
+            </div>
+
+            <a class="nav next">&#8594;</a>
+
+        </div>
+
+    </div>
+
+</section>
+<script>
+document.querySelectorAll(".tab-btn").forEach(button => {
+    button.addEventListener("click", function() {
+
+        document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.remove("active"));
+        document.getElementById(this.dataset.tab).classList.add("active");
+    });
+});
+</script>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <footer id="footer">
+
+        <div class="footer-top container">
+            <div class="footer-content">
+                <img src="assets/icons/bona.svg" alt="">
+                <div class="body-text">Maison Source Vietnam proudly stands as the exclusive official partner in Vietnam
+                    for Bona, offering
+                    a range of high-quality products that enhance flooring solutions. With a commitment to excellence,
+                    they ensure customers receive the best in flooring care and maintenance.</div>
+
+            </div>
+            <div class="footer-contact">
+                <h5>Liên hệ với chúng tôi</h5>
+                <ul>
+                    <li><img src="assets/icons/phone.svg" alt=""><span> Phone: 0933.363.888</span> </li>
+                    <li><img src="assets/icons/envelope.svg" alt=""><span> Email: info@aurawood.vn</span></li>
+                    <li><img src="assets/icons/location-dot.svg" alt=""><span> 41/12 Đường 39, Phường Bình Trưng,
+                            TP.HCM, Việt Nam</span></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- <hr> -->
+        <div class="container">
+            <div class="footer-brand">
+                <div class="body-text">© Maison Source Vietnam</div>
+                <div class="footer-link"><img src="assets/icons/Frame 14467.svg" alt="">
+                    <img src="assets/icons/Frame 14468.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="overlay-footer"></div>
+    </footer>
+
+
+
+</body>

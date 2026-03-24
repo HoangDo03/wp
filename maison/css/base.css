@@ -1,20 +1,21 @@
 :root {
-    --dark: #09120E;
-    --green40: #284D3D;
-    --green60: #1F3A2E;
-    --lightgreen: #C2D0CA;
-    --lightestgreen: #ECF1EF;
-    --maisongreen: #33614D;
-    --color2: #3D755D;
-    --color3: #91ADA1;
-    --color4: #FFE74C;
-    --color5: #C0D6DF;
-    --green80: #14261F;
-    --lightgrey: #F2F2F2;
-    --white: #FFFFFF;
+  --dark: #09120E;
+  --green40: #284D3D;
+  --green60: #1F3A2E;
+  --lightgreen: #C2D0CA;
+  --lightestgreen: #ECF1EF;
+  --maisongreen: #33614D;
+  --color2: #3D755D;
+  --color3: #91ADA1;
+  --color4: #FFE74C;
+  --color5: #C0D6DF;
+  --green80: #14261F;
+  --lightgrey: #F2F2F2;
+  --white: #FFFFFF;
 
-    --color-btn: #A5C084;
+  --color-btn: #A5C084;
 }
+
 h1 {
   font-family: "Lora", serif;
   font-weight: 500;
@@ -22,6 +23,7 @@ h1 {
   line-height: 1.4;
   letter-spacing: -0.02em;
 }
+
 h2 {
   font-family: "Lora", serif;
   font-weight: 500;
@@ -29,6 +31,7 @@ h2 {
   line-height: 1.3;
   letter-spacing: -0.02em;
 }
+
 h3 {
   font-family: "Lora", serif;
   font-weight: 600;
@@ -36,6 +39,7 @@ h3 {
   line-height: 1.4;
   letter-spacing: 0;
 }
+
 h4 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -44,6 +48,7 @@ h4 {
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+
 h5 {
   font-family: "Lora", serif;
   font-weight: 600;
@@ -51,6 +56,7 @@ h5 {
   line-height: 1.4;
   letter-spacing: -0.02em;
 }
+
 h6 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -59,6 +65,7 @@ h6 {
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+
 button {
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -67,6 +74,7 @@ button {
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+
 .intro,
 .text-intro {
   font-family: "Inter", sans-serif;
@@ -76,6 +84,7 @@ button {
   letter-spacing: -0.04em;
   margin-bottom: 16px;
 }
+
 body,
 p,
 .body-text {
@@ -85,94 +94,97 @@ p,
   line-height: 1.6;
   letter-spacing: -0.02em;
 }
+
 .text-product {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 1vw, 14px);
-    line-height: 1.6;          
-    letter-spacing: -0.02em; 
-    margin-bottom: 16px;      
-    color: var(--maisongreen);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--maisongreen);
 }
 
 
 /* p {
   margin-bottom: 16px;
 } */
-section{
+section {
   margin: 0 auto;
 }
 
 button {
-    position: relative;
-    padding: 14px 32px;
-    background: transparent;
-    color: var(--green80);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: clamp(14px, 1.5vw, 16px);
-    cursor: pointer;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
+  position: relative;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--green80);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(14px, 1.5vw, 16px);
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
 }
 
 /* overlay */
 button::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #fff;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 0;
 }
-button:hover span{
+
+button:hover span {
   color: var(--green80);
 }
 
 button:hover::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 /* text */
 button span {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* icon */
 button::after {
-    content: "";
-    width: 15px;
-    height: 15px;
-    background-color: currentColor;
-    mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
-    -webkit-mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
-    transition: transform 0.3s ease;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: currentColor;
+  mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
+  -webkit-mask: url("../assets/icons/chevron-right.svg") no-repeat center / contain;
+  transition: transform 0.3s ease;
 }
 
 
 button:hover::after {
-    transform: translateX(4px);
-    background-color: var(--green80);
+  transform: translateX(4px);
+  background-color: var(--green80);
 }
 
 
 .content {
-    position: relative;
-    z-index: 3;
-    color: white;
-    width: 50%;
-    z-index: 3;
+  position: relative;
+  z-index: 3;
+  color: white;
+  width: 50%;
+  z-index: 3;
 }
-.title {
-    /* font-size: clamp(1rem, 3vw, 5rem); */
 
-    font-family: "Lora", serif;
+.title {
+  /* font-size: clamp(1rem, 3vw, 5rem); */
+
+  font-family: "Lora", serif;
   font-weight: 500;
   font-size: clamp(28px, 3.5vw, 33px);
   line-height: 1.3;
@@ -183,22 +195,25 @@ button:hover::after {
 
 .text {
   font-family: "Inter", sans-serif;
-    font-size: clamp(28px, 1.7vw, 32px);
-    line-height: clamp(1rem, 3vw, 2.3rem);
-    text-align: left;
-    font-weight: 300;
-    line-height: 1.6;
-    letter-spacing: -0.02em;
+  font-size: clamp(28px, 1.7vw, 32px);
+  line-height: clamp(1rem, 3vw, 2.3rem);
+  text-align: left;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
 
 }
+
 .text-btn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 1vw, 14px);
-    line-height: 0.9; /* 90% */
-    letter-spacing: 0;
-    text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 0.9;
+  /* 90% */
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
+
 /* @font-face {
     font-family: 'Lora';
     src: url('../fonts/Lora/Lora-Regular.ttf') format('truetype');
@@ -250,21 +265,23 @@ button:hover::after {
 
 body {
   position: relative;
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 img,
 video {
   width: 100%;
 }
+
 #main {
-    background: white;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    font-family: 'Inter', sans-serif;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
 }
+
 .container {
   width: min(1200px, 92%);
   margin: auto;

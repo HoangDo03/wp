@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>B2EVENT - Updated Shader Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.12/pixi.min.js"></script>
+    <style>
+        body { margin: 0; background: #16254b; overflow: hidden; }
+        .c-PixiIntro-gradient {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <monopo-gradient 
+        color1="#16254b" 
+        color2="#23418a" 
+        color3="#aadfd9" 
+        color4="#e64f0f" 
+        colorsize="0.75" 
+        colorspacing="0.52" 
+        colorrotation="-0.381592653589793" 
+        colorspread="4.52"
+        displacement="3.1432292461395246" 
+        seed="-0.9806267632378467" 
+        zoom="0.72"
+        class="c-PixiIntro-gradient">
+    </monopo-gradient>
+
+    <script>
+        class MonopoGradient extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.shadowRoot.innerHTML = `
+                    <style>
+                        :host { display: block; position: relative; width: 100%; height: 100%; }
+                        canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+                    </style>
+                    <canvas></canvas>
+                `;
+            }
+
+            connectedCallback() {
+                // Đợi một nhịp để đảm bảo DOM đã sẵn sàng
+                setTimeout(() => this.initPixi(), 0);
+            }
+
+            hexToRgb(hex) {
+                const r = parseInt(hex.slice(1, 3), 16) / 255;
+                const g = parseInt(hex.slice(3, 5), 16) / 255;
+                const b = parseInt(hex.slice(5, 7), 16) / 255;
+                return [r, g, b];
+            }
+
+            initPixi() {
+                const canvas = this.shadowRoot.querySelector('canvas');
+                const app = new PIXI.Application({
+                    view: canvas,
+                    resizeTo: this,
+                    transparent: true,
+                    antialias: true
+                });
+
+                const colors = [
+                    this.hexToRgb(this.getAttribute('color1') || "#16254b"),
+                    this.hexToRgb(this.getAttribute('color2') || "#23418a"),
+                    this.hexToRgb(this.getAttribute('color3') || "#aadfd9"),
+                    this.hexToRgb(this.getAttribute('color4') || "#e64f0f")
+                ];
+
+                const baseDisplacement = parseFloat(this.getAttribute('displacement')) || 3.14;
+                const baseSeed = parseFloat(this.getAttribute('seed')) || -0.98;
+
+                const vertexShader = `
+                    attribute vec2 aVertexPosition;
+                    varying vec2 vUv;
+                    void main() {
+                        vUv = aVertexPosition * 0.5 + 0.5;
+                        gl_Position = vec4(aVertexPosition, 0.0, 1.0);
+                    }
+                `;
+
+                const fragmentShader = `
+                    precision mediump float;
+                    varying vec2 vUv;
+                    uniform float uTime;
+                    uniform vec2 uMouse;
+                    uniform vec3 uColors[4];
+                    uniform float uDisplacement;
+                    uniform float uZoom;
+                    uniform float uSeed;
+
+                    float noise(vec2 p) {
+                        return sin(p.x * 3.0 + uTime * 0.2 + uSeed) * cos(p.y * 2.5 - uTime * 0.1);
+                    }
+
+                    void main() {
+                        float d = distance(vUv, uMouse);
+                        float strength = uDisplacement * (1.0 - smoothstep(0.0, 1.2, d));
+                        
+                        vec2 uv = vUv * uZoom;
+                        uv.x += noise(uv + uTime * 0.05) * strength * 0.15;
+                        uv.y += noise(uv - uTime * 0.05) * strength * 0.15;
+
+                        // Phối trộn màu dựa trên UV và nhiễu
+                        vec3 color = mix(uColors[0], uColors[1], uv.x);
+                        color = mix(color, uColors[2], uv.y + sin(uTime * 0.1) * 0.5);
+                        color = mix(color, uColors[3], noise(uv * 1.5) * 0.5 + 0.5);
+
+                        gl_FragColor = vec4(color, 1.0);
+                    }
+                `;
+
+                const geometry = new PIXI.Geometry()
+                    .addAttribute('aVertexPosition', [-1, -1, 1, -1, 1, 1, -1, 1], 2)
+                    .addIndex([0, 1, 2, 0, 2, 3]);
+
+                this.uniforms = {
+                    uTime: 0,
+                    uMouse: [0.5, 0.5],
+                    uColors: colors.flat(),
+                    uDisplacement: baseDisplacement,
+                    uZoom: parseFloat(this.getAttribute('zoom')) || 0.72,
+                    uSeed: baseSeed
+                };
+
+                const shader = PIXI.Shader.from(vertexShader, fragmentShader, this.uniforms);
+                const mesh = new PIXI.Mesh(geometry, shader);
+                app.stage.addChild(mesh);
+
+                window.addEventListener('pointermove', (e) => {
+                    const rect = this.getBoundingClientRect();
+                    this.uniforms.uMouse = [
+                        (e.clientX - rect.left) / rect.width,
+                        1.0 - (e.clientY - rect.top) / rect.height
+                    ];
+                    this.uniforms.uDisplacement = baseDisplacement + 1.5;
+                });
+
+                app.ticker.add((delta) => {
+                    this.uniforms.uTime += 0.005 * delta;
+                    this.uniforms.uDisplacement += (baseDisplacement - this.uniforms.uDisplacement) * 0.03;
+                });
+            }
+        }
+
+        customElements.define('monopo-gradient', MonopoGradient);
+    </script>
+</body>
+</html>

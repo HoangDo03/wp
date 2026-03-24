@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Monopo London - Interactive 3D Text Experience">
+    <title>Monopo London</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 62.5%;
+            overflow: hidden;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .link-icon-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0;
+            z-index: 1000;
+        }
+
+        .link-icon-button img {
+            object-fit: cover;
+            opacity: 0.5;
+            transform: rotate(0deg);
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+        }
+
+        .link-icon-button:hover img {
+            opacity: 1;
+            transform: rotate(360deg);
+        }
+        canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.page-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+}
+
+/* HEADER */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.header nav a {
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.glass-box {
+    padding: 60px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.05);
+}
+
+.glass-box h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.glass-box span {
+    font-weight: 300;
+    font-size: 6rem;
+}
+
+/* SECTION */
+.section {
+    padding: 150px 10%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.video-box {
+    margin: 50px auto;
+    width: 600px;
+    height: 350px;
+    border-radius: 20px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.btn {
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* CLIENTS */
+.logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* FOOTER */
+.footer {
+    padding: 120px 10%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <canvas id="canvas"></canvas>
+
+<div class="page-content">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">B2EVENT</div>
+        <nav>
+            <a href="#">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="#">CAREERS</a>
+            <a href="#">PODCAST</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="glass-box">
+            <h1>
+                WE ARE<br>
+                AN EVENT EXPERIENCE<br>
+                <span>AGENCY</span>
+            </h1>
+            <p>
+                We partner with global and local brands<br>
+                Branding – Content – Design – Visuals – Marketing – Events
+            </p>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="section">
+        <h2>WHAT WE DO</h2>
+        <p class="sub">
+            We don’t just organize events; we ignite emotions.
+        </p>
+
+        <div class="video-box">
+            ▶
+        </div>
+
+        <button class="btn">SHOW MORE</button>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="section clients">
+        <h2>CLIENTS</h2>
+        <p>
+            Being alongside our esteemed clients is the greatest pride of B2EVENT.
+        </p>
+
+        <div class="logos">
+            <div>Logo 1</div>
+            <div>Logo 2</div>
+            <div>Logo 3</div>
+            <div>Logo 4</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div>
+            <h3>WE WOULD LOVE TO HEAR FROM YOU</h3>
+            <p>Contact@b2event.vn</p>
+        </div>
+
+        <div>
+            <h4>OUR ADDRESS</h4>
+            <p>Ho Chi Minh City</p>
+        </div>
+    </footer>
+
+</div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.139.2/build/three.min.js"></script>
+
+    <script>
+
+        const cnoise21 = `
+//	Classic Perlin 2D Noise 
+//	by Stefan Gustavson
+//
+vec2 fade(vec2 t) {return t*t*t*(t*(t*6.0-15.0)+10.0);}
+vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+
+float cnoise21(vec2 P){
+  vec4 Pi = floor(P.xyxy) + vec4(0.0, 0.0, 1.0, 1.0);
+  vec4 Pf = fract(P.xyxy) - vec4(0.0, 0.0, 1.0, 1.0);
+  Pi = mod(Pi, 289.0); // To avoid truncation effects in permutation
+  vec4 ix = Pi.xzxz;
+  vec4 iy = Pi.yyww;
+  vec4 fx = Pf.xzxz;
+  vec4 fy = Pf.yyww;
+  vec4 i = permute(permute(ix) + iy);
+  vec4 gx = 2.0 * fract(i * 0.0243902439) - 1.0; // 1/41 = 0.024...
+  vec4 gy = abs(gx) - 0.5;
+  vec4 tx = floor(gx + 0.5);
+  gx = gx - tx;
+  vec2 g00 = vec2(gx.x,gy.x);
+  vec2 g10 = vec2(gx.y,gy.y);
+  vec2 g01 = vec2(gx.z,gy.z);
+  vec2 g11 = vec2(gx.w,gy.w);
+  vec4 norm = 1.79284291400159 - 0.85373472095314 * vec4(dot(g00, g00), dot(g01, g01), dot(g10, g10), dot(g11, g11));
+  g00 *= norm.x;
+  g01 *= norm.y;
+  g10 *= norm.z;
+  g11 *= norm.w;
+  float n00 = dot(g00, vec2(fx.x, fy.x));
+  float n10 = dot(g10, vec2(fx.y, fy.y));
+  float n01 = dot(g01, vec2(fx.z, fy.z));
+  float n11 = dot(g11, vec2(fx.w, fy.w));
+  vec2 fade_xy = fade(Pf.xy);
+  vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
+  float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
+  return 2.3 * n_xy;
+}
+`;
+
+        const backgroundVertexShader = `
+varying vec2 v_uv;
+
+void main() {
+  v_uv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+}
+`;
+
+        const backgroundFragmentShader = `
+uniform float u_time;
+uniform vec2 u_mouse;
+varying vec2 v_uv;
+
+${cnoise21}
+
+float random(vec2 p) {
+  vec2 k1 = vec2(
+    23.14069263277926, // e^pi (Gelfond's constant)
+    2.665144142690225 // 2^sqrt(2) (Gelfond–Schneider constant)
+  );
+  return fract(
+    cos(dot(p, k1)) * 12345.6789
+  );
+}
+
+const vec3 black = vec3(0.0);
+const vec3 color1 = vec3(1.0, 0.35, 0.1);   // Cam đỏ sáng
+const vec3 color2 = vec3(0.8, 0.5, 0.3);    // Cam nhạt
+const vec3 color3 = vec3(0.1, 0.25, 0.5);   // Xanh dương đậm
+
+void main() {
+  // Scale giảm từ 1.5 -> 1.15 để gradient to hơn 1.3 lần
+  vec2 seed = v_uv * 1.1 * (u_mouse + 0.3 * (length(u_mouse) + 0.5));
+  float n = cnoise21(seed) + length(u_mouse) * 0.9;
+
+  float ml = pow(length(u_mouse), 2.5) * 0.15;
+  float n1 = smoothstep(0.0, 0.0 + 0.2, n);
+  vec3 color = mix(black, color1, n1);
+  
+  float n2 = smoothstep(0.1 + ml, 0.1 + ml + 0.2, n);
+  color = mix(color, color2, n2);
+
+  float n3 = smoothstep(0.2 + ml, 0.2 + ml + 0.2, n);
+  color = mix(color, color3, n3);
+
+  float n4 = smoothstep(0.3 + ml, 0.3 + ml + 0.2, n);
+  color = mix(color, black, n4);
+
+  vec2 uvrandom = v_uv;
+  uvrandom.y *= random(vec2(uvrandom.y, 0.4));
+  color.rgb += random(uvrandom) * 0.05;
+
+  gl_FragColor = vec4(color, 1.0);
+}
+`;
+
+       
+        const enVertexShader = `
+varying vec2 v_uv;
+
+void main() {
+  v_uv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+}
+`;
+
+        const enFragmentShader = `
+uniform sampler2D u_texture;
+uniform vec2 u_mouse;
+uniform float u_aspect;
+uniform bool u_enable;
+varying vec2 v_uv;
+
+void main() {
+  vec4 tex = texture2D(u_texture, v_uv);
+
+  vec2 aspect = vec2(u_aspect, 1.0);
+  float radius = 0.19;
+  float dist = distance(u_mouse * aspect, v_uv * aspect);
+  float d = 1.0 - smoothstep(radius, radius + 0.005, dist);
+  
+  if (u_enable) {
+    tex.a = mix(tex.a, 0.0, d);
+  }
+
+  gl_FragColor = tex;
+}
+`;
+
+   
+//         const jpVertexShader = `
+// varying vec2 v_uv;
+
+// void main() {
+//   v_uv = uv;
+//   gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+// }
+// `;
+
+        const jpFragmentShader = `
+uniform sampler2D u_texture;
+uniform vec2 u_mouse;
+uniform float u_aspect;
+uniform bool u_enable;
+varying vec2 v_uv;
+
+void main() {
+  vec2 aspect = vec2(u_aspect, 1.0);
+  float radius = 0.19;
+  float dist = distance(u_mouse * aspect, v_uv * aspect);
+  float d = smoothstep(radius, radius + 0.005, dist);
+
+  vec2 sub = u_mouse - v_uv;
+  sub *= aspect;
+
+  vec2 uv = v_uv - sub * pow(dist * 0.7, 0.7);
+  vec4 tex_r = texture2D(u_texture, uv);
+  vec4 tex_g = texture2D(u_texture, uv + sub * 0.03);
+  vec4 tex_b = texture2D(u_texture, uv + sub * 0.01);
+  float a = max(max(tex_r.a, tex_g.a), tex_b.a);
+  vec4 tex = vec4(tex_r.r, tex_g.g, tex_b.b, a);
+
+  tex.a = mix(tex.a, 0.0, d);
+  
+  if (!u_enable) {
+    tex.a = 0.0;
+  }
+
+  gl_FragColor = tex;
+}
+`;
+
+      
+        class Drawer {
+            constructor(text1, text2) {
+                this.text1 = text1;
+                this.text2 = text2;
+                this.margin = 130;
+
+                const canvas = document.createElement('canvas');
+                canvas.width = 1024;
+                canvas.height = canvas.width / 2.2;
+                this.ctx = canvas.getContext('2d');
+                this.aspect = canvas.width / canvas.height;
+                this.texture = new THREE.CanvasTexture(canvas);
+            }
+
+            draw() {
+                const ctx = this.ctx;
+                const { width, height } = this.ctx.canvas;
+
+                ctx.clearRect(0, 0, width, height);
+
+                const fontSize = 85;
+
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'hanging';
+
+                ctx.font = `bold ${fontSize}px 'Poppins'`;
+                ctx.fillStyle = '#fff';
+
+                const text2Metrics = ctx.measureText(this.text2);
+
+                ctx.fillText(this.text1, this.margin, this.margin);
+                ctx.fillText(this.text2, width - text2Metrics.width - this.margin, height - (fontSize + this.margin));
+
+                this.texture.needsUpdate = true;
+            }
+        }
+
+
+        class Background {
+            constructor(scene) {
+                this.scene = scene;
+
+                const geometry = new THREE.PlaneGeometry(2, 2);
+
+                this.uniforms = {
+                    u_time: { value: 0 },
+                    u_mouse: { value: new THREE.Vector2() }
+                };
+
+                const material = new THREE.ShaderMaterial({
+                    uniforms: this.uniforms,
+                    vertexShader: backgroundVertexShader,
+                    fragmentShader: backgroundFragmentShader
+                });
+
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.scene.add(this.mesh);
+
+                this.target = new THREE.Vector2();
+            }
+
+            update(mouse) {
+                this.uniforms.u_time.value += 0.005;
+                this.target.set((mouse.x + 1) * 0.5, (mouse.y + 1) * 0.5);
+                this.uniforms.u_mouse.value.lerp(this.target, 0.2);
+            }
+        }
+
+     
+        class Lense {
+            constructor(scene, aspect) {
+                this.scene = scene;
+
+                const geometry = new THREE.CircleGeometry(0.23, 50);
+
+                const textureLoader = new THREE.TextureLoader();
+                const texture = textureLoader.load('assets/textures/lense.png');
+
+                const material = new THREE.MeshBasicMaterial({
+                    map: texture,
+                    transparent: true
+                });
+
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.mesh.position.z = 0.01;
+                this.mesh.scale.set(1 / aspect, 1, 1);
+                this.scene.add(this.mesh);
+
+                this.target = new THREE.Vector3();
+            }
+
+            update(mouse) {
+                this.target.set(mouse.x, mouse.y, 0.01);
+                this.mesh.position.lerp(this.target, 0.1);
+            }
+
+            updateAspect(aspect) {
+                this.mesh.scale.set(1 / aspect, 1, 1);
+            }
+        }
+
+        class TextPlane {
+            constructor(scene, text, vertexShader, fragmentShader, aspect) {
+                this.scene = scene;
+
+                const drawer = new Drawer(text[0], text[1]);
+                drawer.draw();
+
+                const geometry = new THREE.PlaneGeometry(2.6, 2.6 / drawer.aspect);
+
+                this.uniforms = {
+                    u_texture: { value: drawer.texture },
+                    u_mouse: { value: new THREE.Vector2() },
+                    u_aspect: { value: drawer.aspect },
+                    u_enable: { value: false }
+                };
+
+                const material = new THREE.ShaderMaterial({
+                    uniforms: this.uniforms,
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader,
+                    transparent: true
+                });
+
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.mesh.scale.set(1 / aspect, 1, 1);
+                this.scene.add(this.mesh);
+
+                this.target = new THREE.Vector2();
+                this.raycaster = new THREE.Raycaster();
+            }
+
+            update() {
+                this.uniforms.u_mouse.value.lerp(this.target, 0.1);
+            }
+
+            updateAspect(aspect) {
+                this.mesh.scale.set(1 / aspect, 1, 1);
+            }
+
+            handlePointerMove(uv) {
+                if (uv) {
+                    this.target.copy(uv);
+                }
+            }
+
+            handlePointerEnter(uv) {
+                if (uv) {
+                    this.uniforms.u_mouse.value.copy(uv);
+                    this.uniforms.u_enable.value = true;
+                }
+            }
+
+            handlePointerLeave() {
+                this.uniforms.u_enable.value = false;
+            }
+
+            checkIntersection(raycaster) {
+                const intersects = raycaster.intersectObject(this.mesh);
+                return intersects.length > 0 ? intersects[0] : null;
+            }
+        }
+
+      
+        class App {
+            constructor() {
+                this.canvas = document.getElementById('canvas');
+                this.mouse = new THREE.Vector2();
+                this.raycaster = new THREE.Raycaster();
+
+                this.init();
+                this.createScene();
+                this.addEventListeners();
+                this.animate();
+            }
+
+            init() {
+            
+                this.renderer = new THREE.WebGLRenderer({
+                    canvas: this.canvas,
+                    antialias: true,
+                    alpha: false
+                });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(window.devicePixelRatio);
+
+               
+                this.scene = new THREE.Scene();
+
+             
+                this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -10, 10);
+
+              
+                this.aspect = window.innerWidth / window.innerHeight;
+            }
+
+            createScene() {
+               
+                this.background = new Background(this.scene);
+
+              
+                this.lense = new Lense(this.scene, this.aspect);
+
+               
+                this.enTextPlane = new TextPlane(
+                    this.scene,
+                    ['What shall', 'I create today?'],
+                    enVertexShader,
+                    enFragmentShader,
+                    this.aspect
+                );
+
+                this.jpTextPlane = new TextPlane(
+                    this.scene,
+                    ['今日は', '何を作ろうか?'],
+                    jpVertexShader,
+                    jpFragmentShader,
+                    this.aspect
+                );
+            }
+
+            addEventListeners() {
+                window.addEventListener('resize', () => this.onResize());
+                window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+            }
+
+            onResize() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+
+                this.renderer.setSize(width, height);
+                this.aspect = width / height;
+
+                this.lense.updateAspect(this.aspect);
+                this.enTextPlane.updateAspect(this.aspect);
+                this.jpTextPlane.updateAspect(this.aspect);
+            }
+
+            onMouseMove(event) {
+            
+                this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+
+       
+                const enIntersect = this.enTextPlane.checkIntersection(this.raycaster);
+                if (enIntersect) {
+                    this.enTextPlane.handlePointerMove(enIntersect.uv);
+                    if (!this.enHovering) {
+                        this.enTextPlane.handlePointerEnter(enIntersect.uv);
+                        this.enHovering = true;
+                    }
+                } else {
+                    if (this.enHovering) {
+                        this.enTextPlane.handlePointerLeave();
+                        this.enHovering = false;
+                    }
+                }
+
+        
+                const jpIntersect = this.jpTextPlane.checkIntersection(this.raycaster);
+                if (jpIntersect) {
+                    this.jpTextPlane.handlePointerMove(jpIntersect.uv);
+                    if (!this.jpHovering) {
+                        this.jpTextPlane.handlePointerEnter(jpIntersect.uv);
+                        this.jpHovering = true;
+                    }
+                } else {
+                    if (this.jpHovering) {
+                        this.jpTextPlane.handlePointerLeave();
+                        this.jpHovering = false;
+                    }
+                }
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+             
+                this.background.update(this.mouse);
+                this.lense.update(this.mouse);
+                this.enTextPlane.update();
+                this.jpTextPlane.update();
+
+        
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+     
+        window.addEventListener('DOMContentLoaded', () => {
+            new App();
+        });
+    </script>
+</body>
+
+</html>

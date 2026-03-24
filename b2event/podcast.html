@@ -11,30 +11,79 @@
 </head>
 
 <body>
+    <div id="cursor"></div>
 
+    <!-- <div class="bg-wrapper">
+        <div class="gradient-sphere orange"></div>
+        <div class="gradient-sphere blue"></div>
+        <div class="noise-overlay"></div>
+    </div> -->
     <div class="container">
         <header>
-            <div class="logo">
-                <img src="imgs/logo.png" alt="B2EVENT">
+            <div class="wrap-layout">
+                <div class="logo"><a href="index.html"><img src="imgs/logo.png" alt="B2EVENT"></a></div>
+                <nav class="main-menu">
+                    <ul id="menuNavItems" class="menu_nav_items">
+                        <li class="menu_item"><a href="index.html">ABOUT</a></li>
+                        <li class="menu_item"><a href="services.html">SERVICES</a></li>
+                        <li class="menu_item"><a href="career.html">CAREERS</a></li>
+                        <li class="menu_item active"><a href="podcast.html" class="active">PODCAST</a></li>
+
+                    </ul>
+                </nav>
+                <button id="mobile-menu-btn" class="menu-toggle">
+                    <!-- <span style="font-size: 10px; font-weight: 700; letter-spacing: 2px;">MENU</span> -->
+                    <div class="menu-icon"><span></span><span></span><span></span></div>
+                </button>
+
+                <button class="hidden-menu-toggle">MENU</button>
             </div>
-            <nav>
-                <a href="index.html" >ABOUT</a>
-                <a href="services.html" >SERVICES</a>
-                <a href="career.html" >CAREERS</a>
-                <a href="podcast.html" class="active">PODCAST</a>
-            </nav>
+
         </header>
+        <div id="menu_mobile">
+            <nav class="menu_mobile_nav">
+
+                <ul id="menuNavItems" class="menu_nav_items">
+                    <li class="menu_item "><a href="index.html">ABOUT</a></li>
+                    <li class="menu_item"><a href="services.html">SERVICES</a></li>
+                    <li class="menu_item"><a href="career.html">CAREERS</a></li>
+                    <li class="menu_item"><a href="podcast.html" class="active">PODCAST</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="hidden-menu-overlay" id="hiddenMenu">
+            <div class="hidden-menu-header">
+                <div class="hidden-menu-logo">B2EVENT</div>
+                <div class="hidden-menu-content">
+                    <ul>
+                        <li>ABOUT</li>
+                        <li>SERVICES</li>
+                        <li>CAREERS</li>
+                        <li>PODCAST</li>
+                    </ul>
+
+
+                </div>
+                <button class="hidden-menu-close">✕</button>
+            </div>
+
+
+        </div>
+
         <main>
-            <section class="hero-section career-hero">
+            <section class="hero-section career-hero"
+                style="background: url(imgs/BG2.png) no-repeat; background-size: cover;">
                 <div class="glass-card">
-                    <h1>Every episode is crafted with fresh voices, bold perspectives, and stories that truly move people.
+                    <h1>Every episode is crafted with fresh voices, bold perspectives, and stories that truly move
+                        people.
                     </h1>
-                    <p class="hero-sub">We don’t recycle ideas. We reimagine them.</p>
+                    <p class="hero-sub">We don’t recycle ideas.<br> We reimagine them.</p>
                 </div>
             </section>
 
-            <section class="white-section">
-                <div class="grid">
+            <section class="white-section ">
+                <div class="grid wrap">
                     <div class="project-item">
                         <div class="thumb"></div>
                         <div class="project-info">
@@ -60,37 +109,42 @@
             </section>
         </main>
         <footer>
-            <div class="footer-main">
+            <div class="footer-main wrap">
                 <div class="footer-cta">
                     <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
-                    <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
-                </div>
+                    <div>
+                        <a href="mailto:Contact@b2event.vn" class="email-link"><span>Contact@b2event.vn →</span></a>
 
-                <div class="footer-info">
-                    <h4>OUR ADDRESS</h4>
-                    <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
-                        75 Hoang Van Thu Street, Ward 15, <br>
-                        Phu Nhuan District, Ho Chi Minh City</p>
-                    <p>(028) 38 225 34781/782/783</p>
 
-                    <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
-                    <p>Email: contact@b2event.vn</p>
-                    <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
-                    <p>Working Hours: 9:00 AM - 6:00 PM</p>
-                </div>
+                        <div class="footer-info">
+                            <h4>OUR ADDRESS</h4>
+                            <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
+                                75 Hoang Van Thu Street, Ward 15, <br>
+                                Phu Nhuan District, Ho Chi Minh City</p>
+                            <p>(028) 38 225 34781/782/783</p>
 
-                <div class="footer-nav-col">
-                    <ul class="footer-nav">
-                        <li><a href="#">▶ HOME</a></li>
-                        <li><a href="#">SERVICES</a></li>
-                        <li><a href="#">CAREERS</a></li>
-                        <li><a href="#">PODCAST</a></li>
-                    </ul>
+                            <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
+                            <p>Email: contact@b2event.vn</p>
+                            <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
+                            <p>Working Hours: 9:00 AM - 6:00 PM</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <ul class="footer-nav">
+                                <li><a href="#">HOME</a></li>
+                                <li><a href="#">SERVICES</a></li>
+                                <li><a href="#">CAREERS</a></li>
+                                <li class="active"><a href="#">PODCAST</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
 
 </body>
+<script src="js/script.js"></script>
+<script src="js/include.js"></script>
 
 </html>

@@ -49,6 +49,7 @@
 
                         </ul>
                     </li>
+                    <li class="menu_item"><a href="">Sàn gỗ tự nhiên</a></li>
                     <li class="menu_item has-submenu">
                         <a href="">DỊCH VỤ</a>
                         <ul class="submenu">
@@ -58,7 +59,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu_item"><a href="">Dịch vụ</a></li>
+
                     <li class="menu_item"><a href="">Dự án</a></li>
                     <li class="menu_item"><a href="">Tin tức</a></li>
                     <li class="menu_item"><a href="">Liên hệ</a></li>
@@ -100,6 +101,39 @@
             <section class="products-section banner">
                 <div class="container">
                     <div class="content-left">
+                        <nav class="breadcrumb" id="breadcrumb"></nav>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const breadcrumb = document.getElementById("breadcrumb");
+                            const path = window.location.pathname.split("/").pop();
+
+                            let html = `<a href="index.html">Home</a> <span>›</span>`;
+
+                            if (path === "catalog.html") {
+                                html += `<span>SẢN PHẨM</span>`;
+                            }
+
+                            if (path === "product_list.html") {
+                                html += `
+                                <a href="catalog.html">SẢN PHẨM</a>
+                                <span>›</span>
+                                <span>KEO DÁN SÀN GỖ</span>
+                            `;
+                            }
+
+                            if (path === "product.html") {
+                                html += `
+                            <a href="catalog.html">SẢN PHẨM</a>
+                            <span>›</span>
+                            <a href="product_list.html">KEO DÁN SÀN GỖ</a>
+                            <span>›</span>
+                            <span>CHI TIẾT SẢN PHẨM</span>
+                        `;
+                            }
+
+                            breadcrumb.innerHTML = html;
+                        });
+                    </script>
                         <h1 class="">Keo dán sàn gỗ</h1>
 
                     </div>
@@ -153,6 +187,18 @@
                     <div class="toolbar">
                         <div class="read-all">⟵ Tất cả danh mục sản phẩm</div>
                         <div>
+                            <div class="filter">
+                                <div class="filter-selected">
+                                    Most popular
+                                    <span class="arrow">▾</span>
+                                </div>
+
+                                <div class="filter-dropdown">
+                                    <div data-value="popular">Most popular</div>
+                                    <div data-value="az">Name A-Z</div>
+                                    <div data-value="za">Name Z-A</div>
+                                </div>
+                            </div>
                             <div id="gridBtn" class="active">
                                 <span></span>
                             </div>
@@ -210,6 +256,7 @@
                 let currentCat = 'reactive';
                 let selectedSizes = [];
                 let view = 'grid';
+                let currentSort = 'popular';
 
 
                 const catTop = document.getElementById('catTop');
@@ -279,86 +326,96 @@
 
 
                 function renderProducts() {
+
                     products.innerHTML = '';
-                    productsData
-                        .filter(p =>
-                            p.cat === currentCat &&
-                            (selectedSizes.length === 0 || selectedSizes.includes(p.size))
-                        )
-                        .forEach(p => {
-                            products.innerHTML += `
-                            <div class="product">
-                                <div>
-                                    <h5>${p.name}</h5>
-                                    <img src="assets/imgs/${p.id}.png" alt="">
-                                    <div class="text-product">
 
-    <div class="dropdown">
-        <div class="dropdown-item">
-            <span>Dimension: </span>
-            <span class="value">${p.dimension}</span>
-        </div>
+                    let filtered = productsData.filter(p =>
+                        p.cat === currentCat &&
+                        (selectedSizes.length === 0 || selectedSizes.includes(p.size))
+                    );
 
-        <div class="dropdown-body">
-            <label>
-                <input type="radio" name="dimension" checked>
-                <span>Ø 49.8 mm</span>
-            </label>
-            <label>
-                <input type="radio" name="dimension">
-                <span>Ø 62.5 mm</span>
-            </label>
-            <label>
-                <input type="radio" name="dimension">
-                <span>Ø 97.5 mm</span>
-            </label>
-        </div>
-    </div>
+                    // SORT
+                    if (currentSort === 'az') {
+                        filtered.sort((a, b) => a.name.localeCompare(b.name));
+                    }
 
-    <div class="dropdown">
-        <div class="dropdown-item">
-            <span>Size: </span>
-            <span class="value">${p.size}</span>
-        </div>
+                    if (currentSort === 'za') {
+                        filtered.sort((a, b) => b.name.localeCompare(a.name));
+                    }
 
-        <div class="dropdown-body">
-            <label>
-                <input type="radio" name="size" checked>
-                <span>6 kg</span>
-            </label>
-            <label>
-                <input type="radio" name="size">
-                <span>8 kg</span>
-            </label>
-        </div>
-    </div>
+                    if (currentSort === 'popular') {
+                        // vì bạn chưa có field popular
+                        // tạm giữ nguyên thứ tự mảng
+                    }
 
-</div>
+                    filtered.forEach(p => {
+                        products.innerHTML += `
+        <div class="product">
+            <div>
+                <h5>${p.name}</h5>
+                <img src="assets/imgs/${p.id}.png" alt="">
+                <div class="text-product">
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <span>Dimension: </span>
+                            <span class="value">${p.dimension}</span>
+                        </div>
+                    </div>
 
-                                </div>
-                                <button class="text-btn"><span>CHI TIẾT</span></button>
-                            </div>`;
-                        });
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <span>Size: </span>
+                            <span class="value">${p.size}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="text-btn"><span>CHI TIẾT</span></button>
+        </div>`;
+                    });
                 }
 
 
                 syncCategory();
                 document.querySelectorAll('.dropdown').forEach(dropdown => {
-    const header = dropdown.querySelector('.dropdown-item');
-    const value = header.querySelector('.value');
+                    const header = dropdown.querySelector('.dropdown-item');
+                    const value = header.querySelector('.value');
 
-    header.addEventListener('click', () => {
-        dropdown.classList.toggle('open');
-    });
+                    header.addEventListener('click', () => {
+                        dropdown.classList.toggle('open');
+                    });
 
-    dropdown.querySelectorAll('input[type="radio"]').forEach(input => {
-        input.addEventListener('change', () => {
-            value.textContent = input.nextElementSibling.textContent;
-            dropdown.classList.remove('open');
-        });
-    });
-});
+                    dropdown.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.addEventListener('change', () => {
+                            value.textContent = input.nextElementSibling.textContent;
+                            dropdown.classList.remove('open');
+                        });
+                    });
+                });
 
+
+                const filter = document.querySelector('.filter');
+                const selected = document.querySelector('.filter-selected');
+                const options = document.querySelectorAll('.filter-dropdown div');
+
+                selected.addEventListener('click', () => {
+                    filter.classList.toggle('active');
+                });
+
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        selected.childNodes[0].nodeValue = option.innerText + " ";
+                        currentSort = option.dataset.value;
+                        filter.classList.remove('active');
+                        renderProducts();
+                    });
+                });
+
+                document.addEventListener('click', e => {
+                    if (!filter.contains(e.target)) {
+                        filter.classList.remove('active');
+                    }
+                });
             </script>
 
 

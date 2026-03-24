@@ -2,127 +2,269 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2EVENT - Careers</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2EVENT - Careers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
 
+
+
+
+
+  </style>
 </head>
 
 <body>
+  <div id="cursor"></div>
 
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="imgs/logo.png" alt="B2EVENT">
-            </div>
-            <nav>
-                <a href="index.html" >ABOUT</a>
-                <a href="services.html" class="active">SERVICES</a>
-                <a href="career.html" >CAREERS</a>
-                <a href="podcast.html" >PODCAST</a>
+  <!-- <div class="bg-wrapper">
+    <div class="gradient-sphere orange"></div>
+    <div class="gradient-sphere blue"></div>
+    <div class="noise-overlay"></div>
+  </div> -->
+  <div class="container">
+    <header>
+      <div class="wrap-layout">
+        <div class="logo"><a href="index.html"><img src="imgs/logo.png" alt="B2EVENT"></a></div>
+        <nav class="main-menu">
+          <ul id="menuNavItems" class="menu_nav_items">
+            <li class="menu_item "><a href="index.html">ABOUT</a></li>
+            <li class="menu_item active"><a href="services.html" class="active">SERVICES</a></li>
+            <li class="menu_item"><a href="career.html">CAREERS</a></li>
+            <li class="menu_item"><a href="podcast.html">PODCAST</a></li>
+
+          </ul>
+        </nav>
+        <button id="mobile-menu-btn" class="menu-toggle">
+          <!-- <span style="font-size: 10px; font-weight: 700; letter-spacing: 2px;">MENU</span> -->
+          <div class="menu-icon"><span></span><span></span><span></span></div>
+        </button>
+
+        <button class="hidden-menu-toggle">MENU</button>
+      </div>
+    </header>
+    <div class="hidden-menu-overlay" id="hiddenMenu">
+      <div class="hidden-menu-header">
+        <div class="hidden-menu-logo">B2EVENT</div>
+        <button class="hidden-menu-close">✕</button>
+      </div>
+
+      <div class="hidden-menu-content">
+        <ul>
+          <li>ABOUT</li>
+          <li>SERVICES</li>
+          <li>CAREERS</li>
+        </ul>
+
+        <ul>
+          <li>PODCAST</li>
+          <li>CONTACT</li>
+          <li>PRESS & NEWS</li>
+        </ul>
+
+        <ul class="hidden-menu-time">
+          <li>07:41 AM</li>
+          <li>04:41 PM</li>
+          <li>02:41 AM</li>
+        </ul>
+      </div>
+    </div>
+
+    <main>
+      <div id="menu_mobile">
+        <nav class="menu_mobile_nav">
+
+          <ul id="menuNavItems" class="menu_nav_items">
+            <li class="menu_item "><a href="index.html">ABOUT</a></li>
+            <li class="menu_item active"><a href="services.html" class="active">SERVICES</a></li>
+            <li class="menu_item"><a href="career.html">CAREERS</a></li>
+            <li class="menu_item"><a href="podcast.html">PODCAST</a></li>
+
+          </ul>
+        </nav>
+      </div>
+      <div class="hidden-menu-overlay" id="hiddenMenu">
+        <div class="hidden-menu-header">
+          <div class="hidden-menu-logo">B2EVENT</div>
+          <div class="hidden-menu-content">
+            <ul>
+              <li>ABOUT</li>
+              <li>SERVICES</li>
+              <li>CAREERS</li>
+              <li>PODCAST</li>
+            </ul>
+
+
+          </div>
+          <button class="hidden-menu-close">✕</button>
+        </div>
+
+
+      </div>
+
+      <section class="hero-section career-hero">
+        <div class="glass-card">
+          <h1 style="margin-bottom: 2rem;">We’ve got the secret sauce — and it lights up every stage.
+          </h1>
+          <p class="hero-sub services-sub">We don’t just organize events; <br> we ignite emotions, <br> command the
+            spotlight,<br> and leave
+            audiences wide-eyed.</p>
+        </div>
+      </section>
+      <section class="event-portfolio">
+        <section class="portfolio-section">
+          <div class="portfolio-container wrap">
+
+            <nav class="portfolio-sidebar">
+              <ul class="portfolio-menu">
+                <li class="portfolio-menu__item is-active" data-filter="all">ALL</li>
+                <li class="portfolio-menu__item" data-filter="event">EVENT LAUNCHES</li>
+                <li class="portfolio-menu__item" data-filter="conf">CONFERENCES & SEMINARS</li>
+                <li class="portfolio-menu__item" data-filter="mice">MICE</li>
+                <li class="portfolio-menu__item" data-filter="private">PRIVATE EVENTS</li>
+                <li class="portfolio-menu__item" data-filter="corp">CORPORATE EVENTS</li>
+                <li class="portfolio-menu__item" data-filter="fest">MEGA FESTIVALS</li>
+                <li class="portfolio-menu__item" data-filter="brand">BRAND ACTIVATION</li>
+                <li class="portfolio-menu__item" data-filter="prod">IN-HOUSE PRODUCTION</li>
+              </ul>
             </nav>
-        </header>
-        <main>
-            <section class="hero-section career-hero">
-                <div class="glass-card">
-                    <h1>We’ve got the secret sauce — and it lights up every stage.
-                    </h1>
-                    <p class="hero-sub">We don’t just organize events; we ignite emotions, command the spotlight, and leave audiences wide-eyed.</p>
-                </div>
-            </section>
-            <section class="event-portfolio">
-  <section class="main-container portfolio-layout">
 
+            <div class="portfolio-content">
+              <div class="portfolio-column">
+                <article class="portfolio-card">
+                  <div class="portfolio-card__image" style="background-color: #f39200;"></div>
+                  <div class="portfolio-card__header">
+                    <span class="portfolio-card__cat">▶ EVENT LAUNCHES</span>
+                    <h3 class="portfolio-card__title">PROJECT NAME</h3>
+                  </div>
+                </article>
 
-    <aside class="portfolio-filter">
-      <ul>
-        <li class="active">ALL</li>
-        <li>EVENT LAUNCHES</li>
-        <li>CONFERENCES & SEMINARS</li>
-        <li>MICE</li>
-        <li>PRIVATE EVENTS</li>
-        <li>CORPORATE EVENTS</li>
-        <li>MEDIA FESTIVALS</li>
-        <li>BRAND ACTIVATION</li>
-        <li>IN-HOUSE PRODUCTION</li>
-      </ul>
-    </aside>
+                <article class="portfolio-card">
+                  <div class="portfolio-card__image" style="background-color: #bbb;"></div>
+                  <div class="portfolio-card__header">
+                    <span class="portfolio-card__cat">▶ EVENT LAUNCHES</span>
+                    <h3 class="portfolio-card__title">PROJECT NAME</h3>
+                  </div>
+                </article>
+              </div>
 
-    <!-- GRID -->
-    <div class="portfolio-grid">
-      <article class="project orange">
-        <div class="thumb"></div>
-        <div class="meta">
-          <span>EVENT LAUNCHES</span>
-          <h4>PROJECT NAME</h4>
-        </div>
-      </article>
+              <div class="portfolio-column is-offset">
+                <article class="portfolio-card">
+                  <div class="portfolio-card__image" style="background-color: #d34c1a;"></div>
+                  <div class="portfolio-card__header">
+                    <span class="portfolio-card__cat">▶ EVENT LAUNCHES</span>
+                    <h3 class="portfolio-card__title">PROJECT NAME</h3>
+                  </div>
+                </article>
 
-      <article class="project red">
-        <div class="thumb"></div>
-        <div class="meta">
-          <span>EVENT LAUNCHES</span>
-          <h4>PROJECT NAME</h4>
-        </div>
-      </article>
-
-      <article class="project gray">
-        <div class="thumb"></div>
-        <div class="meta">
-          <span>EVENT LAUNCHES</span>
-          <h4>PROJECT NAME</h4>
-        </div>
-      </article>
-
-      <article class="project red">
-        <div class="thumb"></div>
-        <div class="meta">
-          <span>EVENT LAUNCHES</span>
-          <h4>PROJECT NAME</h4>
-        </div>
-      </article>
-    </div>
-
-
-</section>
-
-           
-
-        </main>
-        <footer>
-            <div class="footer-main">
-                <div class="footer-cta">
-                    <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
-                    <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
-                </div>
-
-                <div class="footer-info">
-                    <h4>OUR ADDRESS</h4>
-                    <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
-                        75 Hoang Van Thu Street, Ward 15, <br>
-                        Phu Nhuan District, Ho Chi Minh City</p>
-                    <p>(028) 38 225 34781/782/783</p>
-
-                    <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
-                    <p>Email: contact@b2event.vn</p>
-                    <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
-                    <p>Working Hours: 9:00 AM - 6:00 PM</p>
-                </div>
-
-                <div class="footer-nav-col">
-                    <ul class="footer-nav">
-                        <li><a href="#">▶ HOME</a></li>
-                        <li><a href="#">SERVICES</a></li>
-                        <li><a href="#">CAREERS</a></li>
-                        <li><a href="#">PODCAST</a></li>
-                    </ul>
-                </div>
+                <article class="portfolio-card">
+                  <div class="portfolio-card__image" style="background-color: #d34c1a;"></div>
+                  <div class="portfolio-card__header">
+                    <span class="portfolio-card__cat">▶ EVENT LAUNCHES</span>
+                    <h3 class="portfolio-card__title">PROJECT NAME</h3>
+                  </div>
+                </article>
+              </div>
             </div>
-        </footer>
-    </div>
+
+          </div>
+        </section>
+        <section class="services-section">
+          <div class="services-container wrap">
+            <div class="services-header">
+              <div class="services-header__main">
+                <h2 class="services-title">EVENT LAUNCH <br>SERVICES THAT CREATE</h2>
+
+                <div>
+                  <p class="services-desc">
+                    <strong>A successful launch event sets the tone for your brand's future.</strong><br>
+                    At B2Event, we craft launch experiences that capture attention, strengthen brand positioning, and
+                    drive real market momentum. From concept development to production and guest management, every
+                    element is designed with precision and powered by storytelling.
+                  </p>
+                  <div class="services-capabilities">
+                    <h4 class="capabilities-title">Our Event Launch Capabilities</h4>
+                    <ul class="capabilities-list">
+                      <li>Product Launch Events</li>
+                      <li>Grand Openings</li>
+                      <li>Press & Influencer Launches</li>
+                      <li>App & Platform Launches</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="white-section">
+              <div class="grid">
+                <div class="project-item">
+                  <div class="thumb"></div>
+                  <div class="project-info">
+                    <p class="project-tag">▶ EVENT LAUNCHES</p>
+                    <p class="project-name">PROJECT NAME</p>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="thumb"></div>
+                  <div class="project-info">
+                    <p class="project-tag">▶ EVENT LAUNCHES</p>
+                    <p class="project-name">PROJECT NAME</p>
+                  </div>
+                </div>
+                <div class="project-item">
+                  <div class="thumb"></div>
+                  <div class="project-info">
+                    <p class="project-tag">▶ EVENT LAUNCHES</p>
+                    <p class="project-name">PROJECT NAME</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+    </main>
+    <footer>
+      <div class="footer-main wrap">
+        <div class="footer-cta">
+          <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
+          <div>
+            <a href="mailto:Contact@b2event.vn" class="email-link"><span>Contact@b2event.vn →</span></a>
+
+
+            <div class="footer-info">
+              <h4>OUR ADDRESS</h4>
+              <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
+                75 Hoang Van Thu Street, Ward 15, <br>
+                Phu Nhuan District, Ho Chi Minh City</p>
+              <p>(028) 38 225 34781/782/783</p>
+
+              <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
+              <p>Email: contact@b2event.vn</p>
+              <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
+              <p>Working Hours: 9:00 AM - 6:00 PM</p>
+            </div>
+
+            <div class="footer-nav-col">
+              <ul class="footer-nav">
+                <li><a href="#">HOME</a></li>
+                <li class="active"><a href="#">SERVICES</a></li>
+                <li><a href="#">CAREERS</a></li>
+                <li><a href="#">PODCAST</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 
 </body>
+<script src="js/script.js"></script>
+<script src="js/include.js"></script>
 
 </html>

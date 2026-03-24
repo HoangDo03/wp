@@ -4,172 +4,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2EVENT - Event Experience Agency</title>
+    <title>B2EVENT - Monopo London Vibe</title>
+
     <link rel="stylesheet" href="css/style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,400&display=swap"
-        rel="stylesheet">
+    <style>
+        #hero {
+            z-index: 10;
+        }
+
+        #projects {
+            z-index: 20;
+            background: inherit;
+        }
+
+        #footer {
+            z-index: 30;
+            background: inherit;
+        }
+
+
+        header#site-header.is-scrolled nav,
+        header#site-header.is-scrolled .logo {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="cursor"></div>
     <div class="bg-wrapper">
-        <div class="gradient-sphere orange"></div>
-        <div class="gradient-sphere blue"></div>
+        <!-- <div class="gradient-sphere orange"></div>
+        <div class="gradient-sphere blue"></div> -->
         <div class="noise-overlay"></div>
     </div>
+    <div id="bg-container"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; overflow: hidden;">
+        <div id="moving-bg" style="
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 400%; /* Đủ cho 4 sections */
+        background: url('imgs/BG 1.png') no-repeat; 
+        background-size: cover; 
+        background-position: top;
+        transition: transform 0.1s linear;
+    "></div>
+    </div>
+    <div id="main-app">
+        <header id="site-header">
+            <div class="wrap-layout">
+                <div class="logo"><a href="index.html"><img src="imgs/logo.png" alt="B2EVENT"></a></div>
+                <nav class="main-menu">
+                    <ul id="menuNavItems" class="menu_nav_items">
+                        <li class="menu_item active"><a href="index.html" class="active">ABOUT</a></li>
+                        <li class="menu_item"><a href="services.html">SERVICES</a></li>
+                        <li class="menu_item"><a href="career.html">CAREERS</a></li>
+                        <li class="menu_item"><a href="podcast.html">PODCAST</a></li>
 
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="imgs/logo.png" alt="B2EVENT">
+                    </ul>
+                </nav>
+                <button id="mobile-menu-btn" class="menu-toggle">
+                    <!-- <span style="font-size: 10px; font-weight: 700; letter-spacing: 2px;">MENU</span> -->
+                    <div class="menu-icon"><span></span><span></span><span></span></div>
+                </button>
+
+                <button class="hidden-menu-toggle">MENU</button>
             </div>
-            <nav>
-                <a href="index.html" class="active">ABOUT</a>
-                <a href="services.html" >SERVICES</a>
-                <a href="career.html">CAREERS</a>
-                 <a href="podcast.html">PODCAST</a>
-            </nav>
         </header>
+        <div id="menu_mobile">
+            <nav class="menu_mobile_nav">
 
+                <ul id="menuNavItems" class="menu_nav_items">
+                    <li class="menu_item active"><a href="index.html" class="active">ABOUT</a></li>
+                    <li class="menu_item"><a href="services.html">SERVICES</a></li>
+                    <li class="menu_item"><a href="career.html">CAREERS</a></li>
+                    <li class="menu_item"><a href="podcast.html">PODCAST</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="hidden-menu-overlay" id="hiddenMenu">
+            <div class="hidden-menu-header">
+                <div class="hidden-menu-logo">B2EVENT</div>
+                <div class="hidden-menu-content">
+                    <ul>
+                        <li>ABOUT</li>
+                        <li>SERVICES</li>
+                        <li>CAREERS</li>
+                        <li>PODCAST</li>
+                    </ul>
+
+
+                </div>
+                <button class="hidden-menu-close">✕</button>
+            </div>
+
+
+        </div>
         <main>
-            <section class="hero-section">
+            <script>
+                // window.addEventListener("load", () => {
+                //     document.body.classList.remove("preload");
+                // });
+
+            </script>
+
+            <section class="page-section" id="hero">
                 <div class="glass-card">
-                    <h1>WE ARE <br> AN EVENT EXPERIENCE</h1>
-                    <div>
-                        <h2 class="serif-title">AGENCY</h2>
-                        <div class="hero-desc">
-                            <p>WE PARTNER WITH GLOBAL AND LOCAL BRANDS<br> AND TRUSTED TALENTS FOR TRULY CREATIVE
-                                CONTENT SOLUTIONS.</p>
-                            <p class="services-list">BRANDING — CONTENT — DESIGN — VISUALS — MARKETING — EVENTS</p>
+                    <div class="hero-main-text">
+                        <h1 class="text-mask">
+                            WE ARE <br>AN EVENT EXPERIENCE
+                            <!-- <span class="line">WE ARE</span>
+                            <span class="line">AN EVENT EXPERIENCE</span> -->
+                        </h1>
+                        <div>
+                            <div class="text-mask">
+                                <h2 class="serif-title line">AGENCY</h2>
+                            </div>
+                            <div class="hero-side-desc">
+                                <div class="text-mask">
+                                    <p class="line">We partner with global and local brands <br> and trusted talents for
+                                        truly creative content solutions.</p>
+                                </div>
+                                <div class="text-mask">
+                                    <p class="services-list line" style="font-weight: 700">BRANDING —
+                                        CONTENT — DESIGN — VISUALS — MARKETING — EVENTS</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div class="scroll-container">
-                <aside class="ruler-sidebar">
-                    <div class="ruler-track" id="ruler-track">
-                        <div class="indicator" id="indicator"></div>
-                    </div>
-                </aside>
-
-                <div class="content-scroll-box" id="main-scroll">
-                    <section class="content-section">
-
-
-                        <div class="content-body">
-                            <h3 class="section-title">WHAT WE DO</h3>
-                            <div class="video-container">
-                                <p class="video-subtext">We don't just organize events;<br>we ignite emotions, command
-                                    the
-                                    spotlight,<br>and leave audiences wide-eyed.</p>
+            <section class="page-section" id="projects" style="transform: translateY(100%);">
+                <div class="project-content-container"
+                    style="position: relative ; display: flex; align-items: center; justify-content: center; padding-bottom: 0.5rem;">
+                    <div class="content-body" id="content-services"
+                        style="position: absolute; width: 100%; transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1)">
+                        <div class="video-container">
+                            <p class="video-subtext" style="margin-bottom: 20px; ">We don't just organize
+                                events;<br>we ignite emotions, command the spotlight,<br> and leave audiences wide-eyed.
+                            </p>
+                            <div class="video-glass-wrapper">
                                 <video class="video-placeholder" autoplay muted loop playsinline>
                                     <source src="imgs/SHOWREEL.mp4" type="video/mp4">
                                 </video>
+                            </div>
+                            <button class="show-more">SHOW
+                                MORE</button>
+                        </div>
+                    </div>
 
-                                <button class="show-more">SHOW MORE</button>
+                    <div class="content-body" id="content-clients"
+                        style="position: absolute; width: 100%; opacity: 0; transform: translateY(150px); pointer-events: none; transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);">
+                        <p class="client-desc">Being
+                            alongside our esteemed clients is the greatest pride of B2EVENT. <br>
+                            Every milestone our clients achieve becomes a source of inspiration for <br> us to
+                            continuously innovate, create, and push beyond limits.</p>
+                        <div class="clients-grid">
+
+                            <img src="imgs/LOGOKH.png" alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- <section class="page-section site-footer .wrap-layout" id="footer" style="transform: translateY(100%);">
+                <div class="footer-main" style=>
+                    <div class="footer-cta">
+                        <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
+                        <div>
+                            <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
+
+
+                            <div class="footer-info">
+                                <h4>OUR ADDRESS</h4>
+                                <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
+                                    75 Hoang Van Thu Street, Ward 15, <br>
+                                    Phu Nhuan District, Ho Chi Minh City</p>
+                                <p>(028) 38 225 34781/782/783</p>
+
+                                <h4>CONTACT B2EVENT</h4>
+                                <p>Email: contact@b2event.vn</p>
+                                <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
+                                <p>Working Hours: 9:00 AM - 6:00 PM</p>
+                            </div>
+
+                            <div class="footer-nav-col">
+                                <ul class="footer-nav">
+                                    <li class="active"><a href="#">HOME</a></li>
+                                    <li><a href="#">SERVICES</a></li>
+                                    <li><a href="#">CAREERS</a></li>
+                                    <li><a href="#">PODCAST</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section> -->
 
-                    <section class="content-section">
+            <div class="ruler-ui" id="ruler">
+                <div class="ruler-track">
+                    <div id="sub-ticks-container" style="position: absolute; width: 100%; height: 100%;"></div>
 
+                    <div class="tick-special tick-top" id="tick-start">
+                        <span class="tick-label" id="ruler-label">WHAT WE DO</span>
+                    </div>
 
-                        <div class="content-body">
-                            <h3 class="section-title">CLIENTS</h3>
-                            <p class="client-desc">Being alongside our esteemed clients is the greatest pride of
-                                B2EVENT.
-                                Every milestone our clients achieve becomes a source of inspiration for us to
-                                continuously
-                                innovate, create, and push beyond limits.</p>
-                            <div class="clients-grid">
-                                <script>for (let i = 0; i < 45; i++) document.write('<div class="client-item"></div>');</script>
-                            </div>
-                        </div>
-                    </section>
+                    <div class="indicator" id="indicator"></div>
+
+                    <div class="tick-special tick-bottom" id="tick-end"></div>
                 </div>
             </div>
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const track = document.getElementById('ruler-track');
-                    const indicator = document.getElementById('indicator');
-                    const scroller = document.getElementById('main-scroll');
-                    const sections = document.querySelectorAll('.content-section');
-
-                    const TOTAL_TICKS = 40; 
-
-
-                    for (let i = 0; i < TOTAL_TICKS; i++) {
-                        const tick = document.createElement('div');
-                        tick.className = 'tick';
-                        track.appendChild(tick);
-                    }
-
-                    
-                    scroller.addEventListener('scroll', () => {
-                        const scrollTop = scroller.scrollTop;
-                        const scrollHeight = scroller.scrollHeight - scroller.clientHeight;
-                        const percent = scrollTop / (scrollHeight || 1);
-
-                     
-                        const trackHeight = track.offsetHeight;
-                        indicator.style.top = (percent * (trackHeight - 7)) + 'px';
-
-                       
-                        const activeTickIndex = Math.round(percent * (TOTAL_TICKS - 1));
-                        const allTicks = document.querySelectorAll('.tick');
-
-                        allTicks.forEach((t, i) => {
-                            if (i === activeTickIndex) t.classList.add('active');
-                            else t.classList.remove('active');
-                        });
-
-                      
-                        sections.forEach(sec => {
-                            const rect = sec.getBoundingClientRect();
-                            if (rect.top >= -window.innerHeight / 2 && rect.top <= window.innerHeight / 2) {
-                                sec.classList.add('visible');
-                            } else {
-                                sec.classList.remove('visible');
-                            }
-                        });
-                    });
-                });
-            </script>
         </main>
-
-        <footer>
+        <footer class="page-section site-footer wrap-layout" id="footer" style="transform: translateY(100%);">
             <div class="footer-main">
                 <div class="footer-cta">
                     <h2>WE WOULD LOVE <br> TO HEAR FROM YOU</h2>
-                    <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
-                </div>
-
-                <div class="footer-info">
-                    <h4>OUR ADDRESS</h4>
-                    <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
-                        75 Hoang Van Thu Street, Ward 15, <br>
-                        Phu Nhuan District, Ho Chi Minh City</p>
-                    <p>(028) 38 225 34781/782/783</p>
-
-                    <h4 style="margin-top: 30px;">CONTACT B2EVENT</h4>
-                    <p>Email: contact@b2event.vn</p>
-                    <p>Hotline/Zalo: 0907 561 170 - Kevin Dang</p>
-                    <p>Working Hours: 9:00 AM - 6:00 PM</p>
-                </div>
-
-                <div class="footer-nav-col">
-                    <ul class="footer-nav">
-                        <li><a href="#">▶ HOME</a></li>
-                        <li><a href="#">SERVICES</a></li>
-                        <li><a href="#">CAREERS</a></li>
-                        <li><a href="#">PODCAST</a></li>
-                    </ul>
+                    <div>
+                        <a href="mailto:Contact@b2event.vn" class="email-link">Contact@b2event.vn →</a>
+                        <div class="footer-info">
+                            <h4>OUR ADDRESS</h4>
+                            <p><strong>HO CHI MINH HEAD OFFICE</strong><br>
+                                75 Hoang Van Thu Street, Ward 15, Phu Nhuan District</p>
+                            <p>(028) 38 225 34781</p>
+                        </div>
+                        <div class="footer-nav-col">
+                            <ul class="footer-nav">
+                                <li class="active"><a href="#">HOME</a></li>
+                                <li><a href="#">SERVICES</a></li>
+                                <li><a href="#">CAREERS</a></li>
+                                <li><a href="#">PODCAST</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
+
+    <script>
+        const colors = {
+            hero: { r: 8, g: 8, b: 12 },
+            projects: { r: 25, g: 15, b: 5 },
+            footer: { r: 5, g: 20, b: 30 }
+        };
+
+        let virtualScroll = 0, easedScroll = 0;
+
+
+        const getVh = () => window.innerHeight;
+        const sections = [0, getVh(), getVh() * 2, getVh() * 3];
+        const totalDist = sections[sections.length - 1];
+
+        let currentSectionIndex = 0;
+        let isScrolling = false;
+
+        const cursor = document.getElementById('cursor');
+        const indicator = document.getElementById('indicator');
+        const tickStart = document.getElementById('tick-start');
+        const tickEnd = document.getElementById('tick-end');
+        const rulerLabel = document.getElementById('ruler-label');
+
+
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (isScrolling) return;
+
+            if (e.deltaY > 0) { // Cuộn xuống
+                if (currentSectionIndex < sections.length - 1) {
+                    currentSectionIndex++;
+                    updateTargetScroll();
+                }
+            } else { // Cuộn lên
+                if (currentSectionIndex > 0) {
+                    currentSectionIndex--;
+                    updateTargetScroll();
+                }
+            }
+        }, { passive: false });
+
+        function updateTargetScroll() {
+            isScrolling = true;
+            virtualScroll = sections[currentSectionIndex];
+
+            setTimeout(() => { isScrolling = false; }, 1000);
+        }
+
+        const mapRange = (v, s, e) => Math.max(0, Math.min(1, (v - s) / (e - s)));
+        const lerp = (a, b, n) => (1 - n) * a + n * b;
+        document.addEventListener("DOMContentLoaded", () => {
+            const subTickContainer = document.getElementById('sub-ticks-container');
+            const SUB_TICK_COUNT = 35;
+
+            for (let i = 1; i < SUB_TICK_COUNT; i++) {
+                const tick = document.createElement('div');
+                tick.className = 'sub-tick';
+
+                tick.style.top = `${(i / SUB_TICK_COUNT) * 100}%`;
+                subTickContainer.appendChild(tick);
+            }
+        });
+        function render() {
+
+            easedScroll += (virtualScroll - easedScroll) * 0.08;
+            const movingBg = document.getElementById('moving-bg');
+            if (movingBg) {
+        const bgTranslate = (easedScroll / totalDist) * -75;
+        movingBg.style.transform = `translate3d(0, ${bgTranslate}%, 0)`;
+        let pBgOpacity = mapRange(easedScroll, sections[2], sections[3]);
+        movingBg.style.opacity = 1 - pBgOpacity;
+    }
+
+            // let pColor = easedScroll <= sections[2]
+            //     ? mapRange(easedScroll, 0, sections[2])
+            //     : mapRange(easedScroll, sections[2], sections[3]);
+            // let startColor = easedScroll <= sections[2] ? colors.hero : colors.projects;
+            // let targetColor = easedScroll <= sections[2] ? colors.projects : colors.footer;
+            // document.body.style.backgroundColor = `rgb(${Math.round(lerp(startColor.r, targetColor.r, pColor))},${Math.round(lerp(startColor.g, targetColor.g, pColor))},${Math.round(lerp(startColor.b, targetColor.b, pColor))})`;
+
+
+            let pHero = mapRange(easedScroll, 0, sections[1]);
+    hero.style.transform = `translate3d(0, ${-pHero * 100}%, 0)`;
+    hero.style.opacity = 1 - pHero;
+
+
+            let pProjIn = mapRange(easedScroll, 0, sections[1]);
+    let pFooterReveal = mapRange(easedScroll, sections[2], sections[3]);
+
+           projects.style.transform = `translate3d(0, ${(1 - pProjIn) * 100 - (pFooterReveal * 100)}%, 0)`;
+            footer.style.transform = `translate3d(0, 0, 0)`; 
+    const footerContent = document.querySelector('.footer-main');
+    if (footerContent) {
+        footerContent.style.transform = `translate3d(0, ${(1 - pFooterReveal) * 100}px, 0)`;
+        footerContent.style.opacity = pFooterReveal;
+    }
+
+            const ruler = document.getElementById('ruler');
+            if (easedScroll > sections[1] - 200 && easedScroll < sections[2] + 200) {
+        ruler.classList.add('active');
+        const pRuler = mapRange(easedScroll, sections[1], sections[2]);
+        indicator.style.top = `${pRuler * 100}%`;
+
+                pRuler < 0.02 ? tickStart.classList.add('highlight') : tickStart.classList.remove('highlight');
+                pRuler > 0.98 ? tickEnd.classList.add('highlight') : tickEnd.classList.remove('highlight');
+
+                const servicesNode = document.getElementById('content-services');
+                const clientsNode = document.getElementById('content-clients');
+
+                if (pRuler < 0.5) {
+                    if (rulerLabel.innerText !== "WHAT WE DO") {
+                        rulerLabel.style.opacity = 0;
+                        setTimeout(() => { rulerLabel.innerText = "WHAT WE DO"; rulerLabel.style.opacity = 1; }, 150);
+                    }
+                    servicesNode.style.opacity = "1"; servicesNode.style.transform = "translateY(0)";
+                    clientsNode.style.opacity = "0"; clientsNode.style.transform = "translateY(150px)";
+                } else {
+                    if (rulerLabel.innerText !== "CLIENTS") {
+                        rulerLabel.style.opacity = 0;
+                        setTimeout(() => { rulerLabel.innerText = "CLIENTS"; rulerLabel.style.opacity = 1; }, 150);
+                    }
+                    servicesNode.style.opacity = "0"; servicesNode.style.transform = "translateY(-150px)";
+                    clientsNode.style.opacity = "1"; clientsNode.style.transform = "translateY(0)";
+                }
+            } else {
+                ruler.classList.remove('active');
+            }
+
+            requestAnimationFrame(render);
+        }   
+        render();
+    </script>
 </body>
+<script src="js/script.js"></script>
+<script src="js/gradient-canvas.js"></script>
+<script src="js/include.js"></script>
 
 </html>

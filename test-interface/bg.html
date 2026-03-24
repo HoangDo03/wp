@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; width: 100%; height: 100%; }
+        #bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="bg-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.5.10/browser/pixi.min.js"></script>
+    <script>
+        class BackgroundEngine {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) return;
+
+        // 1. Khởi tạo Renderer
+        this.app = new PIXI.Application({
+            resizeTo: window,
+            backgroundColor: 0x000000,
+            antialias: true,
+            autoDensity: true,
+            resolution: window.devicePixelRatio || 1,
+        });
+        
+        this.container.appendChild(this.app.view);
+
+        // 2. Định nghĩa Shader
+        const vertexSrc = `
+            attribute vec2 aVertexPosition;
+            attribute vec2 aTextureCoord;
+            uniform mat3 projectionMatrix;
+            varying vec2 vUv;
+            void main() {
+                vUv = aTextureCoord;
+                gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
+            }
+        `;
+
+        const fragmentSrc = `
+            precision highp float;
+            varying vec2 vUv;
+            uniform float uTime;
+            uniform vec2 uMouse;
+
+            void main() {
+                vec2 uv = vUv;
+                
+                // Hiệu ứng bẻ cong (Distortion) dựa trên tọa độ và thời gian
+                float drift = sin(uv.y * 4.0 + uTime) * 0.03;
+                uv.x += drift;
+
+                // Bộ màu sắc đặc trưng từ dự án của bạn
+                vec3 c1 = vec3(0.08, 0.14, 0.29); // Xanh thẳm
+                vec3 c2 = vec3(0.13, 0.25, 0.54); // Xanh biển
+                vec3 c3 = vec3(0.66, 0.87, 0.85); // Xanh lơ
+                vec3 c4 = vec3(0.90, 0.30, 0.05); // Cam lửa
+
+                float dist = distance(uv, uMouse);
+                float wave = sin(uTime * 0.5) * 0.1;
+                float colorMix = uv.x + uv.y + wave;
+
+                vec3 color = mix(c1, c2, smoothstep(-0.5, 0.5, colorMix));
+                color = mix(color, c3, smoothstep(0.0, 1.0, colorMix - dist * 0.5));
+                color = mix(color, c4, smoothstep(0.5, 1.5, colorMix + dist * 0.2));
+
+                gl_FragColor = vec4(color, 1.0);
+            }
+        `;
+
+        // 3. Tạo Mesh bao phủ Viewport
+        // Chúng ta sử dụng tọa độ theo pixel của màn hình thay vì [-1, 1] để PixiJS tính toán dễ hơn
+        const geometry = new PIXI.Geometry()
+            .addAttribute('aVertexPosition', [
+                0, 0, 
+                window.innerWidth, 0, 
+                window.innerWidth, window.innerHeight, 
+                0, window.innerHeight
+            ], 2)
+            .addAttribute('aTextureCoord', [0, 0, 1, 0, 1, 1, 0, 1], 2)
+            .addIndex([0, 1, 2, 0, 2, 3]);
+
+        this.uniforms = { uTime: 0, uMouse: [0.5, 0.5] };
+        this.shader = PIXI.Shader.from(vertexSrc, fragmentSrc, this.uniforms);
+        this.mesh = new PIXI.Mesh(geometry, this.shader);
+
+        this.app.stage.addChild(this.mesh);
+
+        // 4. Xử lý chuột & Render
+        this.targetMouse = { x: 0.5, y: 0.5 };
+        this.currentMouse = { x: 0.5, y: 0.5 };
+
+        window.addEventListener('pointermove', (e) => {
+            this.targetMouse.x = e.clientX / window.innerWidth;
+            this.targetMouse.y = e.clientY / window.innerHeight;
+        });
+
+        this.app.ticker.add((delta) => {
+            this.uniforms.uTime += 0.01 * delta;
+            
+            // Chuyển động chuột mượt mà (Lerp)
+            this.currentMouse.x += (this.targetMouse.x - this.currentMouse.x) * 0.05;
+            this.currentMouse.y += (this.targetMouse.y - this.currentMouse.y) * 0.05;
+            this.uniforms.uMouse = [this.currentMouse.x, this.currentMouse.y];
+
+            // Đảm bảo mesh luôn phủ kín khi thay đổi kích thước trình duyệt
+            this.mesh.width = this.app.screen.width;
+            this.mesh.height = this.app.screen.height;
+        });
+    }
+}
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const engine = new BackgroundEngine('bg-container');
+            console.log("Background Initialized");
+        });
+    </script>
+</body>
+</html>
