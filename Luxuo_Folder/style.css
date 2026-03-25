@@ -829,3 +829,34 @@ h2{
         display: none;
     }
 }
+
+@media (max-width: 500px) {
+    .divider-line {
+        display: none;
+    }
+
+    .section-title h2 {
+        text-align: center !important;
+        width: 100%;
+    }
+
+    .header-top-row {
+        padding-left: 0 !important;
+        justify-content: center !important;
+    }
+
+    .header-bottom-row {
+        padding-right: 0 !important;
+        justify-content: center !important;
+    }
+
+    .section-title .description {
+        align-items: center;
+    }
+
+    .description .line-1,
+    .description .line-2 {
+        align-self: center !important;
+        padding-left: 0 !important;
+    }
+}
