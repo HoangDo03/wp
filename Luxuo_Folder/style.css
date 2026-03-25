@@ -35,7 +35,7 @@ img {
 
 body {
     color: #fff;
-    font-family: 'GTSuperDisplay', sans-serif;
+    font-family: 'AvenirNext', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -56,7 +56,9 @@ h1 {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-h2{
+
+h2 {
+
     font-size: clamp(36px, 5.5vw, 60px);
     font-weight: 300;
     line-height: 1.2;
@@ -71,7 +73,7 @@ h2{
     font-weight: 300;
 }
 
-.description{
+.description {
     font-size: clamp(16px, 3.5vw, 36px);
     font-weight: 600;
     font-style: italic;
@@ -79,11 +81,12 @@ h2{
 }
 
 .body-text {
-    font-family: 'AvenirNext', sans-serif;
+    font-family: 'GTSuperDisplay', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
     color: var(--primary-color);
+    font-size: clamp(0.3rem, 3.6vw, 22px);
 }
 
 /* SECTION 1: HERO */
@@ -125,7 +128,7 @@ h2{
 .hero-section .subtitle {
     font-family: "GTSuperDisplay", serif;
     font-style: italic;
-    font-size: clamp(1.2rem,3.7rem,28px);
+    font-size: clamp(1.2rem, 3.7rem, 28px);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.523);
 }
 
@@ -138,7 +141,7 @@ h2{
 
 .text-section .body-text {
     font-family: 'AvenirNext', sans-serif;
-    font-size: clamp(0.3rem, 3.6vw, 22px);
+
     line-height: 1.8;
     margin-bottom: 20px;
     text-align: justify;
@@ -161,15 +164,16 @@ h2{
     align-items: center;
     gap: 30px;
 }
-.header-top-row{
-       padding-left: 2.5rem;
+
+.header-top-row {
+    padding-left: 2.5rem;
 
 }
 
 .header-bottom-row {
     justify-content: flex-end;
     margin-top: 10px;
-     padding-right: 2.5rem;
+    padding-right: 2.5rem;
 
 }
 
@@ -204,7 +208,8 @@ h2{
     flex-direction: column;
 
 }
-.interior-header .description{
+
+.interior-header .description {
     padding-top: 1.5rem;
 }
 
@@ -267,6 +272,7 @@ h2{
 .interior-grid img {
     transition: transform 0.8s ease;
 }
+
 .overlay-wrapper {
     position: relative;
     max-width: 60%;
@@ -298,7 +304,7 @@ h2{
     bottom: 0;
     border-radius: 0 140px 100px 0;
     padding: 3rem 1.5rem 3rem 2rem;
-        background: linear-gradient(0deg,
+    background: linear-gradient(0deg,
             #EDE8D0 0%,
             #D8BCAB 100%);
     /* box-shadow: -10px 10px 30px rgba(0,0,0,0.2); */
@@ -372,6 +378,7 @@ h2{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .main-visual::after {
     content: "";
     position: absolute;
@@ -379,7 +386,7 @@ h2{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.203); 
+    background-color: rgba(0, 0, 0, 0.203);
     z-index: 1;
 }
 
@@ -406,7 +413,7 @@ h2{
 }
 
 .nature-title {
-    color:#FFD59A;
+    color: #FFD59A;
     font-size: clamp(36px, 5.5vw, 70px);
 }
 
@@ -541,17 +548,17 @@ h2{
     object-fit: cover;
     display: block;
     /* Làm mờ dần phần đỉnh hình ảnh */
-    -webkit-mask-image: linear-gradient(
-        to bottom, 
-        rgba(186, 164, 138, 0.322) 0%,           /* Đỉnh: Mờ hoàn toàn */
-        rgba(186, 164, 138, 0.9) 5%               /* Xuống đến 25%: Hiển thị rõ nét 100% */
-    );
-    mask-image: linear-gradient(
-        to bottom, 
-        rgba(186, 164, 138, 0.297) 0%, 
-        rgba(186, 164, 138, 0.9) 5%
-    );
+    -webkit-mask-image: linear-gradient(to bottom,
+            rgba(186, 164, 138, 0.322) 0%,
+            /* Đỉnh: Mờ hoàn toàn */
+            rgba(186, 164, 138, 0.9) 5%
+            /* Xuống đến 25%: Hiển thị rõ nét 100% */
+        );
+    mask-image: linear-gradient(to bottom,
+            rgba(186, 164, 138, 0.297) 0%,
+            rgba(186, 164, 138, 0.9) 5%);
 }
+
 .service-lifestyle-section {
     padding: 1rem 0;
     /* background-color: #1a1512; */
@@ -570,19 +577,20 @@ h2{
 
 
 }
+
 .lifestyle-overlay {
     position: absolute;
-    top: 3%; 
+    top: 3%;
     left: 3%;
-    right: -2%; 
-    bottom: -4%; 
-    
+    right: -2%;
+    bottom: -4%;
+
     height: auto;
     border: 2px solid rgba(197, 160, 89, 0.4);
     border-radius: 80px 0 70px 0;
-    
+
     z-index: 0;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .lifestyle-grid {
@@ -780,19 +788,23 @@ h2{
         flex-direction: column;
         gap: 10px;
     }
-    .overlay-bottom{
+
+    .overlay-bottom {
         bottom: -15%;
         width: 93%;
         height: 250px;
     }
-    .footer-subtitle-italic{
+
+    .footer-subtitle-italic {
         margin-left: 0;
 
     }
-    .gradient-overlay{
+
+    .gradient-overlay {
         background: none;
     }
-    .description .line-2{
+
+    .description .line-2 {
         padding-left: 5rem;
     }
 }
