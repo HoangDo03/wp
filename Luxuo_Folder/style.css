@@ -20,6 +20,7 @@
     font-weight: 500;
 }
 
+
 @font-face {
     font-family: 'AvenirNext';
     src: url('Fonts/AvenirNext-Medium-06.ttf') format('truetype');
@@ -142,7 +143,7 @@ font-family: 'GTSuperDisplay', serif;
     font-style: italic;
     font-size: clamp(1.2rem, 3.7rem, 28px);
     font-weight: 400;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.523);
 }
 
