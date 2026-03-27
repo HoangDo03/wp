@@ -81,7 +81,7 @@ font-family: 'GTSuperDisplay', serif;
     font-weight: 300;
     line-height: 1.2;
     letter-spacing: 1px;
-    font-style: italic;
+    transform: skewX(-12deg);
     margin: 0;
 }
 
@@ -139,8 +139,9 @@ font-family: 'GTSuperDisplay', serif;
 }
 
 .hero-section .subtitle {
-    font-family: "AvenirNext", serif;
-    font-style: italic;
+    font-family: "GTSuperDisplay", serif;
+    /* font-style: italic; */
+    transform: skewX(-12deg);
     font-size: clamp(1.2rem, 3.7rem, 28px);
     font-weight: 400;
     letter-spacing: 0.03em;
