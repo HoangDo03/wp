@@ -6,7 +6,7 @@
     /* border: solid 1px red; */
 }
 
-body{
+body {
     background-color: #f6f3ea;
     font-family: 'Noto Serif', serif;
     color: black;
@@ -21,11 +21,12 @@ img {
 
 .container {
     margin: 0 auto;
-    padding: 2rem 1rem ;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
+
 .content-section {
     /* padding: 2rem 0; */
     width: clamp(10%, 90%, 700px);
@@ -34,39 +35,61 @@ img {
 }
 
 
-.quote{
+.quote {
     width: clamp(10%, 95%, 1000px);
     margin: auto;
     padding: 2rem 0;
 }
 
-.title{
+.title {
     width: clamp(10%, 80%, 500px);
     margin: auto;
 }
-h4{
+
+h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     line-height: 1.35;
     letter-spacing: 0;
     text-align: justify;
-    font-size: clamp(18px, 1.1vw,20px);
+    font-size: clamp(18px, 1.1vw, 20px);
 }
-.body-text{
+
+.body-text {
     font-weight: 400;
-    font-size: clamp(14px,1.1vw ,16px);
+    font-size: clamp(14px, 1.1vw, 16px);
     line-height: 1.7;
     letter-spacing: 0.2px;
 }
 
 
-footer .img{
+footer .img {
     width: clamp(10%, 95%, 600px);
     margin: auto;
 }
+
 @media (max-width: 700px) {
-    .container{
+    .container {
         padding: 1rem 0;
         gap: 1rem;
     }
+}
+
+/* Animations */
+.hero-banner,
+.img,
+.container h4,
+.container .body-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+.hero-banner.animate,
+.img.animate,
+.container h4.animate,
+.container .body-text.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
