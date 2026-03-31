@@ -73,7 +73,7 @@ h1 {
     font-family: 'GTSuperDisplay', serif;
     font-size: clamp(5rem, 9vw, 9.5rem);
     letter-spacing: 2px;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -81,7 +81,7 @@ h1 {
 h2 {
     font-family: 'GTSuperDisplay', serif;
     font-size: clamp(36px, 5.5vw, 65px);
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: 1px;
     transform: skewX(-12deg);
@@ -100,6 +100,7 @@ h2 {
     font-family: 'GTSuperDisplay', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
+    font-weight: 500;
     margin-bottom: 20px;
     color: var(--primary-color);
     font-size: clamp(0.3rem, 3.6vw, 22px);
@@ -919,11 +920,13 @@ h2 {
     .description {
         font-size: 18px;
     }
-    .service-lifestyle-section{
+
+    .service-lifestyle-section {
         padding: 0;
     }
-    .text-section{
-            padding: 1rem 0;
+
+    .text-section {
+        padding: 1rem 0;
     }
 
 }

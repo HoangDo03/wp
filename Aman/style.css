@@ -21,7 +21,7 @@ img {
 
 .container {
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -36,14 +36,15 @@ img {
 
 
 .quote {
-    width: clamp(10%, 95%, 1000px);
+    width: clamp(10%, 98%, 1100px);
     margin: auto;
-    padding: 2rem 0;
+    padding: 2rem 0 0;
 }
 
 .title {
     width: clamp(10%, 80%, 500px);
     margin: auto;
+    padding-top: 2rem;
 }
 
 h4 {
@@ -70,8 +71,14 @@ footer .img {
 
 @media (max-width: 700px) {
     .container {
-        padding: 1rem 0;
+        padding: 1rem 0 0;
         gap: 1rem;
+    }
+    .title {
+        padding-top: 1rem;
+    }
+    .quote{
+        padding: 1rem 0 0;
     }
 }
 
