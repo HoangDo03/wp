@@ -26,17 +26,20 @@
     src: url('Fonts/AvenirNext-Medium-06.ttf') format('truetype');
     font-weight: 500;
 }
+
 @font-face {
     font-family: 'AvenirNext';
     src: url('Fonts/AvenirNext-MediumItalic-07.ttf') format('truetype');
     font-weight: 500;
     font-style: italic;
 }
+
 @font-face {
     font-family: 'AvenirNext';
     src: url('Fonts/AvenirNext-Bold-01.ttf') format('truetype');
     font-weight: 600;
 }
+
 @font-face {
     font-family: 'AvenirNext';
     src: url('Fonts/AvenirNext-BoldItalic-02.ttf') format('truetype');
@@ -76,7 +79,7 @@ h1 {
 }
 
 h2 {
-font-family: 'GTSuperDisplay', serif;
+    font-family: 'GTSuperDisplay', serif;
     font-size: clamp(36px, 5.5vw, 65px);
     font-weight: 300;
     line-height: 1.2;
@@ -166,10 +169,12 @@ font-family: 'GTSuperDisplay', serif;
     margin-right: auto;
     color: #000;
 }
-.body-text a{
+
+.body-text a {
     color: inherit;
     text-decoration: none;
 }
+
 .text-section.hero-intro .body-text {
     text-align: center;
     font-weight: 600;
@@ -400,18 +405,16 @@ font-family: 'GTSuperDisplay', serif;
 
 .main-visual::after {
     content: "";
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.087) 50%,
-    rgba(0, 0, 0, 0.8) 100%
-);
-z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.087) 50%,
+            rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
 }
 
 
@@ -438,7 +441,7 @@ z-index: 1;
 
 .nature-title {
     color: #FFD59A;
-    font-size: clamp(36px, 5.5vw, 70px);
+    font-size: clamp(40px, 5.5vw, 70px);
 }
 
 
@@ -490,7 +493,7 @@ z-index: 1;
 }
 
 .gradient-overlay-absolute {
-        position: absolute;
+    position: absolute;
     top: -10%;
     left: 0;
     width: 100%;
@@ -509,13 +512,14 @@ z-index: 1;
     transform: translateY(35%);
 }
 
-.title-overlap .section-title{
+.title-overlap .section-title {
     width: 70%;
 }
 
-.title-overlap .title-gt{
+.title-overlap .title-gt {
     color: #F1E4D1;
 }
+
 .salon-top-row {
     display: flex;
     align-items: center;
@@ -573,7 +577,7 @@ z-index: 1;
     display: block;
 
 
-    -webkit-mask-image: linear-gradient(to bottom, rgba(186, 164, 138, 0.322) 0%, rgba(186, 164, 138, 0.9) 5%); 
+    -webkit-mask-image: linear-gradient(to bottom, rgba(186, 164, 138, 0.322) 0%, rgba(186, 164, 138, 0.9) 5%);
     mask-image: linear-gradient(to bottom, rgb(186 164 138 / 0%) 0%, rgb(186 164 138) 5%);
 }
 
@@ -891,4 +895,29 @@ z-index: 1;
         align-self: center !important;
         padding-left: 0 !important;
     }
+
+    .section-title {
+        margin: 30px auto;
+    }
+
+    .overlay-content {
+        top: 10%;
+    }
+
+    .title-overlap {
+        transform: translateY(75%);
+    }
+
+    .title-overlap .section-title {
+        width: 90%;
+    }
+
+    .title-gt {
+        font-size: clamp(36px, 15vw, 90px);
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
 }
