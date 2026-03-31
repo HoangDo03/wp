@@ -919,5 +919,8 @@ h2 {
     .description {
         font-size: 18px;
     }
+    .service-lifestyle-section{
+        padding: 0;
+    }
 
 }
