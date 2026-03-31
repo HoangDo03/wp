@@ -154,7 +154,7 @@ h2 {
 .text-section {
     color: #fff;
     padding: 2rem 0;
-    width: clamp(10%, 90%, 900px);
+    width: clamp(10%, 95%, 900px);
     margin: auto;
 }
 
@@ -921,6 +921,9 @@ h2 {
     }
     .service-lifestyle-section{
         padding: 0;
+    }
+    .text-section{
+            padding: 1rem 0;
     }
 
 }
