@@ -444,7 +444,8 @@ h2 {
 
 .nature-title {
     color: #FFD59A;
-    font-size: clamp(40px, 5.5vw, 70px);
+    font-size: clamp(40px, 8.5vw, 70px);
+    white-space: nowrap;
 }
 
 
