@@ -1,0 +1,839 @@
+<?php
+/**
+ * Template Part: ACF Page Builder 
+ */
+
+$pb_id = get_the_ID();
+
+// WooCommerce Shop Page context
+if (function_exists('is_shop') && is_shop()) {
+    $pb_id = wc_get_page_id('shop');
+}
+// Taxonomy / Archive context
+elseif (is_archive() || is_tax() || is_category() || is_tag()) {
+    $pb_id = get_queried_object();
+}
+
+if (!have_rows('page_sections', $pb_id)) {
+    return;
+}
+?>
+
+<div class="page-builder-content">
+    <?php while (have_rows('page_sections', $pb_id)):
+    the_row(); ?>
+
+        <?php if (get_row_layout() == 'section'): ?>
+
+            <?php
+        $section_title = get_sub_field('section_title');
+        $layout_width = get_sub_field('layout_width') ?: 'container';
+        $settings_group = get_sub_field('setting') ?: get_sub_field('settings');
+
+        if ($settings_group) {
+            $direction = $settings_group['direction'] ?? $settings_group['layout_direction'] ?? 'column';
+            $bg_color = $settings_group['bg_color'] ?? $settings_group['background_color'] ?? '';
+        }
+        else {
+            $direction = get_sub_field('direction') ?: get_sub_field('layout_direction') ?: 'column';
+            $bg_color = get_sub_field('bg_color') ?: get_sub_field('background_color') ?: '';
+        }
+        $has_bg = !empty($bg_color) && $bg_color !== 'transparent';
+        $reverse_mobile = get_sub_field('reverse_on_mobile');
+
+        $is_services_tpl = is_page_template('page-templates/template-services.php') || is_page_template('page-templates/template-services-landing.php');
+        $is_intro_page = is_page_template('page-templates/template-about-bona.php') ||
+            strpos(strtolower(get_the_title()), 'giới thiệu') !== false ||
+            strpos(strtolower(get_the_title()), 'about') !== false ||
+            strpos(strtolower(get_post_field('post_name', $pb_id)), 'gioi-thieu') !== false;
+
+
+        $force_full_width = false;
+        $has_video = false;
+        foreach (get_sub_field('blocks') ?: [] as $b) {
+            $ly = $b['acf_fc_layout'] ?? '';
+            // Only force full-width if specifically selected in ACF
+            if ($b['full_width'] ?? false) {
+                $force_full_width = true;
+            }
+            // Detect video blocks for mobile order swap
+            if (in_array($ly, ['video_block', 'single_video', 'video', 'media_block'])) {
+                $slides_type = $b['slides_display_type'] ?? $b['type'] ?? '';
+                $slides_type_str = is_array($slides_type) ? ($slides_type['value'] ?? '') : (string)$slides_type;
+                if (stripos($slides_type_str, 'video') !== false) {
+                    $has_video = true;
+                }
+            }
+        }
+        if ($force_full_width) {
+            $layout_width = 'full';
+        }
+
+        $section_classes = ['wood-section', 'flex-section'];
+        $section_classes[] = 'direction-' . $direction;
+        if ($is_services_tpl)
+            $section_classes[] = 'services-section';
+        if ($is_intro_page)
+            $section_classes[] = 'intro-section';
+        if ($force_full_width)
+            $section_classes[] = 'section-force-full';
+
+        if ($reverse_mobile)
+            $section_classes[] = 'reverse-mobile';
+        if ($has_bg)
+            $section_classes[] = 'has-bg-section';
+        if ($has_video)
+            $section_classes[] = 'has-video';
+?>
+            <section class="<?php echo esc_attr(implode(' ', $section_classes)); ?>" style="padding: 2rem 0 0 0;">
+
+                <div class="flex-section-inner-wrap width-<?php echo esc_attr($layout_width); ?>"
+                    style="<?php echo($layout_width !== 'full') ? ' margin: 0 auto;' : ''; ?>">
+
+                    <?php if ($section_title): ?>
+                        <h2 class="section-label"
+                            style=" color: var(--green80); text-transform: uppercase; margin-bottom: 30px;">
+							
+                            <?php echo esc_html($section_title); ?>
+                        </h2>
+                        <?php
+        endif; ?>
+
+                    <div class="flex-section-inner"
+                      style="display: flex; flex-wrap: wrap; <?php echo ($direction == 'column') ? 'gap: 3rem; flex-direction: row;' : 'gap: 1rem !important; flex-direction: column;'; ?><?php echo $has_bg ? ' background-color: ' . esc_attr($bg_color) . '; border-radius: 4px;' : ''; ?>">
+
+
+                        <?php if (have_rows('blocks')):
+            $blocks_count = count(get_sub_field('blocks') ?: []);
+            while (have_rows('blocks')):
+                the_row(); ?>
+                                <?php
+                                $block_layout = get_row_layout();
+                                $bi_style = 'flex: 1; min-height: 0;';
+                                if ($has_bg) {
+                                    $bi_style .= ' padding: 0 !important;';
+                                }
+                                ?>
+                                <div class="block-item" style="<?php echo esc_attr($bi_style); ?>">
+                                    <?php
+                $block_layout = get_row_layout();
+
+                // ── TEXT BLOCK ──────────────────────────────
+                if ($block_layout == 'text_block'):
+                    $b_title = get_sub_field('title');
+                    $b_content = get_sub_field('content') ?: get_sub_field('text') ?: get_sub_field('description');
+                    $b_bg = get_sub_field('block_bg_color') ?: get_sub_field('bg_color');
+                    $b_has_bg = !empty($b_bg) && $b_bg !== 'transparent';
+                    $b_align = get_sub_field('text_align') ?: 'left';
+                    $b_full_width = get_sub_field('full_width');
+                    $b_top_image = get_sub_field('top_image');
+
+                    $is_stacked = ($direction !== 'column' || $blocks_count === 1);
+                    $extra_class = $is_services_tpl ? 'services-text-block' : '';
+                    if ($is_services_tpl && $is_stacked)
+                        $extra_class .= ' services-stacked';
+
+                    $bt_classes = ['block-text', 'col-text', 'text-align-' . $b_align];
+                    if ($extra_class)
+                        $bt_classes[] = $extra_class;
+                    if ($b_has_bg)
+                        $bt_classes[] = 'has-bg';
+                    if ($b_full_width)
+                        $bt_classes[] = 'block-text--fullwidth';
+?>
+                     <?php
+                             $bt_style = $b_has_bg ? 'background-color: ' . esc_attr($b_bg) . ';' : '';
+                                 if ($has_bg) {
+                                 $bt_style .= ' padding: 2rem;';
+                                 }
+                                 ?>
+                                  <div class="<?php echo esc_attr(implode(' ', $bt_classes)); ?>" style="<?php echo $bt_style; ?>">
+
+                                            <?php if ($b_top_image): ?>
+                                                <div class="block-text__top-image">
+                                                    <img src="<?php echo esc_url($b_top_image['url']); ?>"
+                                                        alt="<?php echo esc_attr($b_top_image['alt']); ?>">
+                                                </div>
+                                            <?php
+                    endif; ?>
+                                            <?php if ($b_title): ?>
+                                                <h3 class="block-text__title"><?php echo esc_html($b_title); ?></h3>
+                                                <?php
+                    endif; ?>
+                                            <div class="wysiwyg-content block-text__body">
+                                                <?php echo $b_content; ?>
+                                            </div>
+
+                                            <?php
+                    $links_direction = get_sub_field('link_direction') ?: 'row';
+                    if (have_rows('links')): ?>
+                                                <div class="block-text__links"
+                                                    style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 20px; flex-direction: <?php echo esc_attr($links_direction); ?>; align-items: <?php echo($links_direction == 'column' ? ($b_align == 'center' ? 'center' : ($b_align == 'right' ? 'flex-end' : 'flex-start')) : 'center'); ?>; justify-content: <?php echo($b_align == 'center' ? 'center' : ($b_align == 'right' ? 'flex-end' : 'flex-start')); ?>;">
+                                                    <?php while (have_rows('links')):
+                            the_row();
+                            $link = get_sub_field('link');
+                            $style = get_sub_field('style');
+                            if ($link):
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self';
+
+                                if ($style === 'button'): ?>
+                                                                <button onclick="window.location.href='<?php echo esc_url($link_url); ?>'" class="cta-btn">
+                                                                    <span><?php echo esc_html($link_title); ?></span>
+                                                                </button>
+                                                            <?php
+                                else: ?>
+                                                                <a href="<?php echo esc_url($link_url); ?>" class="text-link-arrow">
+                                                                    <?php echo esc_html($link_title); ?>
+                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2"
+                                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </a>
+                                                            <?php
+                                endif; ?>
+                                                        <?php
+                            endif;
+                        endwhile; ?>
+                                                </div>
+                                            <?php
+                    endif; ?>
+                                        </div>
+
+                                        <?php
+                // ── MEDIA BLOCK (single image / gallery) ────
+                elseif (in_array($block_layout, ['media_block', 'single_media', 'single_image', 'gallery', 'image_pair', 'image-pair'])):
+
+                    // Read both fields independently to prevent slides_display_type from overriding explicit type selection
+                                       $raw_slides_type = get_sub_field('slides_display_type');
+                                        $raw_explicit_type = get_sub_field('type');
+                                        $b_slides_type = strtolower(is_array($raw_slides_type) ? ($raw_slides_type['value'] ?? $raw_slides_type[0] ?? '') : (string) $raw_slides_type);
+                                        $b_explicit_type = strtolower(is_array($raw_explicit_type) ? ($raw_explicit_type['value'] ?? $raw_explicit_type[0] ?? '') : (string) $raw_explicit_type);
+
+                                        // $b_type is used for slider-specific logic (keeps slides_display_type as primary)
+                                        $b_type = $b_slides_type ?: $b_explicit_type;
+
+                                        if (empty($b_type)) {
+                                            $b_type = ($block_layout == 'gallery') ? 'gallery' : 'single';
+                                        }
+
+
+                    $is_full_mode = ($b_type == 'fullwidth' || $b_type == 'full_slides' || $b_type == 'fullwidthslides' || $b_type == 'slideswithtext_full' || $b_type == 'slidesfullwidth');
+                    $b_cap = get_sub_field('caption');
+                    $g_cols = get_sub_field('columns') ?: 4;
+                    $b_full_width = get_sub_field('full_width');
+                    $b_ratio = get_sub_field('image_ratio') ?: 'original';
+					$b_bg = get_sub_field('bg_color');
+                    $media_classes = ['block-media', 'col-image'];
+                    if ($block_layout === 'single_image' || $block_layout === 'single_media') {
+                        $media_classes[] = 'is-single-image';
+                    }
+                    if ($b_ratio === '5-4')
+                        $media_classes[] = 'has-ratio-5-4';
+                    if ($b_full_width)
+                        $media_classes[] = 'block-media--fullwidth';
+?>
+					<div class="<?php echo esc_attr(implode(' ', $media_classes)); ?>" <?php echo $b_bg ? 'style="background-color: ' . esc_attr($b_bg) . ';"' : ''; ?>>
+                    <?php
+
+                    $all_images = [];
+                    $all_styles = [];
+                    $v_align = 'flex-end';
+                    $current_row = get_row() ?: [];
+
+
+                    foreach ($current_row as $rk => $rv) {
+                        if (!is_array($rv)) {
+
+                            if (strpos($rk, 'alignment') !== false || strpos($rk, 'valign') !== false) {
+                                $v_align = $rv;
+                            }
+                            continue;
+                        }
+
+                        if (count($rv) > 0 && isset($rv[0]) && is_array($rv[0])) {
+                            $sample = $rv[0];
+                            $is_gallery = false;
+                            foreach ($sample as $sk => $sv) {
+                                if (strpos($sk, 'image') !== false || strpos($sk, 'img') !== false || is_numeric($sv) || (is_array($sv) && isset($sv['url']))) {
+                                    $is_gallery = true;
+                                    break;
+                                }
+                            }
+                            if ($is_gallery) {
+                                $all_images = $rv;
+                                continue;
+                            }
+
+                            $is_style = false;
+                            foreach ($sample as $sk => $sv) {
+                                if (strpos($sk, 'style') !== false || (is_string($sv) && (in_array(strtolower($sv), ['tall', 'short'])))) {
+                                    $is_style = true;
+                                    break;
+                                }
+                            }
+                            if ($is_style) {
+                                $all_styles = $rv;
+                                continue;
+                            }
+                        }
+                    }
+
+                   $css_align = ($v_align == 'top') ? 'flex-start' : 'flex-end';
+
+                                            // DECISION LOGIC: Image Pair vs Slider
+                                            // Check BOTH type fields independently — slides_display_type must not override explicit type selection
+                                            $is_pair_type = (
+                                                $block_layout == 'image_pair' ||
+                                                $block_layout == 'image-pair' ||
+                                                strpos($b_explicit_type, 'pair') !== false ||
+                                                strpos($b_explicit_type, 'đôi') !== false ||
+                                                strpos($b_slides_type, 'pair') !== false ||
+                                                strpos($b_slides_type, 'đôi') !== false
+                                            );
+                                            $has_slides = have_rows('slides');
+                                            $is_slider_request = in_array($b_type, ['slides', 'full_slides', 'fullwidth', 'withtext', 'slideswithtext', 'slidewithtext', 'fullwidthslides', 'slidesfullwidth']);
+
+                                            $final_mode = 'single';
+                                            if ($is_pair_type) {
+                                                $final_mode = 'pair';
+                                            } elseif ($has_slides && ($is_slider_request || $block_layout == 'gallery' || $block_layout == 'media_block')) {
+                                                // If it's a media_block and has slides but ISN'T a pair, it's likely a slider
+                                                $final_mode = 'slider';
+                                            } elseif ($b_type == 'gallery' || have_rows('gallery')) {
+                                                $final_mode = 'gallery';
+                                            } elseif ($b_type == 'video' || have_rows('video')) {
+                                                $final_mode = 'video';
+                                            }
+
+                                            ?>
+                                            <?php if ($final_mode == 'pair'): ?>
+                                                <!-- Image Pair Mode (Asymmetric) -->
+                                                <?php if (!empty($all_images)): ?>
+                                                    <div class="media-pair-block"
+                                                        style="align-items: <?php echo esc_attr($css_align); ?> !important;">
+                                                        <?php
+                                                        $pair_count = 0;
+                                                        foreach ($all_images as $idx => $img_row):
+                                                            if ($pair_count >= 2)
+                                                                break;
+
+                                                            // Lấy Image URL
+                                                            $g_img = null;
+                                                            if (is_array($img_row)) {
+                                                                foreach ($img_row as $iv) {
+                                                                    if (is_numeric($iv) || (is_array($iv) && isset($iv['url']))) {
+                                                                        $g_img = $iv;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                if (!$g_img)
+                                                                    $g_img = array_shift($img_row);
+                                                            }
+                                                            $g_img_url = is_array($g_img) ? ($g_img['url'] ?? '') : (is_numeric($g_img) ? wp_get_attachment_url($g_img) : $g_img);
+
+
+                                                            $style_row = $all_styles[$idx] ?? [];
+                                                            $g_style = 'tall';
+                                                            if (is_array($style_row)) {
+                                                                foreach ($style_row as $sv) {
+                                                                    if (is_string($sv) && in_array(strtolower($sv), ['tall', 'short'])) {
+                                                                        $g_style = $sv;
+                                                                        break;
+                                                                    }
+                                                                    if (is_array($sv) && isset($sv['value'])) {
+                                                                        $g_style = $sv['value'];
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            $g_style = strtolower(trim($g_style)) ?: 'tall';
+                                                            $pair_count++;
+                                                            ?>
+                                                            <div class="media-pair-item style-<?php echo esc_attr($g_style); ?>">
+                                                                <?php if ($g_img_url): ?>
+                                                                    <img src="<?php echo esc_url($g_img_url); ?>" alt="Pair Image">
+                                                                    <?php
+                                                                endif; ?>
+                                                            </div>
+                                                            <?php
+                                                        endforeach; ?>
+                                                    </div>
+                                                    <?php
+                                                else: ?>
+                                                    <div style="background:orange; padding:10px;">KHÔNG TÌM THẤY HÌNH TRONG GALLERY</div>
+                                                    <?php
+                                                endif; ?>
+
+                                                
+
+                                                <?php
+                    elseif ($b_type == 'gallery' || have_rows('gallery')): ?>
+
+                                                <?php if (have_rows('gallery')): ?>
+                                                    <div class="media-gallery-grid"
+                                                        style="display: grid; grid-template-columns: repeat(<?php echo esc_attr($g_cols); ?>, 1fr); gap: 20px;">
+                                                        <?php while (have_rows('gallery')):
+                                the_row();
+                                $g_img = get_sub_field('image') ?: get_sub_field('img');
+                                $g_label = get_sub_field('label') ?: get_sub_field('title');
+                                $g_img_url = is_array($g_img) ? $g_img['url'] : (is_numeric($g_img) ? wp_get_attachment_url($g_img) : $g_img);
+?>
+                                                            <div class="gallery-item" style="display: flex; flex-direction: column;">
+                                                                <img src="<?php echo esc_url($g_img_url); ?>"
+                                                                    style="width:100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 2px;">
+                                                                <?php if ($g_label): ?>
+                                                                    <span class="gallery-item-title"
+                                                                        style="margin-top: 8px">
+                                                                        <?php echo esc_html($g_label); ?>
+                                                                    </span>
+                                                                    <?php
+                                endif; ?>
+                                                            </div>
+                                                            <?php
+                            endwhile; ?>
+                                                    </div>
+                                                    <?php
+                        endif; ?>
+
+                                                <?php
+                   elseif ($b_type == 'video' || have_rows('video')):
+                                                $has_video_grid = true;
+                                                ?>
+                                                                        <div class="block-media-inner video-grid-wrapper"
+                                                                        style="<?php echo ($has_bg) ? 'padding: 0 !important;' : 'padding: ' . esc_attr($b_padding) . ';'; ?> height: 100%; min-height: 0;">
+
+                                                <?php if (have_rows('video')):
+                            $videos_data = [];
+                            while (have_rows('video')) {
+                                the_row();
+                                $videos_data[] = [
+                                    'title' => get_sub_field('title') ?: get_sub_field('label'),
+                                    'url' => get_sub_field('video_url'),
+                                    'file' => get_sub_field('video_file')
+                                ];
+                            }
+                            $v_count = count($videos_data);
+                            $v_cols = $v_count === 1 ? 1 : 2;
+?>
+                                                    <div class="media-video-grid"
+                                                        style="display: block; height: 100%;">
+                                                        <?php foreach ($videos_data as $v):
+                                $v_title = $v['title'];
+                                $v_url_ext = $v['url'];
+                                $v_file = $v['file'];
+?>
+                                                            <div class="video-grid-item" style="height: 100%;">
+                                                                <div class="video-wrap"
+                                                                   style="width: 100%; height: 100%; position: relative; background: #000; border-radius: <?php echo ($has_bg && $v_cols == 1) ? '0 4px 4px 0' : '4px'; ?>; overflow: hidden; min-height: 0;">
+                                                                    <?php if (!empty($v_url_ext)): ?>
+                                                                        <?php
+                                    $embed = wp_oembed_get($v_url_ext);
+                                    if ($embed) {
+                                         // Remove width, height and style attributes to allow our CSS to take over correctly
+                                          $embed = preg_replace('/(width|height)="\d+"/', '', $embed);
+                                          $embed = preg_replace('/style="[^"]*"/', '', $embed);
+                                          $embed = str_replace('<iframe', '<iframe style="width:100%; height:100%; position:absolute; top:0; left:0; border:0; display:block; object-fit: cover;"', $embed);
+                                         echo $embed;
+                                    }
+                                    else {
+                                        echo '<video src="' . esc_url($v_url_ext) . '" controls style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"></video>';
+                                    }
+?>
+                                                                        <?php
+                                elseif (!empty($v_file)): ?>
+                                                                        <?php
+                                    $vid_url = is_array($v_file) ? ($v_file['url'] ?? '') : (is_numeric($v_file) ? wp_get_attachment_url($v_file) : $v_file);
+?>
+                                   <video src="<?php echo esc_url($vid_url); ?>" controls
+                                   style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;"></video>
+                                                                        <?php
+                                endif; ?>
+                                                                </div>
+                                                                <?php if ($v_title): ?>
+                                                                    <span class="video-grid-title"
+                                                                        style="margin-top: 10px; font-size: 13px; color: var(--green40); line-height: 1.2; font-weight: 500; font-family: 'Inter', sans-serif;">
+                                                                        <?php echo esc_html($v_title); ?>
+                                                                    </span>
+                                                                    <?php
+                                endif; ?>
+                                                            </div>
+                                                            <?php
+                            endforeach; ?>
+                                                    </div>
+                                                    <style>
+                                                        @media (max-width: 768px) {
+                                                            .media-video-grid {
+                                                                grid-template-columns: 1fr !important;
+                                                            }
+                                                        }
+                                                    </style>
+											</div>
+                                                    <?php
+                        endif; ?>
+
+                                                <?php
+                    elseif ($final_mode == 'slider'): ?>
+
+
+                                                <?php if (have_rows('slides')):
+
+                            $slider_class = $is_full_mode ? ' slider-mode-full' : ' slider-mode-split';
+?>
+                                                    <div class="block-slider step-slider<?php echo esc_attr($slider_class); ?>">
+                                                        <div class="swiper-wrapper">
+                                                            <?php while (have_rows('slides')):
+                                the_row();
+                                $type = get_sub_field('type') ?: 'Image';
+                                $title = get_sub_field('title') ?: get_sub_field('slide_title') ?: get_sub_field('name');
+                                $content = get_sub_field('content') ?: get_sub_field('description') ?: get_sub_field('text');
+?>
+                                                                <div class="step-slide swiper-slide">
+                                                                    <!-- Media Column -->
+                                                                    <div class="slide-image">
+                                                                        <?php if (strtolower($type) == 'image'):
+                                    $img = get_sub_field('image');
+                                    if (!empty($img)):
+                                        $img_url = is_array($img) ? ($img['url'] ?? '') : (is_numeric($img) ? wp_get_attachment_url($img) : $img);
+?>
+                                                                                <img src="<?php echo esc_url($img_url); ?>"
+                                                                                    alt="<?php echo esc_attr($title); ?>">
+                                                                                <?php
+                                    endif; ?>
+                                                                            <?php
+                                elseif (strtolower($type) == 'video'): ?>
+                                                                            <div class="video-wrap" style="position: relative; width: 100%; height: 100%;">
+                                                                                <?php
+                                    $vid_url_ext = get_sub_field('video_url');
+                                    $vid_file = get_sub_field('video_file');
+                                    if (!empty($vid_url_ext)): ?>
+                                                                                    <?php echo wp_oembed_get($vid_url_ext); ?>
+                                                                                    <?php
+                                    elseif (!empty($vid_file)):
+                                        $vid_url = is_array($vid_file) ? ($vid_file['url'] ?? '') : (is_numeric($vid_file) ? wp_get_attachment_url($vid_file) : $vid_file);
+?>
+                                                                                    <video src="<?php echo esc_url($vid_url); ?>" autoplay loop muted
+                                                                                        playsinline
+                                                                                        style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                                                                    <?php
+                                    endif; ?>
+                                                                            </div>
+                                                                            <?php
+                                endif; ?>
+
+                                                                        <div class="swiper-button-prev slider-nav-btn<?php echo $is_full_mode ? ' fullwidth' : ''; ?>">
+                                                                            &larr;</div>
+                                                                        <div class="swiper-button-next slider-nav-btn<?php echo $is_full_mode ? ' fullwidth' : ''; ?>">
+                                                                            &rarr;</div>
+                                                                        <div class="swiper-pagination slider-dots<?php echo $is_full_mode ? ' fullwidth' : ''; ?>">
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <?php if (!$is_full_mode): ?>
+                                                                        <div class="slide-content">
+                                                                            <?php if ($title): ?>
+                                                                                <h3 class="slide-title">
+                                                                                    <?php echo esc_html($title); ?>
+                                                                                </h3>
+                                                                                <?php
+                                    endif; ?>
+                                                                            <?php if ($content): ?>
+                                                                                <div class="wysiwyg-content">
+                                                                                    <?php echo $content; ?>
+                                                                                </div>
+                                                                                <?php
+                                    endif; ?>
+                                                                        </div>
+                                                                        <?php
+                                endif; ?>
+                                                                </div>
+                                                                <?php
+                            endwhile; ?>
+                                                        </div>
+
+                                                    </div>
+                                                    <?php
+                        endif; ?>
+
+
+                                                <?php
+                    else: ?>
+                                                <!-- Single Media Mode -->
+                                                <?php
+                        $b_img = get_sub_field('single_image');
+                        $b_vid = get_sub_field('video_url');
+                        $img_url = is_array($b_img) ? ($b_img['url'] ?? '') : (is_numeric($b_img) ? wp_get_attachment_url($b_img) : $b_img);
+?>
+                                                <?php if ($b_vid): ?>
+                                                    <div class="video-wrap">
+                                                        <?php echo wp_oembed_get($b_vid) ?: '<video src="' . esc_url($b_vid) . '" controls style="width:100%;"></video>'; ?>
+                                                    </div>
+                                                    <?php
+                        elseif ($img_url): ?>
+                                                    <img src="<?php echo esc_url($img_url); ?>" style="width:100%; height:auto;">
+                                                    <?php
+                        endif; ?>
+                                                <?php
+                    endif; ?>
+
+                                            <?php if ($b_cap): ?>
+                                                <p class="caption" style="margin-top: 15px; font-style: italic; font-size: 14px; color: #666;">
+                                                    <?php echo esc_html($b_cap); ?>
+                                                </p>
+                                                <?php
+                    endif; ?>
+                                        </div>
+
+                                        <?php
+                // ── TABLE BLOCK ─────────────────────────────
+                elseif ($block_layout == 'table_block'):
+                    $b_title = get_sub_field('title');
+?>
+                                        <div class="block-table">
+                                            <?php if ($b_title): ?>
+                                                <h3 class="block-title">
+                                                    <?php echo esc_html($b_title); ?>
+                                                </h3>
+                                                <?php
+                    endif; ?>
+                                            <table class="dim-table" style="width:100%; border-collapse: collapse;">
+                                                <tbody>
+                                                    <?php if (have_rows('table_data')): ?>
+                                                        <?php while (have_rows('table_data')):
+                            the_row(); ?>
+                                                            <tr style="border-bottom: 1px solid #E0E0E0;">
+                                                                <td class="dim-label" style="padding: 4px 0 0; width: 30%;">
+                                                                    <h6>
+                                                                        <?php the_sub_field('label'); ?>
+                                                                    </h6>
+                                                                </td>
+                                                                <td style="padding: 4px 0 0; color: #14261F;">
+                                                                    <p>
+                                                                        <?php the_sub_field('value'); ?>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <?php
+                        endwhile; ?>
+                                                        <?php
+                    endif; ?>
+                                                    <?php if (get_post_type() === 'project' && have_rows('products_used')): ?>
+                                                        <tr style="border-bottom: 1px solid #E0E0E0;">
+                                                            <td class="dim-label"
+                                                                style="padding: 4px 0 0;  color: var(--green80); text-transform: uppercase;">
+                                                                <h6>
+																	SẢN PHẨM SỬ DỤNG
+																</h6>
+                                                            </td>
+                                                            <td style="padding: 4px 0 0 0;">
+                                                                <ul class="products-list-specs"
+                                                                    style="list-style: none; padding: 0; margin: 0;">
+                                                                    <?php while (have_rows('products_used')):
+                            the_row(); ?>
+                                                                        <li style="position: relative; padding-left: 18px; margin-bottom: 8px;">
+                                                                            <?php if ($p_link = get_sub_field('product_link')): ?>
+                                                                                <a href="<?php echo esc_url($p_link); ?>"
+                                                                                    style="color: var(--green80); text-decoration: underline; font-weight: 500;">
+                                                                                    <?php the_sub_field('product_name'); ?>
+                                                                                </a>
+                                                                                <?php
+                            else: ?>
+                                                                                <?php the_sub_field('product_name'); ?>
+                                                                                <?php
+                            endif; ?>
+                                                                        </li>
+                                                                        <style>
+                                                                            .products-list-specs li::before {
+                                                                                content: "•";
+                                                                                position: absolute;
+                                                                                left: 0;
+                                                                                color: var(--green80);
+                                                                            }
+                                                                        </style>
+                                                                        <?php
+                        endwhile; ?>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                    endif; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <?php
+                // ── EDITORIAL GRID (Kiểu Values: Ảnh trên - Chữ dưới) ──
+                elseif ($block_layout == 'editorial_grid'):
+                    $items = get_sub_field('items') ?: [];
+
+                    if (empty($items)) {
+                        // Fallback: If ACF is empty, we could potentially still pull child pages, 
+                        // but the user specifically asked NOT to pull automatically from revive/refinish.
+                        // However, to keep it functional for other templates that might rely on this, 
+                        // we can keep a limited fallback. But for Services, we honor the "no auto" request.
+                        if (!$is_services_tpl) {
+                            $service_pages = get_posts([
+                                'post_type' => 'page',
+                                'posts_per_page' => -1,
+                                'post_parent' => get_the_ID(),
+                                'post_status' => 'publish',
+                                'orderby' => 'menu_order',
+                                'order' => 'ASC',
+                            ]);
+                            if (!empty($service_pages)) {
+                                foreach ($service_pages as $sp) {
+                                    $thumb = get_the_post_thumbnail_url($sp->ID, 'large');
+                                    if (!$thumb) {
+                                        $acf_banner_img = get_field('banner_image', $sp->ID);
+                                        $thumb = is_array($acf_banner_img) ? ($acf_banner_img['url'] ?? '') : ($acf_banner_img ?: '');
+                                    }
+                                    $desc = get_field('banner_description', $sp->ID);
+                                    if (empty($desc)) {
+                                        $desc = $sp->post_excerpt ?: wp_trim_words(strip_shortcodes($sp->post_content), 30, '...');
+                                    }
+                                    $items[] = [
+                                        'image' => $thumb,
+                                        'title' => $sp->post_title,
+                                        'desc' => $desc,
+                                        'link' => ['url' => get_permalink($sp->ID)]
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                    $count = is_array($items) ? count($items) : 0;
+                    $grid_cols = ($count % 3 == 0 || $count == 3) ? 3 : 2;
+?>
+											<div class="values-bottom editorial-grid-values">
+												<div class="container bottom-grid editorial-cols-<?php echo $grid_cols; ?>">
+													<?php if ($count > 0):
+                        foreach ($items as $item): ?>
+															<div class="editorial-item">
+																<div class="bottom-img">
+																	<?php
+                            $img_url = is_array($item['image']) ? ($item['image']['url'] ?? '') : $item['image'];
+                            if ($img_url): ?>
+																		<img src="<?php echo esc_url($img_url); ?>"
+																			alt="<?php echo esc_attr($item['title'] ?? ''); ?>">
+																		<?php
+                            endif; ?>
+																</div>
+																<div class="bottom-text">
+																	<?php if (!empty($item['title'])): ?>
+																		<h3><?php echo esc_html($item['title']); ?></h3><?php
+                            endif; ?>
+																	<?php if (!empty($item['desc'])): ?>
+																		 <div class="editorial-desc"><?php echo nl2br(wp_kses_post($item['desc'])); ?></div><?php
+                            endif; ?>
+
+																	<a href="<?php echo esc_url(is_array($item['link']) ? $item['link']['url'] : $item['link']); ?>"
+																		class="read-more">Learn more</a>
+
+
+																</div>
+															</div>
+															<?php
+                        endforeach;
+                    else: ?>
+														<p>Không tìm thấy dịch vụ nào để hiển thị.</p>
+														<?php
+                    endif; ?>
+												</div>
+											</div>
+											<?php
+                // ── VALUE CARDS (Repeater) ──────────────────
+                elseif ($block_layout == 'value_cards'):
+                    if (have_rows('cards')): ?>
+                                            <div class="values-grid">
+                                                <?php while (have_rows('cards')):
+                            the_row();
+                            $v_title = get_sub_field('title');
+                            $v_subtitle = get_sub_field('subtitle');
+                            $v_content = get_sub_field('content');
+                            $v_bg = get_sub_field('bg_color') ?: '#F1F3F2';
+?>
+                                                    <div class="value-card" <?php echo($v_bg && $v_bg !== '#F1F3F2') ? 'style="background-color: ' . esc_attr($v_bg) . ';"' : ''; ?>>
+                                                        <?php if ($v_title): ?>
+                                                            <h3><?php echo esc_html($v_title); ?></h3>
+                                                        <?php
+                            endif; ?>
+                                                        <?php if ($v_subtitle): ?>
+                                                            <p class="value-sub"><?php echo esc_html($v_subtitle); ?></p>
+                                                        <?php
+                            endif; ?>
+                                                        <?php if ($v_content): ?>
+                                                           <p><?php echo str_replace(['&lt;br /&gt;', '&lt;br&gt;'], '', nl2br(esc_html($v_content))); ?></p>
+                                                        <?php
+                            endif; ?>
+                                                    </div>
+                                                    <?php
+                        endwhile; ?>
+                                            </div>
+                                            <?php
+                    endif; ?>
+
+                                    <?php
+                elseif ($block_layout == 'highlighted_services'):
+                    $hs_items = get_sub_field('items');
+                    $hs_cta = get_sub_field('cta_text') ?: 'Xem thêm';
+                    $hs_url = get_sub_field('cta_url') ?: '#';
+                    if (!empty($hs_items)): ?>
+                                            <div class="highlighted-services">
+                                                <div class="highlighted-services-slider step-slider">
+                                                    <div class="swiper-wrapper">
+                                                        <?php foreach ($hs_items as $item): ?>
+                                                            <div class="hs-item swiper-slide">
+                                                                <?php if (!empty($item['icon'])): ?>
+                                                                    <div class="hs-icon">
+                                                                        <img src="<?php echo esc_url($item['icon']['url'] ?? ''); ?>" alt="">
+                                                                    </div>
+                                                                <?php
+                            endif; ?>
+                                                                <?php if (!empty($item['title'])): ?>
+                                                                    <h3 class="hs-title"><?php echo esc_html($item['title']); ?></h3>
+                                                                <?php
+                            endif; ?>
+                                                                <?php if (!empty($item['description'])): ?>
+                                                                    <p class="hs-desc"><?php echo esc_html($item['description']); ?></p>
+                                                                <?php
+                            endif; ?>
+                                                                <?php if (!empty($item['link'])): ?>
+                                                                    <a href="<?php echo esc_url($item['link']); ?>" class="hs-link">
+                                                                        <?php echo esc_html($item['link_text'] ?: 'Xem thêm'); ?>
+                                                                    </a>
+                                                                <?php
+                            endif; ?>
+                                                            </div>
+                                                        <?php
+                        endforeach; ?>
+                                                    </div>
+                                                    <div class="swiper-button-prev slider-nav-btn hs-prev">&larr;</div>
+                                                    <div class="swiper-button-next slider-nav-btn hs-next">&rarr;</div>
+                                                    <div class="swiper-pagination slider-dots hs-dots"></div>
+                                                </div>
+                                                <div class="hs-cta">
+                                                    <a href="<?php echo esc_url($hs_url); ?>" class="cta-btn-primary"><?php echo esc_html($hs_cta); ?></a>
+                                                </div>
+                                            </div>
+                                        <?php
+                    endif; ?>
+                                    <?php
+                endif; ?>
+                                </div>
+                                <?php
+            endwhile; ?>
+
+                            <?php
+        endif; ?>
+
+                    </div>
+                </div>
+            </section>
+        <?php
+    endif; ?>
+        <?php
+endwhile; ?>
+</div>
