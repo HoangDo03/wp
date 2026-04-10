@@ -82,8 +82,9 @@
   --container-width: clamp(10%, 80%, 870px);
   --section-padding: clamp(6rem, 15vh, 12rem);
 
-  --transition-slow: 1s cubic-bezier(0.19, 1, 0.22, 1);
-  --transition-med: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 2s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-med: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+
 }
 
 * {
