@@ -166,13 +166,11 @@ p {
 
 .reveal p {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--transition-med), transform var(--transition-med);
+  transition: opacity var(--transition-med);
 }
 
 .reveal.active p {
   opacity: 1;
-  transform: translateY(0);
   transition-delay: 0.5s;
 }
 
@@ -313,14 +311,12 @@ img {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transition: opacity var(--transition-slow);
   pointer-events: none;
 }
 
 .reveal.active {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -401,15 +397,12 @@ section {
   flex-direction: column;
   justify-content: center;
 
-
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--transition-med), transform var(--transition-med);
+  transition: opacity var(--transition-med);
 }
 
 .reveal.active .overlap-text {
   opacity: 1;
-  transform: translateY(0);
   transition-delay: 0.8s;
 }
 
