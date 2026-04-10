@@ -82,8 +82,8 @@
   --container-width: clamp(10%, 80%, 870px);
   --section-padding: clamp(6rem, 15vh, 12rem);
 
-  --transition-slow: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-  --transition-med: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 1s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-med: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 * {
@@ -122,10 +122,6 @@ body {
 .hero img {
   width: 100%;
   object-fit: contain;
-}
-
-.hero.reveal.active img {
-  /* Only fade-in from .reveal, no transform */
 }
 
 .hero::after {
@@ -176,6 +172,10 @@ p {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.5s;
+}
+
+.hero-content .reveal.active p {
+  transition-delay: 0s;
 }
 
 .intro-text {
