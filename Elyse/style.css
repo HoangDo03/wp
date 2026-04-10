@@ -119,6 +119,7 @@ body {
   background-color: var(--bg-grad-start);
 }
 
+
 .hero img {
   width: 100%;
   object-fit: contain;
@@ -462,10 +463,14 @@ section {
 }
 
 @media (max-width: 768px) {
-  .hero {
-    width: 100%;
-    height: auto;
+  .intro-text {
+    padding: 2rem 0 1rem 0;
   }
+
+  .hero-content .body-text {
+    padding-top: 1rem;
+  }
+
 
   .container {
     padding: 0;
@@ -489,5 +494,16 @@ section {
 
   .footer .image-full {
     padding-top: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .hero img {
+    height: auto !important;
   }
 }
