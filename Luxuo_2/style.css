@@ -34,7 +34,7 @@ p {
     letter-spacing: 0.2px;
 }
 .quotes {
-    width: clamp(10%, 99%, 850px);
+    width: clamp(10%, 100%, 850px);
     margin: auto;
     padding-top: 1rem;
 }
@@ -66,3 +66,7 @@ footer img{
     opacity: 1;
     transform: translateY(0);
 }
+    .title{
+        padding-top: 1rem;
+    }
+} */

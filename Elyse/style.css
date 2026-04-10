@@ -1,0 +1,451 @@
+@font-face {
+  font-family: '1FTV-VIP-Eleanor-Goenka';
+  src: url('Assets/FONT/1FTV-VIP-Eleanor-Goenka.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  src: url('Assets/FONT/SVN-Gilroy Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  src: url('Assets/FONT/SVN-Gilroy Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  src: url('Assets/FONT/SVN-Gilroy Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('Assets/FONT/Georgia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('Assets/FONT/Georgia Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url('Assets/FONT/Georgia Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+:root {
+
+  --bg-color: #fdfcf9;
+
+  --bg-grad-start: #AFE3F8;
+  --bg-grad-mid: #E1D2B4;
+  --bg-grad-end: #12212C;
+
+  --color-morning: #235777;
+  --color-midday: #5E242B;
+  --color-sunset: #5E242B;
+  --color-night: #E7C6B5;
+
+  --text-primary: #2a2a2a;
+  --text-secondary: #6e6e6e;
+  --accent-gold: #b5925f;
+  --accent-dark: #121212;
+  --divider: #ebebeb;
+
+  --font-title: '1FTV-VIP-Eleanor-Goenka', serif;
+  --font-sans: 'SVN-Gilroy', sans-serif;
+  --font-serif: 'Georgia', serif;
+
+  --fs-hero: clamp(4rem, 15vw, 10rem);
+  --fs-h1: clamp(3rem, 10vw, 7rem);
+  --fs-h2: clamp(2rem, 8vw, 5rem);
+  --fs-h3: clamp(1.3rem, 4vw, 4rem);
+  --fs-body: clamp(1rem, 1.25vw + 0.4rem, 1.15rem);
+  --fs-caption: 1rem;
+  --fs-intro: clamp(1rem, 1.25vw + 0.4rem, 1.15rem);
+
+  --container-width-hero: clamp(10%, 85%, 950px);
+  --container-width: clamp(10%, 80%, 870px);
+  --section-padding: clamp(6rem, 15vh, 12rem);
+
+  --transition-slow: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-med: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: solid 1px red; */
+}
+
+body {
+
+  background:
+    linear-gradient(to bottom,
+      rgb(175, 227, 248) 20%,
+      rgb(225, 210, 180) 35%,
+      rgb(192, 164, 150) 70%,
+      rgb(18, 33, 44) 80%),
+    url('Assets/IMAGE/5.png') no-repeat center center fixed;
+  background-size: cover;
+
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(to bottom,
+      rgba(175, 227, 248, 0) 0%,
+      rgba(175, 227, 248, 0.9) 100%);
+}
+
+.hero-content {
+  position: relative;
+}
+
+
+h1,
+h2,
+h3,
+.heading-serif {
+  font-family: var(--font-title);
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+p {
+  color: var(--accent-dark);
+  text-align: justify;
+  padding-top: 2rem;
+  font-size: var(--fs-body);
+  letter-spacing: 0.02em;
+  font-weight: normal;
+  font-family: var(--font-serif);
+}
+
+.intro-text {
+  font-size: var(--fs-intro);
+  font-weight: 500;
+  text-align: center;
+  font-family: var(--font-sans);
+  max-width: var(--container-width-hero);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.section-title {
+
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  margin-bottom: -1.5rem;
+
+}
+
+.morning {
+  color: var(--color-morning) !important;
+}
+
+.midday {
+  color: var(--color-midday) !important;
+}
+
+.sunset {
+  color: var(--color-sunset) !important;
+}
+
+.night {
+  color: var(--color-night) !important;
+}
+
+.midday .section-subtitle,
+.sunset .section-subtitle {
+  color: var(--accent-dark) !important;
+  font-weight: 500;
+}
+
+
+.midday .divider-line,
+.sunset .divider-line {
+  background: linear-gradient(to right,
+      transparent,
+      var(--color-midday) 50%,
+      transparent);
+}
+
+.midday .divider .diamond-icon,
+.sunset .divider .diamond-icon {
+  background-color: var(--color-midday) !important;
+}
+
+.night .section-subtitle,
+.night p {
+  color: white !important;
+}
+
+.night .section-subtitle {
+  font-weight: 500;
+}
+
+.night .divider-line {
+  background: linear-gradient(to right,
+      transparent,
+      var(--color-night) 50%,
+      transparent);
+}
+
+.night .divider .diamond-icon {
+  background-color: var(--color-night) !important;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+
+  display: block;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-top: 0.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.line-1 {
+  margin: 0 auto !important;
+  width: 40%;
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      var(--accent-gold) 50%,
+      transparent);
+}
+
+.diamond-icon {
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent-gold);
+  clip-path: path('M 10 0 C 10 4 16 10 20 10 C 16 10 10 16 10 20 C 10 16 4 10 0 10 C 4 10 10 4 10 0 Z');
+
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(181, 146, 95, 0.6));
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+section {
+  position: relative;
+}
+
+.hero {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.body-text {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 3rem 0 0;
+}
+
+.overlap-container {
+  display: block;
+  width: 100%;
+  position: relative;
+  margin: 2rem auto 0;
+}
+
+
+.overlap-image {
+  width: 100%;
+}
+
+.overlap-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlap-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  z-index: 2;
+  padding: 0;
+  pointer-events: none;
+}
+
+
+.overlap-text {
+  z-index: 2;
+  font-family: var(--font-serif);
+  font-style: italic;
+
+  font-size: clamp(6px, 2.2vw, 2.4rem);
+  color: #333;
+  line-height: 1.5;
+  letter-spacing: normal;
+  pointer-events: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.overlap-text-1 {
+  grid-column: 8 / 13;
+  grid-row: 1 / 5;
+  padding-right: 2vw;
+}
+
+.overlap-text-2 {
+  grid-column: 8 / 13;
+  grid-row: 7 / 12;
+  padding-right: 2.3vw;
+  padding-top: 1vw;
+  padding-bottom: 1.5vw;
+  color: var(--color-midday);
+}
+
+.overlap-text-3 {
+  grid-column: 6 / 11;
+  grid-row: 9/13;
+  text-align: center;
+  color: var(--color-night);
+  padding: 0.5vw 1vw 1.5vw;
+  font-size: clamp(6px, 2vw, 2.4rem);
+}
+
+.overlap-text-4 {
+  grid-column: 8 / 13;
+  grid-row: 4 / 7;
+  color: var(--color-night);
+  padding: 5vw;
+  font-size: clamp(6px, 2vw, 2.4rem);
+}
+
+.text-block {
+  text-align: center;
+}
+
+.footer .image-full {
+  margin: 0;
+  padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .text-block {
+    grid-column: 3 / 11;
+    text-align: center;
+  }
+
+
+}
+
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .section-title {
+    margin-bottom: -0.5rem;
+  }
+
+  p {
+    padding-top: 1rem;
+  }
+
+  .body-text {
+    padding: 0;
+  }
+
+  .overlap-container {
+    margin: 1rem auto 0;
+  }
+
+  .footer .image-full {
+    padding-top: 1rem;
+  }
+}
