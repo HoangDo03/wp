@@ -116,11 +116,16 @@ body {
   width: 100vw;
   position: relative;
   overflow: hidden;
+  background-color: var(--bg-grad-start);
 }
 
 .hero img {
   width: 100%;
   object-fit: contain;
+}
+
+.hero.reveal.active img {
+  /* Only fade-in from .reveal, no transform */
 }
 
 .hero::after {
@@ -133,6 +138,7 @@ body {
   background: linear-gradient(to bottom,
       rgba(175, 227, 248, 0) 0%,
       rgba(175, 227, 248, 0.9) 100%);
+  z-index: 2;
 }
 
 .hero-content {
@@ -158,6 +164,18 @@ p {
   letter-spacing: 0.02em;
   font-weight: normal;
   font-family: var(--font-serif);
+}
+
+.reveal p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-med), transform var(--transition-med);
+}
+
+.reveal.active p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
 }
 
 .intro-text {
@@ -291,16 +309,29 @@ img {
   padding: 2rem 0;
 }
 
-.stagger-1 {
-  transition-delay: 0.1s;
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  pointer-events: none;
 }
 
-.stagger-2 {
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stagger-1 {
   transition-delay: 0.2s;
 }
 
+.stagger-2 {
+  transition-delay: 0.4s;
+}
+
 .stagger-3 {
-  transition-delay: 0.3s;
+  transition-delay: 0.6s;
 }
 
 section {
@@ -367,6 +398,17 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-med), transform var(--transition-med);
+}
+
+.reveal.active .overlap-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
 }
 
 .overlap-text-1 {
