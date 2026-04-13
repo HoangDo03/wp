@@ -27,17 +27,17 @@ function initScrollReveal() {
   });
 }
 
-function initParallax() {
-  const heroImg = document.querySelector('.hero-img');
+// function initParallax() {
+//   const heroImg = document.querySelector('.hero-img');
   
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset;
-    if (heroImg) {
+//   window.addEventListener('scroll', () => {
+//     const scrollPos = window.pageYOffset;
+//     if (heroImg) {
      
-      heroImg.style.transform = `translateY(${scrollPos * 0.3}px)`;
-    }
-  });
-}
+//       heroImg.style.transform = `translateY(${scrollPos * 0.3}px)`;
+//     }
+//   });
+// }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

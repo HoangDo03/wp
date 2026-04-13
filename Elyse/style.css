@@ -76,7 +76,7 @@
   --fs-h3: clamp(1.3rem, 4vw, 4rem);
   --fs-body: clamp(1rem, 1.25vw + 0.4rem, 1.15rem);
   --fs-caption: 1rem;
-  --fs-intro: clamp(1rem, 1.25vw + 0.4rem, 1.15rem);
+  --fs-intro: clamp(1.15rem, 1.4vw + 0.4rem, 1.3rem);
 
   --container-width-hero: clamp(10%, 85%, 950px);
   --container-width: clamp(10%, 80%, 870px);
@@ -116,31 +116,24 @@ body {
 .hero {
   width: 100vw;
   position: relative;
-  overflow: hidden;
-  background-color: var(--bg-grad-start);
+  /* background-color: var(--bg-grad-start); */
+  height: auto;
 }
 
 .hero img {
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 25%;
-  background: linear-gradient(to bottom,
-      rgba(175, 227, 248, 0) 0%,
-      rgba(175, 227, 248, 0.9) 100%);
-  z-index: 2;
-}
 
 .hero-content {
   position: relative;
+  padding-bottom: 2rem;
 }
+
 
 h1,
 h2,
@@ -191,6 +184,7 @@ p {
   font-size: var(--fs-h1);
   font-weight: 500;
   margin-bottom: -1.5rem;
+  word-spacing: -0.15em;
 
 }
 
@@ -333,13 +327,6 @@ section {
   position: relative;
 }
 
-.hero {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
-}
-
 .body-text {
   max-width: var(--container-width);
   margin: 0 auto;
@@ -377,60 +364,10 @@ section {
   pointer-events: none;
 }
 
-.overlap-text {
-  z-index: 2;
-  font-family: var(--font-serif);
-  font-style: italic;
 
-  font-size: clamp(6px, 2.2vw, 2.4rem);
-  color: #333;
-  line-height: 1.5;
-  letter-spacing: normal;
-  pointer-events: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  opacity: 0;
-  transition: opacity var(--transition-med);
-}
-
-.reveal.active .overlap-text {
-  opacity: 1;
-  transition-delay: 0.8s;
-}
-
-.overlap-text-1 {
-  grid-column: 8 / 13;
-  grid-row: 1 / 5;
-  padding-right: 2vw;
-}
-
-.overlap-text-2 {
-  grid-column: 8 / 13;
-  grid-row: 7 / 12;
-  padding-right: 2.3vw;
-  padding-top: 1vw;
-  padding-bottom: 1.5vw;
-  color: var(--color-midday);
-}
-
-.overlap-text-3 {
-  grid-column: 6 / 11;
-  grid-row: 9/13;
-  text-align: center;
-  color: var(--color-night);
-  padding: 0.5vw 1vw 1.5vw;
-  font-size: clamp(6px, 2vw, 2.4rem);
-}
-
-.overlap-text-4 {
-  grid-column: 8 / 13;
-  grid-row: 4 / 7;
-  color: var(--color-night);
-  padding: 5vw;
-  font-size: clamp(6px, 2vw, 2.4rem);
+.night-img {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .text-block {
@@ -457,6 +394,10 @@ section {
 
   .hero-content .body-text {
     padding-top: 1rem;
+  }
+
+  .hero-content {
+    padding-bottom: 0;
   }
 
   .container {
