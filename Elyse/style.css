@@ -91,7 +91,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  /* border: 1px solid red; */
 }
 
 body {
@@ -375,13 +375,17 @@ section {
   margin: 0 auto;
 }
 
+.sunset-img-1 {
+  padding-bottom: 1rem;
+}
+
 .text-block {
   text-align: center;
 }
 
 .footer .image-full {
   margin: 0;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -408,7 +412,7 @@ section {
   }
 
   .container {
-    padding: 0;
+    padding: 1rem 0 0;
   }
 
   .diamond-icon {
@@ -430,7 +434,12 @@ section {
   }
 
   .overlap-container {
-    margin: 1rem auto 0;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+
+  .sunset-img-1 {
+    padding: 0;
   }
 
   .footer .image-full {
