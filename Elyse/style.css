@@ -74,9 +74,9 @@
   --fs-h1: clamp(2.3rem, 10vw, 7rem);
   --fs-h2: clamp(2rem, 8vw, 5rem);
   --fs-h3: clamp(1rem, 4vw, 4rem);
-  --fs-body: clamp(0.9rem, 1.25vw + 0.4rem, 1.15rem);
+  --fs-body: clamp(0.88rem, 1.25vw + 0.4rem, 1.15rem);
   --fs-caption: 1rem;
-  --fs-intro: clamp(1.1rem, 1.4vw + 0.4rem, 1.3rem);
+  --fs-intro: clamp(0.95rem, 1.4vw + 0.4rem, 1.3rem);
 
   --container-width-hero: clamp(10%, 90%, 950px);
   --container-width: clamp(10%, 88%, 870px);
