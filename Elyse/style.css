@@ -71,15 +71,15 @@
   --font-serif: 'Georgia', serif;
 
   --fs-hero: clamp(4rem, 15vw, 10rem);
-  --fs-h1: clamp(3rem, 10vw, 7rem);
+  --fs-h1: clamp(2.3rem, 10vw, 7rem);
   --fs-h2: clamp(2rem, 8vw, 5rem);
-  --fs-h3: clamp(1.3rem, 4vw, 4rem);
-  --fs-body: clamp(1rem, 1.25vw + 0.4rem, 1.15rem);
+  --fs-h3: clamp(1rem, 4vw, 4rem);
+  --fs-body: clamp(0.9rem, 1.25vw + 0.4rem, 1.15rem);
   --fs-caption: 1rem;
-  --fs-intro: clamp(1.15rem, 1.4vw + 0.4rem, 1.3rem);
+  --fs-intro: clamp(1.1rem, 1.4vw + 0.4rem, 1.3rem);
 
-  --container-width-hero: clamp(10%, 85%, 950px);
-  --container-width: clamp(10%, 80%, 870px);
+  --container-width-hero: clamp(10%, 90%, 950px);
+  --container-width: clamp(10%, 88%, 870px);
   --section-padding: clamp(6rem, 15vh, 12rem);
 
   --transition-slow: 2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -247,11 +247,11 @@ p {
   font-family: var(--font-sans);
   font-size: var(--fs-h3);
   font-weight: 600;
-
   display: block;
   text-transform: uppercase;
   line-height: 1.2;
   margin-top: 0.5rem;
+  white-space: nowrap;
 }
 
 .divider {
@@ -393,6 +393,8 @@ section {
 }
 
 @media (max-width: 768px) {
+
+
   .intro-text {
     padding: 2rem 0 1rem 0;
   }
@@ -407,6 +409,12 @@ section {
 
   .container {
     padding: 0;
+  }
+
+  .diamond-icon {
+    width: 16px;
+    height: 16px;
+    clip-path: path('M 8 0 C 8 3.2 12.8 8 16 8 C 12.8 8 8 12.8 8 16 C 8 12.8 3.2 8 0 8 C 3.2 8 8 3.2 8 0 Z');
   }
 
   .section-title {
